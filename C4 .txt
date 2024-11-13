@@ -109,269 +109,27 @@ packet =b''
 full = False
 #
 ####
-
+from cfonts import render, say
+import os
+from cfonts import render
+os.system('clear')
+vnm = render('C 4', colors=['white', 'red'], align='center')
+print(vnm)
+team = render('TEAM', colors=['white','red'], align='center')
+print(team)
+Vn1 = """            
+\x1b[38;5;231m▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬\x1b[38;5;231m
+ INFO         :  \033[1;33mC4 BOT DÉV
+\x1b[38;5;231m TELEGRAM     :\x1b[1;32m  @Plya_Team
+\x1b[38;5;231m Dev          :\x1b[1;32m  @V_N_M_1
+\x1b[38;5;231m VERSION      :\033[2;36m   2.0 New Genération
+\x1b[38;5;231m STATUS       :\033[2;36m   PAID
+\033[1;32m● Try Décode It \x1b[38;5;231m▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬ """
+print(Vn1)
+print("\n")
+print("\x1b[38;5;231m————————————————————————————————————————————————— \n","\x1b[1;32m [1] : \x1b[38;5;231m USERNAME : C4 \n""\x1b[38;5;231m————————————————————————————————————————————————— \n","\x1b[1;32m [2] : \x1b[38;5;231m PASSWORD : VN \n""\x1b[38;5;231m————————————————————————————————————————————————— \n","\x1b[1;32m [3] : \x1b[38;5;231m PORT : 7777 \n""\x1b[38;5;231m————————————————————————————————————————————————— \n","\x1b[1;32m [4] : \x1b[38;5;231m PYTHON RUN SCRPT \n""\x1b[38;5;231m————————————————————————————————————————————————— \n","\x1b[1;32m [5] : \x1b[38;5;231m GO TO PCAPDROID RUN VPN AND OPEN THE GAME  \x1b[1;31m \n""\x1b[38;5;231m————————————————————————————————————————————————— \n")
 ####
 import requests
-
-def shorten_url(long_url):
-    api_url = "https://cleanuri.com/api/v1/shorten"
-    data = {"url": long_url}
-    response = requests.post(api_url, data=data)
-    if response.status_code == 200:
-        return response.json()["result_url"]
-    else:
-        return None
-import datetime
-import requests
-
-def infoplus(accountid ,regtion):    
-    url = 'https://freefireapi.com.br/api/search_id?id={}&region={}'.format(accountid, regtion)
-    response = requests.get(url)
-    if response.status_code == 200:
-        long_text = response.text
-    else:
-        pass
-    # name     
-    ap = '"nickname":'
-    dp = '","'
-    start_link2 = long_text.find(ap) + len(ap) + 1
-    end_link2 = long_text.find(dp, start_link2)
-    name = long_text[start_link2:end_link2]
-    ##print(name)
-    # level
-    ap1 = 'level"'
-    dp1 = ',"exp'
-    start_link3 = long_text.find(ap1) + len(ap1) + 1
-    end_link3 = long_text.find(dp1, start_link3)
-    level = long_text[start_link3:end_link3]
-    ##print(level)
-    # exp
-    ap4 = ',"exp"'
-    dp4 = ',"'
-    start_link42 = long_text.find(ap4) + len(ap4) + 1
-    end_link4 = long_text.find(dp4, start_link42)
-    exp = long_text[start_link42:end_link4]
-    ##print(exp)
-    # liked
-    ap5 = ',"liked"'
-    dp4 = ',"showRank'
-    start_link5 = long_text.find(ap5) + len(ap5) + 1
-    end_link5 = long_text.find(dp4, start_link5)
-    liked = long_text[start_link5:end_link5]
-    ##print(liked)
-    # last login
-    ap6 = 'lastLoginAt":'
-    dp6 = '","csRa'
-    start_link6 = long_text.find(ap6) + len(ap6) + 1
-    end_link6 = long_text.find(dp6, start_link6)
-    lastlogin_beta = long_text[start_link6:end_link6]
-    timestamp = int(lastlogin_beta)
-    date_time = datetime.datetime.utcfromtimestamp(timestamp)
-    lastlogin = date_time
-    ##print(lastlogin)
-    # create accunt
-    ap7 = 'createAt":'
-    dp7 = '"},"'
-    start_link7 = long_text.find(ap7) + len(ap7) + 1
-    end_link7 = long_text.find(dp7, start_link7)
-    creatlogi_beta = long_text[start_link7:end_link7]
-    timestamp = int(creatlogi_beta)
-    date_time2 = datetime.datetime.utcfromtimestamp(timestamp)
-    creatlogin = date_time2
-    ##print(creatlogin)
-    # rank token
-    ap14 = 'rankingPoints"'
-    dp14 = ',"badgeCnt'
-    start_link14 = long_text.find(ap14) + len(ap14) + 1
-    end_link14 = long_text.find(dp14, start_link14)
-    rank_token = long_text[start_link14:end_link14]
-    ##print(rank_token)
-    # rank number
-    ap15 = '"rank"'
-    dp15 = ',"rankingPoints'
-    start_link15 = long_text.find(ap15) + len(ap15) + 1
-    end_link15 = long_text.find(dp15, start_link15)
-    rank_number = long_text[start_link15:end_link15]
-    ##print(rank_number)
-    # langue
-    ap8 = '"language":'
-    dp8 = '"'
-    start_link8 = long_text.find(ap8) + len(ap8) + 1
-    end_link8 = long_text.find(dp8, start_link8)
-    langue = long_text[start_link8:end_link8]
-    ##print(langue)
-    # bio
-    ap9 = '"signature":'
-    dp9 = '","rankShow'
-    if "signature" in long_text:
-        
-        start_link9 = long_text.find(ap9) + len(ap9) + 1
-        end_link9 = long_text.find(dp9, start_link9)
-        bio = long_text[start_link9:end_link9]
-    else:
-        bio = "No bio"
-    ##print(bio)
-    # clan id
-    ap10 = '"clanId":'
-    dp10 = '","capt'
-    start_link10 = long_text.find(ap10) + len(ap10) + 1
-    end_link10 = long_text.find(dp10, start_link10)
-    guild_id = long_text[start_link10:end_link10]
-    ##print(guild_id)
-    # admin clan id
-    ap11 = '"captainBasicInfo":{"accountId":'
-    dp11 = '","nickname":'
-    start_link12 = long_text.find(ap11) + len(ap11) + 1
-    end_link12 = long_text.find(dp11, start_link12)
-    admin_id = long_text[start_link12:end_link12]
-    ##print(admin_id)
-    # admin clan name
-    ap12 = '{}","nickname":'.format(admin_id)
-    dp12 = '","leve'
-    start_link11 = long_text.find(ap12) + len(ap12) + 1
-    end_link11 = long_text.find(dp12, start_link11)
-    admin_name = long_text[start_link11:end_link11]
-    ##print(admin_name)
-    # clan level
-    ap13 = 'clanLevel"'
-    dp13 = ',"capacity'
-    start_link13 = long_text.find(ap13) + len(ap13) + 1
-    end_link13 = long_text.find(dp13, start_link13)
-    clan_level = long_text[start_link13:end_link13]
-    ##print(clan_level)
-    # clan cpacty
-    ap17 = 'capacity"'
-    dp17 = ',"member'
-    start_link17 = long_text.find(ap17) + len(ap17) + 1
-    end_link17 = long_text.find(dp17, start_link17)
-    clan_capacity = long_text[start_link17:end_link17]
-    ##print(clan_capacity)
-    # clan maxcapacity
-    ap16 = 'memberNum"'
-    dp16 = '},"cap'
-    start_link16 = long_text.find(ap16) + len(ap16) + 1
-    end_link16 = long_text.find(dp16, start_link16)
-    clan_maxcapacity = long_text[start_link16:end_link16]
-    
-    #print(name)
-    #print(level)
-    #print(exp)
-    #print(liked)
-    #print(lastlogin)
-    #print(creatlogin)
-    #print(rank_token)
-    #print(rank_number)
-    #print(langue)
-    #print(bio)
-    #print(clan_level)
-    #print(clan_capacity)
-    #print(clan_maxcapacity)        
-def getdate(playerid):
-    global data,dc
-    data = requests.get(f"http://88.198.53.59:19350/info/{playerid}").text
-    dc = data[9:19]
-    ##(data)
-
-    try:
-        old_date = datetime.strptime(dc, "%d/%m/%Y")
-        now = datetime.now()
-        delta = now - old_date
-        years = delta.days // 365
-        months = (delta.days % 365) // 30
-        days = (delta.days % 365) % 30
-        return f"--> {dc}\n\n{years} سـنـوات \n\n{months} شـهـور \n\n{days} يـوم "
-    except:
-        return f"??? سـنـوات \n\n??? شـهـور \n\n??? يـوم "
-def getreg(Id):    
-     
-    url = "https://shop2game.com/api/auth/player_id_login"
-    headers = {
-        "Accept": "application/json",
-        "Accept-Encoding": "gzip, deflate, br",
-        "Accept-Language": "en-US,en;q=0.9,en;q=0.8",
-        "Content-Type": "application/json",
-        "Origin": "https://shop2game.com",
-        "Referer": "https://shop2game.com/app",
-        "sec-ch-ua": '"Google Chrome";v="111", "Not(A:Brand";v="8", "Chromium";v="111"',
-        "sec-ch-ua-mobile": "?0",
-        "sec-ch-ua-platform": "Windows",
-        "Sec-Fetch-Dest": "empty",
-        "Sec-Fetch-Mode": "cors",
-        "Sec-Fetch-Site": "same-origin",
-        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36",
-        "x-datadome-clientid": "10BIK2pOeN3Cw42~iX48rEAd2OmRt6MZDJQsEeK5uMirIKyTLO2bV5Ku6~7pJl_3QOmDkJoSzDcAdCAC8J5WRG_fpqrU7crOEq0~_5oqbgJIuVFWkbuUPD~lUpzSweEa",
-    }
-    payload = {
-        "app_id": 100067,
-        "login_id": f"{Id}",
-        "app_server_id": 0,
-    }
-    response = requests.post(url, headers=headers, json=payload)
-    try:
-        if response.status_code == 200:
-            return response.json()['region']
-        else:
-            return(f"ERROR")
-    except:
-        return("Server unknown ??")
-
-def getname(Id):    
-    url = "https://shop2game.com/api/auth/player_id_login"
-    headers = {
-        "Accept": "application/json",
-        "Accept-Encoding": "gzip, deflate, br",
-        "Accept-Language": "en-US,en;q=0.9,en;q=0.8",
-        "Content-Type": "application/json",
-        "Origin": "https://shop2game.com",
-        "Referer": "https://shop2game.com/app",
-        "sec-ch-ua": '"Google Chrome";v="111", "Not(A:Brand";v="8", "Chromium";v="111"',
-        "sec-ch-ua-mobile": "?0",
-        "sec-ch-ua-platform": "Windows",
-        "Sec-Fetch-Dest": "empty",
-        "Sec-Fetch-Mode": "cors",
-        "Sec-Fetch-Site": "same-origin",
-        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36",
-        "x-datadome-clientid": "10BIK2pOeN3Cw42~iX48rEAd2OmRt6MZDJQsEeK5uMirIKyTLO2bV5Ku6~7pJl_3QOmDkJoSzDcAdCAC8J5WRG_fpqrU7crOEq0~_5oqbgJIuVFWkbuUPD~lUpzSweEa",
-    }
-    payload = {
-        "app_id": 100067,
-        "login_id": f"{Id}",
-        "app_server_id": 0,
-    }
-    response = requests.post(url, headers=headers, json=payload)
-    try:
-        if response.status_code == 200:
-            return response.json()['nickname']
-        else:
-            return("ERROR")
-    except:
-        return("Name unknown??")
-
-
-def get_status(Id):
-    r= requests.get('https://ff.garena.com/api/antihack/check_banned?lang=en&uid={}'.format(Id)) 
-    a = "0"
-    try : 
-        if  a in r.text :
-            return("Account is Not ban")
-        else: 
-            return("Account is ban")
-    except:
-        return("Status unknown")
-def get_inc(id):
-    accountid = id
-    url = 'https://vrxx1337.pythonanywhere.com/?id={}'.format(accountid)
-    response = requests.get(url)
-    if response.status_code == 200:
-        long_text = response.text
-    else:
-        return("8c8d99a21b")
-    ap = 'idenc":'
-    dp = '","'
-    start_link2 = long_text.find(ap) + len(ap) + 1
-    end_link2 = long_text.find(dp, start_link2)
-    iud = long_text[start_link2:end_link2]
-    return(iud)
 def gen_msgv2_clan(replay  , packet):
     replay  = replay.encode('utf-8')
     replay = replay.hex()
@@ -475,7 +233,7 @@ spy = False
 resasa =False
 id_view = None
 rolp = False
-comand =True
+comand =False
 msgs =False
 SOCKS_VERSION = 5
 packet = b''
@@ -625,24 +383,39 @@ SOCKS_VERSION = 5
 class Proxy:
 
 
+
     def __init__(self):
         self.username = "username"
-        self.password = "username"
+        self.password = "password"
         self.packet = b''
         self.sendmode = 'client-0-'
-        global connection
+
+
     def handle_client(self, connection):
+
+
+
         version, nmethods = connection.recv(2)
         methods = self.get_available_methods(nmethods, connection)
+
+
+
         if 2   in set(methods):
             if 2 in set(methods):
+
                 connection.sendall(bytes([SOCKS_VERSION, 2]))
             else:
                 connection.sendall(bytes([SOCKS_VERSION, 0]))
 
+
+
+
+
         if not self.verify_credentials(connection,methods):
             return
         version, cmd, _, address_type = connection.recv(4)
+
+
 
         if address_type == 1:
             address = socket.inet_ntoa(connection.recv(4))
@@ -652,26 +425,32 @@ class Proxy:
             address = socket.gethostbyname(address)
             name= socket.gethostname()
 
+
+
         port = int.from_bytes(connection.recv(2), 'big', signed=False)
         port2 = port
         try:
 
-                remote = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-                remote.connect((address, port))
-                ##(" connect to {} \n \n \n ".format(address))
-                bind_address = remote.getsockname()
 
-                addr = int.from_bytes(socket.inet_aton(
-                    bind_address[0]), 'big', signed=False)
-                port = bind_address[1]
 
-                reply = b''.join([
-                    SOCKS_VERSION.to_bytes(1, 'big'),
-                    int(0).to_bytes(1, 'big'),
-                    int(0).to_bytes(1, 'big'),
-                    int(1).to_bytes(1, 'big'),
-                    addr.to_bytes(4, 'big'),
-                    port.to_bytes(2, 'big')
+
+
+            remote = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+            remote.connect((address, port))
+            #print(" connect to {} \n \n \n ".format(address))
+            bind_address = remote.getsockname()
+
+            addr = int.from_bytes(socket.inet_aton(
+                bind_address[0]), 'big', signed=False)
+            port = bind_address[1]
+
+            reply = b''.join([
+                SOCKS_VERSION.to_bytes(1, 'big'),
+                int(0).to_bytes(1, 'big'),
+                int(0).to_bytes(1, 'big'),
+                int(1).to_bytes(1, 'big'),
+                addr.to_bytes(4, 'big'),
+                port.to_bytes(2, 'big')
 
             ])
         except Exception as e:
@@ -683,6 +462,7 @@ class Proxy:
 
 
         self.botdev(connection, remote,port2)
+
 
     def generate_failed_reply(self, address_type, error_number):
         return b''.join([
@@ -698,29 +478,38 @@ class Proxy:
 
         if 2 in methods:
 
+
             version = ord(connection.recv(1))
+
+
             username_len = ord(connection.recv(1))
             username = connection.recv(username_len).decode('utf-8')
+
             password_len = ord(connection.recv(1))
             password = connection.recv(password_len).decode('utf-8')
-         #   #(username,password)
+            #   print(username,password)
             if username == self.username and password == self.password:
+
                 response = bytes([version, 0])
                 connection.sendall(response)
+
+
                 return True
+
             response = bytes([version, 0])
             connection.sendall(response)
 
             return True
 
         else:
+
+
             version =1
             response = bytes([version, 0])
             connection.sendall(response)
+
+
             return True
-
-
-
 
     def get_available_methods(self, nmethods, connection):
         methods = []
@@ -729,17 +518,33 @@ class Proxy:
         return methods
 
     def runs(self, host, port):
-        var =  0
-        s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        s.bind((host, port))
-        s.listen()
+        try:
+            var =  0
 
-        while True:
-            var =var+1
-            conn, addr = s.accept()
-            running = False
-            t = threading.Thread(target=self.handle_client, args=(conn,))
-            t.start()
+
+
+
+
+
+
+            s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+            #s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+            s.bind((host, port))
+            s.listen()
+
+
+
+            while True:
+                var =var+1
+
+
+                conn, addr = s.accept()
+                running = False
+
+                t = threading.Thread(target=self.handle_client, args=(conn,))
+                t.start()
+        except Exception as e:
+            print("عذراً حدث خطأ \nاغلق البروكسي واعد تشغيل البوت")
 
     def botdev(self, client, remote, port):
         global op
@@ -757,56 +562,57 @@ class Proxy:
         c = False
         idinfo = True
 
-        yout1 = b"\x06\x00\x00\x00{\x08\xd4\xd7\xfa\xba\x1d\x10\x06 \x02*o\x08\x81\x80\x83\xb6\x01\x1a)[ffffff]\xd8\xb5\xd8\xa7\xd8\xa6\xd8\xaf\xe3\x85\xa4\xd8\xa7\xd9\x84\xd8\xa8\xd9\x87\xd8\xa7\xd8\xa6\xd9\x85[ffffff]2\x02ME@N\xb0\x01\x13\xb8\x01\xdc)\xd8\x01\xd4\xd8\xd0\xad\x03\xe0\x01\xb2\xdd\x8d\xae\x03\xea\x01\tAO'-'TEAM\xf0\x01\x01\xf8\x01\xdc\x03\x80\x02\xfd\x98\xa8\xdd\x03\x90\x02\x01\xd0\x02\x11\xd8\x02F"
-        yout2 = b'\x06\x00\x00\x00|\x08\xd4\xd7\xfa\xba\x1d\x10\x06 \x02*p\x08\xd6\xd1\xb9(\x1a![ffffff]\xef\xbc\xa8\xef\xbc\xac\xe3\x85\xa4Hassone.[ffffff]2\x02ME@G\xb0\x01\x13\xb8\x01\xcf\x1e\xd8\x01\xcc\xd6\xd0\xad\x03\xe0\x01\xed\xdc\x8d\xae\x03\xea\x01\x1d\xef\xbc\xb4\xef\xbc\xa8\xef\xbc\xa5\xe3\x85\xa4\xef\xbc\xa8\xef\xbc\xa5\xef\xbc\xac\xef\xbc\xac\xe0\xbf\x90\xc2\xb9\x80\x02\xfd\x98\xa8\xdd\x03\x90\x02\x01\xd0\x02\x01'
-        yout3 = b'\x06\x00\x00\x00x\x08\xd4\xd7\xfa\xba\x1d\x10\x06 \x02*l\x08\xe9\xa7\xe9\x1b\x1a [ffffff]DS\xe3\x85\xa4WAJIHANO\xe3\x85\xa4[ffffff]2\x02ME@Q\xb0\x01\x14\xb8\x01\xca2\xd8\x01\xd4\xd8\xd0\xad\x03\xe0\x01\xb2\xdd\x8d\xae\x03\xea\x01\x10.DICTATORS\xe3\x85\xa4\xe2\x88\x9a\xf0\x01\x01\xf8\x01\xc4\x02\x80\x02\xfd\x98\xa8\xdd\x03\x90\x02\x01\xd0\x02\x0c\xd8\x02+'
-        yout4 = b'\x06\x00\x00\x00z\x08\xd4\xd7\xfa\xba\x1d\x10\x06 \x02*n\x08\xed\xd4\xa7\xa2\x02\x1a\x1f[ffffff]M8N\xe3\x85\xa4y\xe3\x85\xa4Fouad[ffffff]2\x02ME@O\xb0\x01\x13\xb8\x01\xa9#\xd8\x01\xd4\xd8\xd0\xad\x03\xe0\x01\xdb\xdb\x8d\xae\x03\xea\x01\x0cGREAT\xe2\x80\xbfWALL\xf0\x01\x01\xf8\x01b\x80\x02\xfd\x98\xa8\xdd\x03\x90\x02\x01\xd0\x02\r\xd8\x023\xe0\x02\xc1\xb7\xf8\xb1\x03'
-        yout5 = b"\x06\x00\x00\x00\x84\x08\xd4\xd7\xfa\xba\x1d\x10\x06 \x02*x\x08\xb6\xc0\xf1\xcc\x01\x1a'[ffffff]\xd9\x85\xd9\x84\xd9\x83\xd8\xa9*\xd9\x84\xd9\x85\xd8\xb9\xd9\x88\xd9\x82\xd9\x8a\xd9\x86[ffffff]2\x02ME@G\xb0\x01\x05\xb8\x01\x82\x0b\xd8\x01\xd4\xd8\xd0\xad\x03\xe0\x01\xb2\xdd\x8d\xae\x03\xea\x01\x15\xe9\xbf\x84\xef\xbc\xac\xef\xbc\xaf\xef\xbc\xb2\xef\xbc\xa4\xef\xbc\xb3\xe9\xbf\x84\xf0\x01\x01\xf8\x01>\x80\x02\xfd\x98\xa8\xdd\x03\x90\x02\x01\xd0\x02\x05\xd8\x02\x0e"
-        yout6 = b'\x06\x00\x00\x00\x8e\x08\xd4\xd7\xfa\xba\x1d\x10\x06 \x02*\x81\x01\x08\xeb\x98\x88\x8e\x01\x1a"[ffffff]OP\xe3\x85\xa4BNL\xe3\x85\xa4\xe2\x9a\xa1\xe3\x85\xa4*[ffffff]2\x02ME@R\xb0\x01\x10\xb8\x01\xce\x16\xd8\x01\x84\xf0\xd2\xad\x03\xe0\x01\xa8\xdb\x8d\xae\x03\xea\x01\x1f\xe1\xb4\x8f\xe1\xb4\xa0\xe1\xb4\x87\xca\x80\xe3\x85\xa4\xe1\xb4\x98\xe1\xb4\x8f\xe1\xb4\xa1\xe1\xb4\x87\xca\x80\xe2\x9a\xa1\xf0\x01\x01\xf8\x01A\x80\x02\xfd\x98\xa8\xdd\x03\x90\x02\x01\xd0\x02\x01\xe0\x02\xf3\x94\xf6\xb1\x03'
-        yout7 = b"\x06\x00\x00\x00\x8e\x08\xd4\xd7\xfa\xba\x1d\x10\x06 \x02*\x81\x01\x08\xb0\xa4\xdb\x80\x01\x1a'[ffffff]\xd9\x85\xd9\x83\xd8\xa7\xd9\x81\xd8\xad\xd8\xa9.\xe2\x84\x93\xca\x99\xe3\x80\xb5..[ffffff]2\x02ME@T\xb0\x01\x13\xb8\x01\xfc$\xd8\x01\xd4\xd8\xd0\xad\x03\xe0\x01\xc1\xdb\x8d\xae\x03\xea\x01\x1d\xef\xbc\xad\xef\xbc\xa1\xef\xbc\xa6\xef\xbc\xa9\xef\xbc\xa1\xe3\x85\xa4\xe2\x8e\xb0\xe2\x84\x93\xca\x99\xe2\x8e\xb1\xf0\x01\x01\xf8\x01\xdb\x02\x80\x02\xfd\x98\xa8\xdd\x03\x90\x02\x01\xd0\x02\x0f\xd8\x02>"
-        yout8 = b'\x06\x00\x00\x00y\x08\xd4\xd7\xfa\xba\x1d\x10\x06 \x02*m\x08\xfd\x8a\xde\xb4\x02\x1a\x1f[ffffff]ITZ\xe4\xb8\xb6MOHA\xe3\x85\xa42M[ffffff]2\x02ME@C\xb0\x01\n\xb8\x01\xdf\x0f\xd8\x01\xac\xd8\xd0\xad\x03\xe0\x01\xf2\xdc\x8d\xae\x03\xea\x01\x15\xe3\x80\x9dITZ\xe3\x80\x9e\xe1\xb5\x97\xe1\xb5\x89\xe1\xb5\x83\xe1\xb5\x90\xf8\x01\x02\x80\x02\xfd\x98\xa8\xdd\x03\x90\x02\x01\xd0\x02\x0e\xd8\x026'
-        yout9 = b'\x06\x00\x00\x00w\x08\xd4\xd7\xfa\xba\x1d\x10\x06 \x02*k\x08\xc6\x99\xddp\x1a\x1b[ffffff]HEROSHIIMA1[ffffff]2\x02ME@I\xb0\x01\x01\xb8\x01\xe8\x07\xd8\x01\xd4\xd8\xd0\xad\x03\xe0\x01\xb2\xdd\x8d\xae\x03\xea\x01\x1e\xef\xbc\xa8\xef\xbc\xa5\xef\xbc\xb2\xef\xbc\xaf\xef\xbc\xb3\xef\xbc\xa8\xef\xbc\xa9\xef\xbc\xad\xef\xbc\xa1\xef\xa3\xbf\x80\x02\xfd\x98\xa8\xdd\x03\x90\x02\x01\xd0\x02\x01'
-        yout10 = b'\x06\x00\x00\x00p\x08\xd4\xd7\xfa\xba\x1d\x10\x06 \x02*d\x08\xde\x91\xb7Q\x1a\x1c[ffffff]SH\xe3\x85\xa4SHIMA|M[ffffff]2\x02ME@R\xb0\x01\x14\xb8\x01\xe7C\xd8\x01\xdd\xd6\xd0\xad\x03\xe0\x01\xca\xdb\x8d\xae\x03\xea\x01\tSH\xe3\x85\xa4Team\xf8\x014\x80\x02\xfd\x98\xa8\xdd\x03\x90\x02\x01\xd0\x02\x11\xd8\x02G\xe0\x02\x89\xa0\xf8\xb1\x03'
-        yout11 = b'\x06\x00\x00\x00h\x08\xd4\xd7\xfa\xba\x1d\x10\x06 \x02*\\\x08\xa1\x9f\xb3\xf4\x01\x1a\x1b[ffffff]2JZ\xe3\x85\xa4POWER[ffffff]2\x02ME@M\xb0\x01\x13\xb8\x01\xa5(\xd8\x01\xd4\xd8\xd0\xad\x03\xe0\x01\xec\xdb\x8d\xae\x03\xf0\x01\x01\xf8\x01\x9a\x01\x80\x02\xfd\x98\xa8\xdd\x03\x90\x02\x01\xd0\x02\x0c\xd8\x02.\xe0\x02\xb2\xe9\xf7\xb1\x03'
-        yout12 = b'\x06\x00\x00\x00\x8f\x08\xd4\xd7\xfa\xba\x1d\x10\x06 \x02*\x82\x01\x08\xaa\xe5\xa4\xe3\x01\x1a-[ffffff]\xe3\x85\xa4\xd8\xb4\xd9\x83\xd8\xa7\xd9\x8e\xd9\x83\xd9\x80\xd9\x8a\xe3\x80\x8e\xe2\x85\xb5\xe1\xb4\x98\xe3\x80\x8f[ffffff]2\x02ME@Q\xb0\x01\x13\xb8\x01\xf2*\xd8\x01\xd4\xd8\xd0\xad\x03\xe0\x01\xaf\xdb\x8d\xae\x03\xea\x01\x15\xe2\x80\xa2\xe3\x85\xa4\xe2\x93\x8b\xe2\x92\xbe\xe2\x93\x85\xe3\x85\xa4\xe2\x80\xa2\xf8\x01q\x80\x02\xfd\x98\xa8\xdd\x03\x90\x02\x01\xd0\x02\x13\xd8\x02e\xe0\x02\xa0\xf1\xf7\xb1\x03'
-        yout14 = b'\x06\x00\x00\x00\x86\x08\xd4\xd7\xfa\xba\x1d\x10\x06 \x02*z\x08\xfd\x8b\xf4\xfa\x01\x1a$[ffffff]"\xd8\xaf\xd8\xb1\xd8\xa7\xd8\xba\xd9\x88\xd9\x86\xd9\x80\xd9\x88\xd9\x81"[ffffff]2\x02ME@F\xb0\x01\x13\xb8\x01\xec \xd8\x01\xd4\xd8\xd0\xad\x03\xe0\x01\xb2\xdd\x8d\xae\x03\xea\x01\x12\xe1\xb4\x98\xe1\xb4\x84\xe1\xb5\x80\xe1\xb5\x89\xe1\xb5\x83\xe1\xb5\x90\xf0\x01\x01\xf8\x01\xb0\x02\x80\x02\xfd\x98\xa8\xdd\x03\x90\x02\x01\xd0\x02\x04\xd8\x02\t\xe0\x02\xf2\x94\xf6\xb1\x03'
-        yout15 = b'\x06\x00\x00\x00\x7f\x08\xd4\xd7\xfa\xba\x1d\x10\x06 \x02*s\x08\x90\xf6\x87\x15\x1a"[ffffff]V4\xe3\x85\xa4RIO\xe3\x85\xa46%\xe3\x85\xa4zt[ffffff]2\x02ME@M\xb0\x01\x13\xb8\x01\x95&\xd8\x01\xd4\xd8\xd0\xad\x03\xe0\x01\xb1\xdd\x8d\xae\x03\xea\x01\x0e\xe1\xb4\xa0\xe1\xb4\x80\xe1\xb4\x8d\xe1\xb4\x8f\xd1\x95\xf0\x01\x01\xf8\x01\xe2\x02\x80\x02\xfd\x98\xa8\xdd\x03\x90\x02\x01\xd0\x02\x13\xd8\x02^\xe0\x02\x85\xff\xf5\xb1\x03'
-        yout16 = b'\x06\x00\x00\x00s\x08\xd4\xd7\xfa\xba\x1d\x10\x06 \x02*g\x08\xaa\x84\xc1r\x1a\x1f[ffffff]SA777RAWI\xe3\x85\xa4\xe3\x85\xa4[ffffff]2\x02ME@N\xb0\x01\x13\xb8\x01\xc8\x1b\xd8\x01\xd4\xd8\xd0\xad\x03\xe0\x01\xb2\xdd\x8d\xae\x03\xea\x01\x0cSA7RAWI\xe3\x85\xa4TM\xf0\x01\x01\xf8\x01\xfe\x01\x80\x02\xfd\x98\xa8\xdd\x03\x90\x02\x01\xd0\x02\t\xd8\x02 '
-        yout17 = b'\x06\x00\x00\x00y\x08\xd4\xd7\xfa\xba\x1d\x10\x06 \x02*m\x08\xe7\xbf\xb6\x8f\x01\x1a\x1c[ffffff]SVG.NINJA\xe2\xbc\xbd[ffffff]2\x02ME@I\xb0\x01\x13\xb8\x01\x94\x1b\xd8\x01\xd4\xd8\xd0\xad\x03\xe0\x01\x85\xdb\x8d\xae\x03\xea\x01\x15\xe3\x85\xa4\xe3\x85\xa4\xe3\x85\xa4\xe3\x85\xa4???\xe3\x85\xa4\xe3\x85\xa4\xf0\x01\x01\xf8\x01o\x80\x02\xfd\x98\xa8\xdd\x03\x90\x02\x01\xd0\x02\x10\xd8\x02?'
-        yout18 = b"\x06\x00\x00\x00\x9d\x08\xd4\xd7\xfa\xba\x1d\x10\x06 \x02*\x90\x01\x08\xa8\xe8\x91\xd7\x01\x1a.[ffffff]\xef\xbc\xa1\xef\xbc\xac\xef\xbc\x93\xef\xbc\xab\xef\xbc\xa5\xef\xbc\xa4\xe4\xba\x97\xef\xbc\xb9\xef\xbc\xb4\xe3\x85\xa4[ffffff]2\x02ME@N\xb0\x01\x13\xb8\x01\x97'\xd8\x01\xd4\xd8\xd0\xad\x03\xe0\x01\xb2\xdd\x8d\xae\x03\xea\x01\x1e\xef\xbc\xa1\xef\xbc\xac\xef\xbc\x93\xef\xbc\xab\xef\xbc\xa5\xef\xbc\xa4\xe2\x80\xa2\xef\xbc\xb9\xef\xbc\xb4\xe2\x9c\x93\xf0\x01\x01\xf8\x01\xab\x02\x80\x02\xfd\x98\xa8\xdd\x03\x90\x02\x01\xd0\x02\x10\xd8\x02@\xe0\x02\xe9\x80\xf8\xb1\x03"
-        yout19 = b'\x06\x00\x00\x00r\x08\xd4\xd7\xfa\xba\x1d\x10\x06 \x02*f\x08\x9b\x94\xaa\r\x1a\x1c[ffffff]FARAMAWY_1M.[ffffff]2\x02ME@I\xb0\x01\x01\xb8\x01\xe8\x07\xd8\x01\xd4\xd8\xd0\xad\x03\xe0\x01\xb2\xdd\x8d\xae\x03\xea\x01\x12\xe2\x80\xa2\xe3\x85\xa4STRONG\xe3\x85\xa4\xe2\x80\xa2\xf0\x01\x01\xf8\x01X\x80\x02\xfd\x98\xa8\xdd\x03\x90\x02\x01\xd0\x02\x01'
-        yout20 = b'\x06\x00\x00\x00p\x08\xd4\xd7\xfa\xba\x1d\x10\x06 \x02*d\x08\xde\x91\xb7Q\x1a\x1c[ffffff]SH\xe3\x85\xa4SHIMA|M[ffffff]2\x02ME@R\xb0\x01\x14\xb8\x01\xe7C\xd8\x01\xdd\xd6\xd0\xad\x03\xe0\x01\xca\xdb\x8d\xae\x03\xea\x01\tSH\xe3\x85\xa4Team\xf8\x014\x80\x02\xfd\x98\xa8\xdd\x03\x90\x02\x01\xd0\x02\x11\xd8\x02G\xe0\x02\x89\xa0\xf8\xb1\x03'
-        yout21= b'\x06\x00\x00\x00h\x08\xd4\xd7\xfa\xba\x1d\x10\x06 \x02*\\\x08\xa1\x9f\xb3\xf4\x01\x1a\x1b[ffffff]2JZ\xe3\x85\xa4POWER[ffffff]2\x02ME@M\xb0\x01\x13\xb8\x01\xa5(\xd8\x01\xd4\xd8\xd0\xad\x03\xe0\x01\xec\xdb\x8d\xae\x03\xf0\x01\x01\xf8\x01\x9a\x01\x80\x02\xfd\x98\xa8\xdd\x03\x90\x02\x01\xd0\x02\x0c\xd8\x02.\xe0\x02\xb2\xe9\xf7\xb1\x03'
-        yout22 = b'\x06\x00\x00\x00\x8f\x08\xd4\xd7\xfa\xba\x1d\x10\x06 \x02*\x82\x01\x08\xaa\xe5\xa4\xe3\x01\x1a-[ffffff]\xe3\x85\xa4\xd8\xb4\xd9\x83\xd8\xa7\xd9\x8e\xd9\x83\xd9\x80\xd9\x8a\xe3\x80\x8e\xe2\x85\xb5\xe1\xb4\x98\xe3\x80\x8f[ffffff]2\x02ME@Q\xb0\x01\x13\xb8\x01\xf2*\xd8\x01\xd4\xd8\xd0\xad\x03\xe0\x01\xaf\xdb\x8d\xae\x03\xea\x01\x15\xe2\x80\xa2\xe3\x85\xa4\xe2\x93\x8b\xe2\x92\xbe\xe2\x93\x85\xe3\x85\xa4\xe2\x80\xa2\xf8\x01q\x80\x02\xfd\x98\xa8\xdd\x03\x90\x02\x01\xd0\x02\x13\xd8\x02e\xe0\x02\xa0\xf1\xf7\xb1\x03'
-        yout23 = b'\x06\x00\x00\x00\x86\x08\xd4\xd7\xfa\xba\x1d\x10\x06 \x02*z\x08\xfd\x8b\xf4\xfa\x01\x1a$[ffffff]"\xd8\xaf\xd8\xb1\xd8\xa7\xd8\xba\xd9\x88\xd9\x86\xd9\x80\xd9\x88\xd9\x81"[ffffff]2\x02ME@F\xb0\x01\x13\xb8\x01\xec \xd8\x01\xd4\xd8\xd0\xad\x03\xe0\x01\xb2\xdd\x8d\xae\x03\xea\x01\x12\xe1\xb4\x98\xe1\xb4\x84\xe1\xb5\x80\xe1\xb5\x89\xe1\xb5\x83\xe1\xb5\x90\xf0\x01\x01\xf8\x01\xb0\x02\x80\x02\xfd\x98\xa8\xdd\x03\x90\x02\x01\xd0\x02\x04\xd8\x02\t\xe0\x02\xf2\x94\xf6\xb1\x03'
-        yout24 = b'\x06\x00\x00\x00s\x08\xd4\xd7\xfa\xba\x1d\x10\x06 \x02*g\x08\xaa\x84\xc1r\x1a\x1f[ffffff]SA777RAWI\xe3\x85\xa4\xe3\x85\xa4[ffffff]2\x02ME@N\xb0\x01\x13\xb8\x01\xc8\x1b\xd8\x01\xd4\xd8\xd0\xad\x03\xe0\x01\xb2\xdd\x8d\xae\x03\xea\x01\x0cSA7RAWI\xe3\x85\xa4TM\xf0\x01\x01\xf8\x01\xfe\x01\x80\x02\xfd\x98\xa8\xdd\x03\x90\x02\x01\xd0\x02\t\xd8\x02 '
-        yout25 = b'\x06\x00\x00\x00y\x08\xd4\xd7\xfa\xba\x1d\x10\x06 \x02*m\x08\xe7\xbf\xb6\x8f\x01\x1a\x1c[ffffff]SVG.NINJA\xe2\xbc\xbd[ffffff]2\x02ME@I\xb0\x01\x13\xb8\x01\x94\x1b\xd8\x01\xd4\xd8\xd0\xad\x03\xe0\x01\x85\xdb\x8d\xae\x03\xea\x01\x15\xe3\x85\xa4\xe3\x85\xa4\xe3\x85\xa4\xe3\x85\xa4???\xe3\x85\xa4\xe3\x85\xa4\xf0\x01\x01\xf8\x01o\x80\x02\xfd\x98\xa8\xdd\x03\x90\x02\x01\xd0\x02\x10\xd8\x02?'
-        yout26 = b"\x06\x00\x00\x00\x9d\x08\xd4\xd7\xfa\xba\x1d\x10\x06 \x02*\x90\x01\x08\xa8\xe8\x91\xd7\x01\x1a.[ffffff]\xef\xbc\xa1\xef\xbc\xac\xef\xbc\x93\xef\xbc\xab\xef\xbc\xa5\xef\xbc\xa4\xe4\xba\x97\xef\xbc\xb9\xef\xbc\xb4\xe3\x85\xa4[ffffff]2\x02ME@N\xb0\x01\x13\xb8\x01\x97'\xd8\x01\xd4\xd8\xd0\xad\x03\xe0\x01\xb2\xdd\x8d\xae\x03\xea\x01\x1e\xef\xbc\xa1\xef\xbc\xac\xef\xbc\x93\xef\xbc\xab\xef\xbc\xa5\xef\xbc\xa4\xe2\x80\xa2\xef\xbc\xb9\xef\xbc\xb4\xe2\x9c\x93\xf0\x01\x01\xf8\x01\xab\x02\x80\x02\xfd\x98\xa8\xdd\x03\x90\x02\x01\xd0\x02\x10\xd8\x02@\xe0\x02\xe9\x80\xf8\xb1\x03"
-        yout27 = b'\x06\x00\x00\x00r\x08\xd4\xd7\xfa\xba\x1d\x10\x06 \x02*f\x08\x9b\x94\xaa\r\x1a\x1c[ffffff]FARAMAWY_1M.[ffffff]2\x02ME@I\xb0\x01\x01\xb8\x01\xe8\x07\xd8\x01\xd4\xd8\xd0\xad\x03\xe0\x01\xb2\xdd\x8d\xae\x03\xea\x01\x12\xe2\x80\xa2\xe3\x85\xa4STRONG\xe3\x85\xa4\xe2\x80\xa2\xf0\x01\x01\xf8\x01X\x80\x02\xfd\x98\xa8\xdd\x03\x90\x02\x01\xd0\x02\x01'
-        yout28 = b"\x06\x00\x00\x00\x82\x08\xd4\xd7\xfa\xba\x1d\x10\x06 \x02*v\x08\xaa\xdd\xf1'\x1a\x1d[ffffff]BM\xe3\x85\xa4ABDOU_YT[ffffff]2\x02ME@G\xb0\x01\x13\xb8\x01\xd4$\xd8\x01\xd4\xd8\xd0\xad\x03\xe0\x01\xb2\xdd\x8d\xae\x03\xea\x01\x1d\xe2\x80\xa2\xc9\xae\xe1\xb4\x87\xca\x9f\xca\x9f\xe1\xb4\x80\xca\x8d\xe1\xb4\x80\xd2\x93\xc9\xaa\xe1\xb4\x80\xc2\xb0\xf0\x01\x01\xf8\x01\x8e\x01\x80\x02\xfd\x98\xa8\xdd\x03\x90\x02\x01\xd0\x02\x07\xd8\x02\x16"
-        yout29 = b'\x06\x00\x00\x00r\x08\xd4\xd7\xfa\xba\x1d\x10\x06 \x02*f\x08\x9a\xd6\xdcL\x1a-[ffffff]\xe1\xb4\x8d\xcd\xa1\xcd\x9co\xe3\x85\xa4\xef\xbc\xa8\xef\xbc\xa1\xef\xbc\xa6\xef\xbc\xa9\xef\xbc\xa4\xef\xbc\xa9[ffffff]2\x02ME@H\xb0\x01\x01\xb8\x01\xe8\x07\xea\x01\x15\xe1\xb4\x8d\xcd\xa1\xcd\x9co\xc9\xb4\xef\xbd\x93\xe1\xb4\x9b\xe1\xb4\x87\xca\x80\x80\x02\xfd\x98\xa8\xdd\x03\x90\x02\x01\xd0\x02\x01'
-        yout30 = b'\x06\x00\x00\x00v\x08\xd4\xd7\xfa\xba\x1d\x10\x06 \x02*j\x08\xb6\x92\xa9\xc8\x01\x1a [ffffff]\xef\xbc\xaa\xef\xbc\xad\xef\xbc\xb2\xe3\x85\xa4200K[ffffff]2\x02ME@R\xb0\x01\x13\xb8\x01\xc3(\xd8\x01\xd4\xd8\xd0\xad\x03\xe0\x01\xb2\xdd\x8d\xae\x03\xea\x01\n3KASH-TEAM\xf8\x012\x80\x02\xfd\x98\xa8\xdd\x03\x90\x02\x01\xd0\x02\x06\xd8\x02\x13\xe0\x02\x89\xa0\xf8\xb1\x03'
-        yout31 = b"\x06\x00\x00\x00\x92\x08\xd4\xd7\xfa\xba\x1d\x10\x06 \x02*\x85\x01\x08\xa2\xd3\xf4\x81\x07\x1a'[ffffff]\xd8\xb3\xd9\x80\xd9\x86\xd9\x80\xd8\xaf\xd8\xb1\xd9\x8a\xd9\x84\xd8\xa71M\xe3\x85\xa4[ffffff]2\x02ME@K\xb0\x01\x13\xb8\x01\xc1 \xd8\x01\xd4\xd8\xd0\xad\x03\xe0\x01\xb2\xdd\x8d\xae\x03\xea\x01\x1a\xef\xbc\xad\xef\xbc\xa6\xef\xbc\x95\xef\xbc\xb2\xef\xbc\xa8\xe3\x85\xa4\xe1\xb4\xa0\xc9\xaa\xe1\xb4\x98\xf0\x01\x01\xf8\x01\x8c\x01\x80\x02\xfd\x98\xa8\xdd\x03\x90\x02\x01\xd0\x02\x0e\xd8\x024\xe0\x02\x87\xff\xf5\xb1\x03"
-        yout32 = b'\x06\x00\x00\x00|\x08\xd4\xd7\xfa\xba\x1d\x10\x06 \x02*p\x08\xe0\xe1\xdeu\x1a\x1a[ffffff]P1\xe3\x85\xa4Fahad[ffffff]2\x02ME@N\xb0\x01\x13\xb8\x01\xd0&\xd8\x01\xea\xd6\xd0\xad\x03\xe0\x01\xb2\xdd\x8d\xae\x03\xea\x01\x1a\xe3\x85\xa4\xef\xbc\xb0\xef\xbc\xa8\xef\xbc\xaf\xef\xbc\xa5\xef\xbc\xae\xef\xbc\xa9\xef\xbc\xb8\xc2\xb9\xf0\x01\x01\xf8\x01\x9e\x03\x80\x02\xfd\x98\xa8\xdd\x03\x90\x02\x01\xd0\x02\x0b\xd8\x02*'
-        yout33 = b'\x06\x00\x00\x00\x82\x08\xd4\xd7\xfa\xba\x1d\x10\x06 \x02*v\x08\xc5\xcf\x94\x8b\x02\x1a\x18[ffffff]@EL9YSAR[ffffff]2\x02ME@P\xb0\x01\x13\xb8\x01\x86+\xd8\x01\xa2\xd7\xd0\xad\x03\xe0\x01\x89\xae\x8f\xae\x03\xea\x01\x1d-\xc9\xaa\xe1\xb4\x8d\xe1\xb4\x8d\xe1\xb4\x8f\xca\x80\xe1\xb4\x9b\xe1\xb4\x80\xca\x9fs\xe2\xac\x86\xef\xb8\x8f\xf8\x01j\x80\x02\xfd\x98\xa8\xdd\x03\x90\x02\x01\xd0\x02\x14\xd8\x02\xe2\x02\xe0\x02\x9f\xf1\xf7\xb1\x03'
-        yout34 = b'\x06\x00\x00\x00x\x08\xd4\xd7\xfa\xba\x1d\x10\x06 \x02*l\x08\xa9\x81\xe6^\x1a\x1e[ffffff]STRONG\xe3\x85\xa4CRONA[ffffff]2\x02ME@J\xb0\x01\x13\xb8\x01\xd8$\xd8\x01\xd8\xd6\xd0\xad\x03\xe0\x01\x92\xdb\x8d\xae\x03\xea\x01\x12\xe2\x80\xa2\xe3\x85\xa4STRONG\xe3\x85\xa4\xe2\x80\xa2\xf0\x01\x01\xf8\x01q\x80\x02\xfd\x98\xa8\xdd\x03\x90\x02\x01\xd0\x02\x14\xd8\x02\xbc\x01'
-        yout35 = b'\x06\x00\x00\x00\x7f\x08\xd4\xd7\xfa\xba\x1d\x10\x06 \x02*s\x08\xeb\x8d\x97\xec\x01\x1a&[ffffff]\xd8\xb9\xd9\x80\xd9\x85\xd9\x80\xd8\xaf\xd9\x86\xd9\x8a\xd9\x80\xd8\xaa\xd9\x80\xd9\x88[ffffff]2\x02ME@F\xb0\x01\x13\xb8\x01\xd3\x1a\xd8\x01\xaf\xd7\xd0\xad\x03\xe0\x01\xf4\xdc\x8d\xae\x03\xea\x01\rOSIRIS\xe3\x85\xa4MASR\xf8\x01o\x80\x02\xfd\x98\xa8\xdd\x03\x90\x02\x01\xd0\x02\x13\xd8\x02\\\xe0\x02\xf4\x94\xf6\xb1\x03'
-        yout36 = b'\x06\x00\x00\x00\x7f\x08\xd4\xd7\xfa\xba\x1d\x10\x06 \x02*s\x08\xb4\xff\xa3\xef\x01\x1a\x1c[ffffff]ZAIN_YT_500K[ffffff]2\x02ME@K\xb0\x01\x13\xb8\x01\xa3#\xd8\x01\xa2\xd7\xd0\xad\x03\xe0\x01\xbb\xdb\x8d\xae\x03\xea\x01\x1b\xe1\xb6\xbb\xe1\xb5\x83\xe1\xb6\xa4\xe1\xb6\xb0\xe3\x85\xa4\xe1\xb5\x97\xe1\xb5\x89\xe1\xb5\x83\xe1\xb5\x90\xf0\x01\x01\xf8\x01\\\x80\x02\xfd\x98\xa8\xdd\x03\x90\x02\x01\xd0\x02\x0b\xd8\x02('
-        yout37 = b'\x06\x00\x00\x00\x8f\x08\xd4\xd7\xfa\xba\x1d\x10\x06 \x02*\x82\x01\x08\x86\xa7\x9e\xa7\x0b\x1a([ffffff]\xe2\x80\x94\xcd\x9e\xcd\x9f\xcd\x9e\xe2\x98\x85\xef\xbc\xa2\xef\xbc\xac\xef\xbc\xb2\xef\xbc\xb8[ffffff]2\x02ME@d\xb0\x01\x13\xb8\x01\xe3\x1c\xe0\x01\xf2\x83\x90\xae\x03\xea\x01!\xe3\x85\xa4\xef\xbc\xa2\xef\xbc\xac\xef\xbc\xb2\xef\xbc\xb8\xe3\x85\xa4\xef\xbc\xb4\xef\xbc\xa5\xef\xbc\xa1\xef\xbc\xad\xe3\x85\xa4\xf8\x01u\x80\x02\xfd\x98\xa8\xdd\x03\x90\x02\x01\xd0\x02\x13\xd8\x02Y\xe0\x02\xc1\xb7\xf8\xb1\x03'
-        yout38 = b'\x06\x00\x00\x00\x85\x08\xd4\xd7\xfa\xba\x1d\x10\x06 \x02*y\x08\xc3\xcf\xe5H\x1a([ffffff]\xe3\x85\xa4BEE\xe2\x9c\xbfSTO\xe3\x85\xa4\xe1\xb5\x80\xe1\xb4\xb5\xe1\xb4\xb7[ffffff]2\x02ME@Q\xb0\x01\x14\xb8\x01\xffP\xd8\x01\xd4\xd8\xd0\xad\x03\xe0\x01\xc1\xdb\x8d\xae\x03\xea\x01\x15TIK\xe2\x9c\xbfTOK\xe1\xb5\x80\xe1\xb4\xb1\xe1\xb4\xac\xe1\xb4\xb9\xf0\x01\x01\xf8\x01\xc8\x02\x80\x02\xfd\x98\xa8\xdd\x03\x90\x02\x01\xd0\x02\x13\xd8\x02q'
-        yout39 = b'\x06\x00\x00\x00\x94\x08\xd4\xd7\xfa\xba\x1d\x10\x06 \x02*\x87\x01\x08\x97\xd5\x9a.\x1a%[ffffff]\xd8\xb9\xd9\x86\xd9\x83\xd9\x88\xd8\xb4\xe1\xb4\x80\xc9\xb4\xe1\xb4\x8b\xe3\x85\xa4[ffffff]2\x02ME@P\xb0\x01\x13\xb8\x01\xe8(\xd8\x01\xd4\xd8\xd0\xad\x03\xe0\x01\xb2\xdd\x8d\xae\x03\xea\x01\x1f\xe1\xb4\x80\xc9\xb4\xe1\xb4\x8b\xe1\xb4\x9c\xea\x9c\xb1\xca\x9c\xe3\x85\xa4\xe1\xb4\x9b\xe1\xb4\x87\xe1\xb4\x80\xe1\xb4\x8d\xf0\x01\x01\xf8\x01\xb6\x03\x80\x02\xfd\x98\xa8\xdd\x03\x90\x02\x01\xd0\x02\n\xd8\x02"\xe0\x02\xf2\x94\xf6\xb1\x03'
-        yout40 = b'\x06\x00\x00\x00\x8a\x08\xd4\xd7\xfa\xba\x1d\x10\x06 \x02*~\x08\xf7\xdf\xda\\\x1a/[ffffff]\xef\xbc\xa1\xef\xbc\xac\xef\xbc\xa8\xef\xbc\xaf\xef\xbc\xad\xef\xbc\xb3\xef\xbc\xa9_\xef\xbc\xb9\xef\xbc\xb4\xe2\x9c\x93[ffffff]2\x02ME@P\xb0\x01\x13\xb8\x01\xb9*\xd8\x01\xd4\xd8\xd0\xad\x03\xe0\x01\xc1\xdb\x8d\xae\x03\xea\x01\x0cALHOMSI~TEAM\xf0\x01\x01\xf8\x01\x8e\x0e\x80\x02\xfd\x98\xa8\xdd\x03\x90\x02\x01\xd0\x02\x13\xd8\x02S\xe0\x02\xc3\xb7\xf8\xb1\x03'
-        yout41 = b'\x06\x00\x00\x00\x86\x08\xd4\xd7\xfa\xba\x1d\x10\x06 \x02*z\x08\xb5\xdd\xec\x8e\x01\x1a%[ffffff]\xd8\xa7\xd9\x88\xd9\x81\xe3\x80\x80\xd9\x85\xd9\x86\xd9\x83\xe3\x85\xa4\xe2\x9c\x93[ffffff]2\x02ME@K\xb0\x01\x13\xb8\x01\xdd#\xd8\x01\xd4\xd8\xd0\xad\x03\xe0\x01\xb2\xdd\x8d\xae\x03\xea\x01\x18\xef\xbc\xaf\xef\xbc\xa6\xe3\x85\xa4\xef\xbc\xb4\xef\xbc\xa5\xef\xbc\xa1\xef\xbc\xad\xe3\x85\xa4\xf0\x01\x01\xf8\x01\xe8\x02\x80\x02\xfd\x98\xa8\xdd\x03\x90\x02\x01\xd0\x02\x13\xd8\x02Q'
-        yout42 = b'\x06\x00\x00\x00\x8b\x08\xd4\xd7\xfa\xba\x1d\x10\x06 \x02*\x7f\x08\x81\xf4\xba\xf8\x01\x1a%[ffffff]\xef\xbc\xa7\xef\xbc\xa2\xe3\x85\xa4\xef\xbc\xae\xef\xbc\xaf\xef\xbc\x91\xe3\x81\x95[ffffff]2\x02ME@N\xb0\x01\x0c\xb8\x01\xbd\x11\xd8\x01\xd4\xd8\xd0\xad\x03\xe0\x01\xb1\xdd\x8d\xae\x03\xea\x01\x1a\xef\xbc\xa7\xef\xbc\xb2\xef\xbc\xa5\xef\xbc\xa1\xef\xbc\xb4__\xef\xbc\xa2\xef\xbc\xaf\xef\xbc\xb9\xf8\x018\x80\x02\xfd\x98\xa8\xdd\x03\x90\x02\x01\xd0\x02\x0c\xd8\x02-\xe0\x02\x85\xff\xf5\xb1\x03'
-        yout43 = b'\x06\x00\x00\x00o\x08\xd4\xd7\xfa\xba\x1d\x10\x06 \x02*c\x08\xfb\x9d\xb9\xae\x06\x1a\x1c[ffffff]BT\xe3\x85\xa4BadroTV[ffffff]2\x02ME@@\xb0\x01\x13\xb8\x01\xe7\x1c\xd8\x01\xd4\xd8\xd0\xad\x03\xe0\x01\x91\xdb\x8d\xae\x03\xea\x01\nBadro_TV_F\xf0\x01\x01\xf8\x01\x91\x1a\x80\x02\xfd\x98\xa8\xdd\x03\x90\x02\x01\xd0\x02\n\xd8\x02!'
-        yout44 = b"\x06\x00\x00\x00s\x08\xd4\xd7\xfa\xba\x1d\x10\x06 \x02*g\x08\xc4\xe5\xe1>\x1a'[ffffff]\xd8\xb5\xd8\xa7\xd8\xa6\xd8\xaf~\xd8\xa7\xd9\x84\xd8\xba\xd9\x86\xd8\xa7\xd8\xa6\xd9\x85[ffffff]2\x02ME@J\xb0\x01\x14\xb8\x01\xceP\xd8\x01\xd4\xd8\xd0\xad\x03\xe0\x01\xb2\xdd\x8d\xae\x03\xea\x01\x03Z7F\xf0\x01\x01\xf8\x01\xd0\x19\x80\x02\xfd\x98\xa8\xdd\x03\x90\x02\x01\xd0\x02\x14\xd8\x02\x9c\x01"
-        yout45 = b'\x06\x00\x00\x00\x85\x08\xd4\xd7\xfa\xba\x1d\x10\x06 \x02*y\x08\xfd\xa4\xa6i\x1a$[ffffff]\xd8\xb2\xd9\x8a\xd9\x80\xd8\xb1\xc9\xb4\xcc\xb67\xcc\xb6\xca\x80\xe3\x85\xa4[ffffff]2\x02ME@M\xb0\x01\x13\xb8\x01\xe1(\xd8\x01\xd4\xd8\xd0\xad\x03\xe0\x01\xb2\xdd\x8d\xae\x03\xea\x01\x19\xc2\xb7\xe3\x85\xa4\xe3\x85\xa4N\xe3\x85\xa47\xe3\x85\xa4R\xe3\x85\xa4\xe3\x85\xa4\xc2\xb7\xf0\x01\x01\xf8\x01\x8f\t\x80\x02\xfd\x98\xa8\xdd\x03\x90\x02\x01\xd0\x02\x13\xd8\x02k'
-        yout46 = b'\x06\x00\x00\x00y\x08\xd4\xd7\xfa\xba\x1d\x10\x06 \x02*m\x08\xcc\xb9\xcc\xd4\x06\x1a"[ffffff]\xd8\xa8\xd9\x88\xd8\xad\xd8\xa7\xd9\x83\xd9\x80\xd9\x80\xd9\x80\xd9\x85[ffffff]2\x02ME@9\xb0\x01\x07\xb8\x01\xca\x0c\xd8\x01\xd4\xd8\xd0\xad\x03\xe0\x01\xb2\xdd\x8d\xae\x03\xea\x01\x11*\xef\xbc\x97\xef\xbc\xaf\xef\xbc\xab\xef\xbc\xa1\xef\xbc\xad*\xf0\x01\x01\xf8\x01\xad\x05\x80\x02\xfd\x98\xa8\xdd\x03\x90\x02\x01\xd0\x02\x01'
-        yout47 = b'\x06\x00\x00\x00e\x08\xd4\xd7\xfa\xba\x1d\x10\x06 \x02*Y\x08\xe8\xbd\xc9b\x1a [ffffff]\xe3\x80\x8cvip\xe3\x80\x8dDR999FF[ffffff]2\x02ME@Q\xb0\x01\x10\xb8\x01\x94\x16\xd8\x01\xd4\xd8\xd0\xad\x03\xe0\x01\xb2\xdd\x8d\xae\x03\xf0\x01\x01\xf8\x01\xa0\x04\x80\x02\xfd\x98\xa8\xdd\x03\x90\x02\x01\xd0\x02\x0c\xd8\x02+'
-        yout48 = b'\x06\x00\x00\x00\x82\x08\xd4\xd7\xfa\xba\x1d\x10\x06 \x02*v\x08\x86\xb7\x84\xf1\x01\x1a&[ffffff]\xd8\xa2\xd9\x86\xd9\x8a\xd9\x80\xd9\x80\xd9\x84\xd8\xa7\xce\x92\xe2\x92\x91\xe3\x85\xa4[ffffff]2\x02ME@Q\xb0\x01\x13\xb8\x01\x82)\xd8\x01\xd4\xd8\xd0\xad\x03\xe0\x01\xb2\xdd\x8d\xae\x03\xea\x01\x13\xce\x92\xe2\x92\x91\xe3\x85\xa4MAFIA\xe3\x85\xa4\xef\xa3\xbf\xf0\x01\x01\xf8\x01\x95\x04\x80\x02\xfd\x98\xa8\xdd\x03\x90\x02\x01\xd0\x02\x13\xd8\x02W'
-        yout49 = b'\x06\x00\x00\x00u\x08\xd4\xd7\xfa\xba\x1d\x10\x06 \x02*i\x08\xb4\xbe\xde\x83\x02\x1a [ffffff]SPONGEBOB!\xe3\x85\xa4\xe4\xba\x97[ffffff]2\x02ME@N\xb0\x01\x14\xb8\x01\x842\xd8\x01\xd4\xd8\xd0\xad\x03\xe0\x01\x96\xdb\x8d\xae\x03\xea\x01\x0cALHOMSI~TEAM\xf0\x01\x01\xf8\x01\xbd\x03\x80\x02\xfd\x98\xa8\xdd\x03\x90\x02\x01\xd0\x02\x13\xd8\x02{'
-        yout50 = b'\x06\x00\x00\x00u\x08\xd4\xd7\xfa\xba\x1d\x10\x06 \x02*i\x08\xb4\xbe\xde\x83\x02\x1a [ffffff]SPONGEBOB!\xe3\x85\xa4\xe4\xba\x97[ffffff]2\x02ME@N\xb0\x01\x14\xb8\x01\x842\xd8\x01\xd4\xd8\xd0\xad\x03\xe0\x01\x96\xdb\x8d\xae\x03\xea\x01\x0cALHOMSI~TEAM\xf0\x01\x01\xf8\x01\xbd\x03\x80\x02\xfd\x98\xa8\xdd\x03\x90\x02\x01\xd0\x02\x13\xd8\x02{'
-        yout51 = b'\x06\x00\x00\x00z\x08\xd4\xd7\xfa\xba\x1d\x10\x06 \x02*n\x08\xed\xd4\xa7\xa2\x02\x1a\x1f[ffffff]M8N\xe3\x85\xa4y\xe3\x85\xa4Fouad[ffffff]2\x02ME@O\xb0\x01\x13\xb8\x01\xa9#\xd8\x01\xd4\xd8\xd0\xad\x03\xe0\x01\xdb\xdb\x8d\xae\x03\xea\x01\x0cGREAT\xe2\x80\xbfWALL\xf0\x01\x01\xf8\x01b\x80\x02\xfd\x98\xa8\xdd\x03\x90\x02\x01\xd0\x02\r\xd8\x023\xe0\x02\xc1\xb7\xf8\xb1\x03'
+        yout1 = b"\x06\x00\x00\x00{\x08\xd4\xd7\xfa\xba\x1d\x10\x06 \x02*o\x08\x81\x80\x83\xb6\x01\x1a)[f50057]\xd8\xb5\xd8\xa7\xd8\xa6\xd8\xaf\xe3\x85\xa4\xd8\xa7\xd9\x84\xd8\xa8\xd9\x87\xd8\xa7\xd8\xa6\xd9\x85[f50057]2\x02ME@N\xb0\x01\x13\xb8\x01\xdc)\xd8\x01\xd4\xd8\xd0\xad\x03\xe0\x01\xb2\xdd\x8d\xae\x03\xea\x01\tRIZAKYI\xf0\x01\x01\xf8\x01\xdc\x03\x80\x02\xfd\x98\xa8\xdd\x03\x90\x02\x01\xd0\x02\x11\xd8\x02F"
+        yout2 = b'\x06\x00\x00\x00|\x08\xd4\xd7\xfa\xba\x1d\x10\x06 \x02*p\x08\xd6\xd1\xb9(\x1a![f50057]\xef\xbc\xa8\xef\xbc\xac\xe3\x85\xa4VENOM.[f50057]2\x02ME@G\xb0\x01\x13\xb8\x01\xcf\x1e\xd8\x01\xcc\xd6\xd0\xad\x03\xe0\x01\xed\xdc\x8d\xae\x03\xea\x01\x1d\xef\xbc\xb4\xef\xbc\xa8\xef\xbc\xa5\xe3\x85\xa4\xef\xbc\xa8\xef\xbc\xa5\xef\xbc\xac\xef\xbc\xac\xe0\xbf\x90\xc2\xb9\x80\x02\xfd\x98\xa8\xdd\x03\x90\x02\x01\xd0\x02\x01'
+        yout3 = b'\x06\x00\x00\x00x\x08\xd4\xd7\xfa\xba\x1d\x10\x06 \x02*l\x08\xe9\xa7\xe9\x1b\x1a [ff00ff]DS\xe3\x85\xa4BLACK\xe3\x85\xa4[ff00ff]2\x02ME@Q\xb0\x01\x14\xb8\x01\xca2\xd8\x01\xd4\xd8\xd0\xad\x03\xe0\x01\xb2\xdd\x8d\xae\x03\xea\x01\x10.DICTATORS\xe3\x85\xa4\xe2\x88\x9a\xf0\x01\x01\xf8\x01\xc4\x02\x80\x02\xfd\x98\xa8\xdd\x03\x90\x02\x01\xd0\x02\x0c\xd8\x02+'
+        yout4 = b'\x06\x00\x00\x00z\x08\xd4\xd7\xfa\xba\x1d\x10\x06 \x02*n\x08\xed\xd4\xa7\xa2\x02\x1a\x1f[f50057]C4_TEAM\xe3\x85\xa4y\xe3\x85\xa4Fouad[f50057]2\x02ME@O\xb0\x01\x13\xb8\x01\xa9#\xd8\x01\xd4\xd8\xd0\xad\x03\xe0\x01\xdb\xdb\x8d\xae\x03\xea\x01\x0cGREAT\xe2\x80\xbfWALL\xf0\x01\x01\xf8\x01b\x80\x02\xfd\x98\xa8\xdd\x03\x90\x02\x01\xd0\x02\r\xd8\x023\xe0\x02\xc1\xb7\xf8\xb1\x03'
+        yout5 = b"\x06\x00\x00\x00\x84\x08\xd4\xd7\xfa\xba\x1d\x10\x06 \x02*x\x08\xb6\xc0\xf1\xcc\x01\x1a'[f50057]\xd9\x85\xd9\x84\xd9\x83\xd8\xa9*\xd9\x84\xd9\x85\xd8\xb9\xd9\x88\xd9\x82\xd9\x8a\xd9\x86[f50057]2\x02ME@G\xb0\x01\x05\xb8\x01\x82\x0b\xd8\x01\xd4\xd8\xd0\xad\x03\xe0\x01\xb2\xdd\x8d\xae\x03\xea\x01\x15\xe9\xbf\x84\xef\xbc\xac\xef\xbc\xaf\xef\xbc\xb2\xef\xbc\xa4\xef\xbc\xb3\xe9\xbf\x84\xf0\x01\x01\xf8\x01>\x80\x02\xfd\x98\xa8\xdd\x03\x90\x02\x01\xd0\x02\x05\xd8\x02\x0e"
+        yout6 = b'\x06\x00\x00\x00\x8e\x08\xd4\xd7\xfa\xba\x1d\x10\x06 \x02*\x81\x01\x08\xeb\x98\x88\x8e\x01\x1a"[f50057]OP\xe3\x85\xa4BNL\xe3\x85\xa4\xe2\x9a\xa1\xe3\x85\xa4*[f50057]2\x02ME@R\xb0\x01\x10\xb8\x01\xce\x16\xd8\x01\x84\xf0\xd2\xad\x03\xe0\x01\xa8\xdb\x8d\xae\x03\xea\x01\x1f\xe1\xb4\x8f\xe1\xb4\xa0\xe1\xb4\x87\xca\x80\xe3\x85\xa4\xe1\xb4\x98\xe1\xb4\x8f\xe1\xb4\xa1\xe1\xb4\x87\xca\x80\xe2\x9a\xa1\xf0\x01\x01\xf8\x01A\x80\x02\xfd\x98\xa8\xdd\x03\x90\x02\x01\xd0\x02\x01\xe0\x02\xf3\x94\xf6\xb1\x03'
+        yout7 = b"\x06\x00\x00\x00\x8e\x08\xd4\xd7\xfa\xba\x1d\x10\x06 \x02*\x81\x01\x08\xb0\xa4\xdb\x80\x01\x1a'[f50057]\xd9\x85\xd9\x83\xd8\xa7\xd9\x81\xd8\xad\xd8\xa9.\xe2\x84\x93\xca\x99\xe3\x80\xb5..[f50057]2\x02ME@T\xb0\x01\x13\xb8\x01\xfc$\xd8\x01\xd4\xd8\xd0\xad\x03\xe0\x01\xc1\xdb\x8d\xae\x03\xea\x01\x1d\xef\xbc\xad\xef\xbc\xa1\xef\xbc\xa6\xef\xbc\xa9\xef\xbc\xa1\xe3\x85\xa4\xe2\x8e\xb0\xe2\x84\x93\xca\x99\xe2\x8e\xb1\xf0\x01\x01\xf8\x01\xdb\x02\x80\x02\xfd\x98\xa8\xdd\x03\x90\x02\x01\xd0\x02\x0f\xd8\x02>"
+        yout8 = b'\x06\x00\x00\x00y\x08\xd4\xd7\xfa\xba\x1d\x10\x06 \x02*m\x08\xfd\x8a\xde\xb4\x02\x1a\x1f[f50057]ITZ\xe4\xb8\xb6MOHA\xe3\x85\xa42M[f50057]2\x02ME@C\xb0\x01\n\xb8\x01\xdf\x0f\xd8\x01\xac\xd8\xd0\xad\x03\xe0\x01\xf2\xdc\x8d\xae\x03\xea\x01\x15\xe3\x80\x9dITZ\xe3\x80\x9e\xe1\xb5\x97\xe1\xb5\x89\xe1\xb5\x83\xe1\xb5\x90\xf8\x01\x02\x80\x02\xfd\x98\xa8\xdd\x03\x90\x02\x01\xd0\x02\x0e\xd8\x026'
+        yout9 = b'\x06\x00\x00\x00w\x08\xd4\xd7\xfa\xba\x1d\x10\x06 \x02*k\x08\xc6\x99\xddp\x1a\x1b[f50057]HEROSHIIMA1[f50057]2\x02ME@I\xb0\x01\x01\xb8\x01\xe8\x07\xd8\x01\xd4\xd8\xd0\xad\x03\xe0\x01\xb2\xdd\x8d\xae\x03\xea\x01\x1e\xef\xbc\xa8\xef\xbc\xa5\xef\xbc\xb2\xef\xbc\xaf\xef\xbc\xb3\xef\xbc\xa8\xef\xbc\xa9\xef\xbc\xad\xef\xbc\xa1\xef\xa3\xbf\x80\x02\xfd\x98\xa8\xdd\x03\x90\x02\x01\xd0\x02\x01'
+        yout10 = b'\x06\x00\x00\x00p\x08\xd4\xd7\xfa\xba\x1d\x10\x06 \x02*d\x08\xde\x91\xb7Q\x1a\x1c[f50057]SH\xe3\x85\xa4SHIMA|M[f50057]2\x02ME@R\xb0\x01\x14\xb8\x01\xe7C\xd8\x01\xdd\xd6\xd0\xad\x03\xe0\x01\xca\xdb\x8d\xae\x03\xea\x01\tSH\xe3\x85\xa4Team\xf8\x014\x80\x02\xfd\x98\xa8\xdd\x03\x90\x02\x01\xd0\x02\x11\xd8\x02G\xe0\x02\x89\xa0\xf8\xb1\x03'
+        yout11 = b'\x06\x00\x00\x00h\x08\xd4\xd7\xfa\xba\x1d\x10\x06 \x02*\\\x08\xa1\x9f\xb3\xf4\x01\x1a\x1b[f50057]2JZ\xe3\x85\xa4POWER[f50057]2\x02ME@M\xb0\x01\x13\xb8\x01\xa5(\xd8\x01\xd4\xd8\xd0\xad\x03\xe0\x01\xec\xdb\x8d\xae\x03\xf0\x01\x01\xf8\x01\x9a\x01\x80\x02\xfd\x98\xa8\xdd\x03\x90\x02\x01\xd0\x02\x0c\xd8\x02.\xe0\x02\xb2\xe9\xf7\xb1\x03'
+        yout12 = b'\x06\x00\x00\x00\x8f\x08\xd4\xd7\xfa\xba\x1d\x10\x06 \x02*\x82\x01\x08\xaa\xe5\xa4\xe3\x01\x1a-[f50057]\xe3\x85\xa4\xd8\xb4\xd9\x83\xd8\xa7\xd9\x8e\xd9\x83\xd9\x80\xd9\x8a\xe3\x80\x8e\xe2\x85\xb5\xe1\xb4\x98\xe3\x80\x8f[f50057]2\x02ME@Q\xb0\x01\x13\xb8\x01\xf2*\xd8\x01\xd4\xd8\xd0\xad\x03\xe0\x01\xaf\xdb\x8d\xae\x03\xea\x01\x15\xe2\x80\xa2\xe3\x85\xa4\xe2\x93\x8b\xe2\x92\xbe\xe2\x93\x85\xe3\x85\xa4\xe2\x80\xa2\xf8\x01q\x80\x02\xfd\x98\xa8\xdd\x03\x90\x02\x01\xd0\x02\x13\xd8\x02e\xe0\x02\xa0\xf1\xf7\xb1\x03'
+        yout13 = b'\x06\x00\x00\x00`\x08\xd4\xd7\xfa\xba\x1d\x10\x06 \x02*T\x08\xd2\xbc\xae\x07\x1a%[f50057]SYBLUS\xe3\x85\xa4\xe4\xba\x97\xe3\x85\xa4\xe3\x85\xa4\xe3\x85\xa4[f50057]2\x02ME@E\xb0\x01\x01\xb8\x01\xe8\x07\xd8\x01\xd4\xd8\xd0\xad\x03\xe0\x01\xb2\xdd\x8d\xae\x03\x80\x02\xfd\x98\xa8\xdd\x03\x90\x02\x01\xd0\x02\x01'
+        yout14 = b'\x06\x00\x00\x00\x86\x08\xd4\xd7\xfa\xba\x1d\x10\x06 \x02*z\x08\xfd\x8b\xf4\xfa\x01\x1a$[f50057]"\xd8\xaf\xd8\xb1\xd8\xa7\xd8\xba\xd9\x88\xd9\x86\xd9\x80\xd9\x88\xd9\x81"[f50057]2\x02ME@F\xb0\x01\x13\xb8\x01\xec \xd8\x01\xd4\xd8\xd0\xad\x03\xe0\x01\xb2\xdd\x8d\xae\x03\xea\x01\x12\xe1\xb4\x98\xe1\xb4\x84\xe1\xb5\x80\xe1\xb5\x89\xe1\xb5\x83\xe1\xb5\x90\xf0\x01\x01\xf8\x01\xb0\x02\x80\x02\xfd\x98\xa8\xdd\x03\x90\x02\x01\xd0\x02\x04\xd8\x02\t\xe0\x02\xf2\x94\xf6\xb1\x03'
+        yout15 = b'\x06\x00\x00\x00\x7f\x08\xd4\xd7\xfa\xba\x1d\x10\x06 \x02*s\x08\x90\xf6\x87\x15\x1a"[f50057]V4\xe3\x85\xa4RIO\xe3\x85\xa46%\xe3\x85\xa4zt[f50057]2\x02ME@M\xb0\x01\x13\xb8\x01\x95&\xd8\x01\xd4\xd8\xd0\xad\x03\xe0\x01\xb1\xdd\x8d\xae\x03\xea\x01\x0e\xe1\xb4\xa0\xe1\xb4\x80\xe1\xb4\x8d\xe1\xb4\x8f\xd1\x95\xf0\x01\x01\xf8\x01\xe2\x02\x80\x02\xfd\x98\xa8\xdd\x03\x90\x02\x01\xd0\x02\x13\xd8\x02^\xe0\x02\x85\xff\xf5\xb1\x03'
+        yout16 = b'\x06\x00\x00\x00s\x08\xd4\xd7\xfa\xba\x1d\x10\x06 \x02*g\x08\xaa\x84\xc1r\x1a\x1f[f50057]SA777RAWI\xe3\x85\xa4\xe3\x85\xa4[f50057]2\x02ME@N\xb0\x01\x13\xb8\x01\xc8\x1b\xd8\x01\xd4\xd8\xd0\xad\x03\xe0\x01\xb2\xdd\x8d\xae\x03\xea\x01\x0cSA7RAWI\xe3\x85\xa4TM\xf0\x01\x01\xf8\x01\xfe\x01\x80\x02\xfd\x98\xa8\xdd\x03\x90\x02\x01\xd0\x02\t\xd8\x02 '
+        yout17 = b'\x06\x00\x00\x00y\x08\xd4\xd7\xfa\xba\x1d\x10\x06 \x02*m\x08\xe7\xbf\xb6\x8f\x01\x1a\x1c[f50057]SVG.NINJA\xe2\xbc\xbd[f50057]2\x02ME@I\xb0\x01\x13\xb8\x01\x94\x1b\xd8\x01\xd4\xd8\xd0\xad\x03\xe0\x01\x85\xdb\x8d\xae\x03\xea\x01\x15\xe3\x85\xa4\xe3\x85\xa4\xe3\x85\xa4\xe3\x85\xa4???\xe3\x85\xa4\xe3\x85\xa4\xf0\x01\x01\xf8\x01o\x80\x02\xfd\x98\xa8\xdd\x03\x90\x02\x01\xd0\x02\x10\xd8\x02?'
+        yout18 = b"\x06\x00\x00\x00\x9d\x08\xd4\xd7\xfa\xba\x1d\x10\x06 \x02*\x90\x01\x08\xa8\xe8\x91\xd7\x01\x1a.[f50057]\xef\xbc\xa1\xef\xbc\xac\xef\xbc\x93\xef\xbc\xab\xef\xbc\xa5\xef\xbc\xa4\xe4\xba\x97\xef\xbc\xb9\xef\xbc\xb4\xe3\x85\xa4[f50057]2\x02ME@N\xb0\x01\x13\xb8\x01\x97'\xd8\x01\xd4\xd8\xd0\xad\x03\xe0\x01\xb2\xdd\x8d\xae\x03\xea\x01\x1e\xef\xbc\xa1\xef\xbc\xac\xef\xbc\x93\xef\xbc\xab\xef\xbc\xa5\xef\xbc\xa4\xe2\x80\xa2\xef\xbc\xb9\xef\xbc\xb4\xe2\x9c\x93\xf0\x01\x01\xf8\x01\xab\x02\x80\x02\xfd\x98\xa8\xdd\x03\x90\x02\x01\xd0\x02\x10\xd8\x02@\xe0\x02\xe9\x80\xf8\xb1\x03"
+        yout19 = b'\x06\x00\x00\x00r\x08\xd4\xd7\xfa\xba\x1d\x10\x06 \x02*f\x08\x9b\x94\xaa\r\x1a\x1c[f50057]FARAMAWY_1M.[f50057]2\x02ME@I\xb0\x01\x01\xb8\x01\xe8\x07\xd8\x01\xd4\xd8\xd0\xad\x03\xe0\x01\xb2\xdd\x8d\xae\x03\xea\x01\x12\xe2\x80\xa2\xe3\x85\xa4STRONG\xe3\x85\xa4\xe2\x80\xa2\xf0\x01\x01\xf8\x01X\x80\x02\xfd\x98\xa8\xdd\x03\x90\x02\x01\xd0\x02\x01'
+        yout20 = b'\x06\x00\x00\x00p\x08\xd4\xd7\xfa\xba\x1d\x10\x06 \x02*d\x08\xde\x91\xb7Q\x1a\x1c[f50057]SH\xe3\x85\xa4SHIMA|M[f50057]2\x02ME@R\xb0\x01\x14\xb8\x01\xe7C\xd8\x01\xdd\xd6\xd0\xad\x03\xe0\x01\xca\xdb\x8d\xae\x03\xea\x01\tSH\xe3\x85\xa4Team\xf8\x014\x80\x02\xfd\x98\xa8\xdd\x03\x90\x02\x01\xd0\x02\x11\xd8\x02G\xe0\x02\x89\xa0\xf8\xb1\x03'
+        yout21 = b'\x06\x00\x00\x00h\x08\xd4\xd7\xfa\xba\x1d\x10\x06 \x02*\\\x08\xa1\x9f\xb3\xf4\x01\x1a\x1b[f50057]2JZ\xe3\x85\xa4POWER[f50057]2\x02ME@M\xb0\x01\x13\xb8\x01\xa5(\xd8\x01\xd4\xd8\xd0\xad\x03\xe0\x01\xec\xdb\x8d\xae\x03\xf0\x01\x01\xf8\x01\x9a\x01\x80\x02\xfd\x98\xa8\xdd\x03\x90\x02\x01\xd0\x02\x0c\xd8\x02.\xe0\x02\xb2\xe9\xf7\xb1\x03'
+        yout22 = b'\x06\x00\x00\x00\x8f\x08\xd4\xd7\xfa\xba\x1d\x10\x06 \x02*\x82\x01\x08\xaa\xe5\xa4\xe3\x01\x1a-[f50057]\xe3\x85\xa4\xd8\xb4\xd9\x83\xd8\xa7\xd9\x8e\xd9\x83\xd9\x80\xd9\x8a\xe3\x80\x8e\xe2\x85\xb5\xe1\xb4\x98\xe3\x80\x8f[f50057]2\x02ME@Q\xb0\x01\x13\xb8\x01\xf2*\xd8\x01\xd4\xd8\xd0\xad\x03\xe0\x01\xaf\xdb\x8d\xae\x03\xea\x01\x15\xe2\x80\xa2\xe3\x85\xa4\xe2\x93\x8b\xe2\x92\xbe\xe2\x93\x85\xe3\x85\xa4\xe2\x80\xa2\xf8\x01q\x80\x02\xfd\x98\xa8\xdd\x03\x90\x02\x01\xd0\x02\x13\xd8\x02e\xe0\x02\xa0\xf1\xf7\xb1\x03'
+        yout23 = b'\x06\x00\x00\x00\x86\x08\xd4\xd7\xfa\xba\x1d\x10\x06 \x02*z\x08\xfd\x8b\xf4\xfa\x01\x1a$[f50057]"\xd8\xaf\xd8\xb1\xd8\xa7\xd8\xba\xd9\x88\xd9\x86\xd9\x80\xd9\x88\xd9\x81"[f50057]2\x02ME@F\xb0\x01\x13\xb8\x01\xec \xd8\x01\xd4\xd8\xd0\xad\x03\xe0\x01\xb2\xdd\x8d\xae\x03\xea\x01\x12\xe1\xb4\x98\xe1\xb4\x84\xe1\xb5\x80\xe1\xb5\x89\xe1\xb5\x83\xe1\xb5\x90\xf0\x01\x01\xf8\x01\xb0\x02\x80\x02\xfd\x98\xa8\xdd\x03\x90\x02\x01\xd0\x02\x04\xd8\x02\t\xe0\x02\xf2\x94\xf6\xb1\x03'
+        yout24 = b'\x06\x00\x00\x00s\x08\xd4\xd7\xfa\xba\x1d\x10\x06 \x02*g\x08\xaa\x84\xc1r\x1a\x1f[f50057]SA777RAWI\xe3\x85\xa4\xe3\x85\xa4[f50057]2\x02ME@N\xb0\x01\x13\xb8\x01\xc8\x1b\xd8\x01\xd4\xd8\xd0\xad\x03\xe0\x01\xb2\xdd\x8d\xae\x03\xea\x01\x0cSA7RAWI\xe3\x85\xa4TM\xf0\x01\x01\xf8\x01\xfe\x01\x80\x02\xfd\x98\xa8\xdd\x03\x90\x02\x01\xd0\x02\t\xd8\x02 '
+        yout25 = b'\x06\x00\x00\x00y\x08\xd4\xd7\xfa\xba\x1d\x10\x06 \x02*m\x08\xe7\xbf\xb6\x8f\x01\x1a\x1c[f50057]SVG.NINJA\xe2\xbc\xbd[f50057]2\x02ME@I\xb0\x01\x13\xb8\x01\x94\x1b\xd8\x01\xd4\xd8\xd0\xad\x03\xe0\x01\x85\xdb\x8d\xae\x03\xea\x01\x15\xe3\x85\xa4\xe3\x85\xa4\xe3\x85\xa4\xe3\x85\xa4???\xe3\x85\xa4\xe3\x85\xa4\xf0\x01\x01\xf8\x01o\x80\x02\xfd\x98\xa8\xdd\x03\x90\x02\x01\xd0\x02\x10\xd8\x02?'
+        yout26 = b"\x06\x00\x00\x00\x9d\x08\xd4\xd7\xfa\xba\x1d\x10\x06 \x02*\x90\x01\x08\xa8\xe8\x91\xd7\x01\x1a.[f50057]\xef\xbc\xa1\xef\xbc\xac\xef\xbc\x93\xef\xbc\xab\xef\xbc\xa5\xef\xbc\xa4\xe4\xba\x97\xef\xbc\xb9\xef\xbc\xb4\xe3\x85\xa4[f50057]2\x02ME@N\xb0\x01\x13\xb8\x01\x97'\xd8\x01\xd4\xd8\xd0\xad\x03\xe0\x01\xb2\xdd\x8d\xae\x03\xea\x01\x1e\xef\xbc\xa1\xef\xbc\xac\xef\xbc\x93\xef\xbc\xab\xef\xbc\xa5\xef\xbc\xa4\xe2\x80\xa2\xef\xbc\xb9\xef\xbc\xb4\xe2\x9c\x93\xf0\x01\x01\xf8\x01\xab\x02\x80\x02\xfd\x98\xa8\xdd\x03\x90\x02\x01\xd0\x02\x10\xd8\x02@\xe0\x02\xe9\x80\xf8\xb1\x03"
+        yout27 = b'\x06\x00\x00\x00r\x08\xd4\xd7\xfa\xba\x1d\x10\x06 \x02*f\x08\x9b\x94\xaa\r\x1a\x1c[f50057]FARAMAWY_1M.[f50057]2\x02ME@I\xb0\x01\x01\xb8\x01\xe8\x07\xd8\x01\xd4\xd8\xd0\xad\x03\xe0\x01\xb2\xdd\x8d\xae\x03\xea\x01\x12\xe2\x80\xa2\xe3\x85\xa4STRONG\xe3\x85\xa4\xe2\x80\xa2\xf0\x01\x01\xf8\x01X\x80\x02\xfd\x98\xa8\xdd\x03\x90\x02\x01\xd0\x02\x01'
+        yout28 = b"\x06\x00\x00\x00\x82\x08\xd4\xd7\xfa\xba\x1d\x10\x06 \x02*v\x08\xaa\xdd\xf1'\x1a\x1d[f50057]BM\xe3\x85\xa4ABDOU_YT[f50057]2\x02ME@G\xb0\x01\x13\xb8\x01\xd4$\xd8\x01\xd4\xd8\xd0\xad\x03\xe0\x01\xb2\xdd\x8d\xae\x03\xea\x01\x1d\xe2\x80\xa2\xc9\xae\xe1\xb4\x87\xca\x9f\xca\x9f\xe1\xb4\x80\xca\x8d\xe1\xb4\x80\xd2\x93\xc9\xaa\xe1\xb4\x80\xc2\xb0\xf0\x01\x01\xf8\x01\x8e\x01\x80\x02\xfd\x98\xa8\xdd\x03\x90\x02\x01\xd0\x02\x07\xd8\x02\x16"
+        yout29 = b'\x06\x00\x00\x00r\x08\xd4\xd7\xfa\xba\x1d\x10\x06 \x02*f\x08\x9a\xd6\xdcL\x1a-[f50057]\xe1\xb4\x8d\xcd\xa1\xcd\x9co\xe3\x85\xa4\xef\xbc\xa8\xef\xbc\xa1\xef\xbc\xa6\xef\xbc\xa9\xef\xbc\xa4\xef\xbc\xa9[f50057]2\x02ME@H\xb0\x01\x01\xb8\x01\xe8\x07\xea\x01\x15\xe1\xb4\x8d\xcd\xa1\xcd\x9co\xc9\xb4\xef\xbd\x93\xe1\xb4\x9b\xe1\xb4\x87\xca\x80\x80\x02\xfd\x98\xa8\xdd\x03\x90\x02\x01\xd0\x02\x01'
+        yout30 = b'\x06\x00\x00\x00v\x08\xd4\xd7\xfa\xba\x1d\x10\x06 \x02*j\x08\xb6\x92\xa9\xc8\x01\x1a [f50057]\xef\xbc\xaa\xef\xbc\xad\xef\xbc\xb2\xe3\x85\xa4200K[f50057]2\x02ME@R\xb0\x01\x13\xb8\x01\xc3(\xd8\x01\xd4\xd8\xd0\xad\x03\xe0\x01\xb2\xdd\x8d\xae\x03\xea\x01\n3KASH-TEAM\xf8\x012\x80\x02\xfd\x98\xa8\xdd\x03\x90\x02\x01\xd0\x02\x06\xd8\x02\x13\xe0\x02\x89\xa0\xf8\xb1\x03'
+        yout31 = b"\x06\x00\x00\x00\x92\x08\xd4\xd7\xfa\xba\x1d\x10\x06 \x02*\x85\x01\x08\xa2\xd3\xf4\x81\x07\x1a'[f50057]\xd8\xb3\xd9\x80\xd9\x86\xd9\x80\xd8\xaf\xd8\xb1\xd9\x8a\xd9\x84\xd8\xa71M\xe3\x85\xa4[f50057]2\x02ME@K\xb0\x01\x13\xb8\x01\xc1 \xd8\x01\xd4\xd8\xd0\xad\x03\xe0\x01\xb2\xdd\x8d\xae\x03\xea\x01\x1a\xef\xbc\xad\xef\xbc\xa6\xef\xbc\x95\xef\xbc\xb2\xef\xbc\xa8\xe3\x85\xa4\xe1\xb4\xa0\xc9\xaa\xe1\xb4\x98\xf0\x01\x01\xf8\x01\x8c\x01\x80\x02\xfd\x98\xa8\xdd\x03\x90\x02\x01\xd0\x02\x0e\xd8\x024\xe0\x02\x87\xff\xf5\xb1\x03"
+        yout32 = b'\x06\x00\x00\x00|\x08\xd4\xd7\xfa\xba\x1d\x10\x06 \x02*p\x08\xe0\xe1\xdeu\x1a\x1a[f50057]P1\xe3\x85\xa4Fahad[f50057]2\x02ME@N\xb0\x01\x13\xb8\x01\xd0&\xd8\x01\xea\xd6\xd0\xad\x03\xe0\x01\xb2\xdd\x8d\xae\x03\xea\x01\x1a\xe3\x85\xa4\xef\xbc\xb0\xef\xbc\xa8\xef\xbc\xaf\xef\xbc\xa5\xef\xbc\xae\xef\xbc\xa9\xef\xbc\xb8\xc2\xb9\xf0\x01\x01\xf8\x01\x9e\x03\x80\x02\xfd\x98\xa8\xdd\x03\x90\x02\x01\xd0\x02\x0b\xd8\x02*'
+        yout33 = b'\x06\x00\x00\x00\x82\x08\xd4\xd7\xfa\xba\x1d\x10\x06 \x02*v\x08\xc5\xcf\x94\x8b\x02\x1a\x18[f50057]@EL9YSAR[f50057]2\x02ME@P\xb0\x01\x13\xb8\x01\x86+\xd8\x01\xa2\xd7\xd0\xad\x03\xe0\x01\x89\xae\x8f\xae\x03\xea\x01\x1d-\xc9\xaa\xe1\xb4\x8d\xe1\xb4\x8d\xe1\xb4\x8f\xca\x80\xe1\xb4\x9b\xe1\xb4\x80\xca\x9fs\xe2\xac\x86\xef\xb8\x8f\xf8\x01j\x80\x02\xfd\x98\xa8\xdd\x03\x90\x02\x01\xd0\x02\x14\xd8\x02\xe2\x02\xe0\x02\x9f\xf1\xf7\xb1\x03'
+        yout34 = b'\x06\x00\x00\x00x\x08\xd4\xd7\xfa\xba\x1d\x10\x06 \x02*l\x08\xa9\x81\xe6^\x1a\x1e[f50057]STRONG\xe3\x85\xa4CRONA[f50057]2\x02ME@J\xb0\x01\x13\xb8\x01\xd8$\xd8\x01\xd8\xd6\xd0\xad\x03\xe0\x01\x92\xdb\x8d\xae\x03\xea\x01\x12\xe2\x80\xa2\xe3\x85\xa4STRONG\xe3\x85\xa4\xe2\x80\xa2\xf0\x01\x01\xf8\x01q\x80\x02\xfd\x98\xa8\xdd\x03\x90\x02\x01\xd0\x02\x14\xd8\x02\xbc\x01'
+        yout35 = b'\x06\x00\x00\x00\x7f\x08\xd4\xd7\xfa\xba\x1d\x10\x06 \x02*s\x08\xeb\x8d\x97\xec\x01\x1a&[f50057]\xd8\xb9\xd9\x80\xd9\x85\xd9\x80\xd8\xaf\xd9\x86\xd9\x8a\xd9\x80\xd8\xaa\xd9\x80\xd9\x88[f50057]2\x02ME@F\xb0\x01\x13\xb8\x01\xd3\x1a\xd8\x01\xaf\xd7\xd0\xad\x03\xe0\x01\xf4\xdc\x8d\xae\x03\xea\x01\rOSIRIS\xe3\x85\xa4MASR\xf8\x01o\x80\x02\xfd\x98\xa8\xdd\x03\x90\x02\x01\xd0\x02\x13\xd8\x02\\\xe0\x02\xf4\x94\xf6\xb1\x03'
+        yout36 = b'\x06\x00\x00\x00\x7f\x08\xd4\xd7\xfa\xba\x1d\x10\x06 \x02*s\x08\xb4\xff\xa3\xef\x01\x1a\x1c[f50057]ZAIN_YT_500K[f50057]2\x02ME@K\xb0\x01\x13\xb8\x01\xa3#\xd8\x01\xa2\xd7\xd0\xad\x03\xe0\x01\xbb\xdb\x8d\xae\x03\xea\x01\x1b\xe1\xb6\xbb\xe1\xb5\x83\xe1\xb6\xa4\xe1\xb6\xb0\xe3\x85\xa4\xe1\xb5\x97\xe1\xb5\x89\xe1\xb5\x83\xe1\xb5\x90\xf0\x01\x01\xf8\x01\\\x80\x02\xfd\x98\xa8\xdd\x03\x90\x02\x01\xd0\x02\x0b\xd8\x02('
+        yout37 = b'\x06\x00\x00\x00\x8f\x08\xd4\xd7\xfa\xba\x1d\x10\x06 \x02*\x82\x01\x08\x86\xa7\x9e\xa7\x0b\x1a([f50057]\xe2\x80\x94\xcd\x9e\xcd\x9f\xcd\x9e\xe2\x98\x85\xef\xbc\xa2\xef\xbc\xac\xef\xbc\xb2\xef\xbc\xb8[f50057]2\x02ME@d\xb0\x01\x13\xb8\x01\xe3\x1c\xe0\x01\xf2\x83\x90\xae\x03\xea\x01!\xe3\x85\xa4\xef\xbc\xa2\xef\xbc\xac\xef\xbc\xb2\xef\xbc\xb8\xe3\x85\xa4\xef\xbc\xb4\xef\xbc\xa5\xef\xbc\xa1\xef\xbc\xad\xe3\x85\xa4\xf8\x01u\x80\x02\xfd\x98\xa8\xdd\x03\x90\x02\x01\xd0\x02\x13\xd8\x02Y\xe0\x02\xc1\xb7\xf8\xb1\x03'
+        yout38 = b'\x06\x00\x00\x00\x85\x08\xd4\xd7\xfa\xba\x1d\x10\x06 \x02*y\x08\xc3\xcf\xe5H\x1a([f50057]\xe3\x85\xa4BEE\xe2\x9c\xbfSTO\xe3\x85\xa4\xe1\xb5\x80\xe1\xb4\xb5\xe1\xb4\xb7[f50057]2\x02ME@Q\xb0\x01\x14\xb8\x01\xffP\xd8\x01\xd4\xd8\xd0\xad\x03\xe0\x01\xc1\xdb\x8d\xae\x03\xea\x01\x15TIK\xe2\x9c\xbfTOK\xe1\xb5\x80\xe1\xb4\xb1\xe1\xb4\xac\xe1\xb4\xb9\xf0\x01\x01\xf8\x01\xc8\x02\x80\x02\xfd\x98\xa8\xdd\x03\x90\x02\x01\xd0\x02\x13\xd8\x02q'
+        yout39 = b'\x06\x00\x00\x00\x94\x08\xd4\xd7\xfa\xba\x1d\x10\x06 \x02*\x87\x01\x08\x97\xd5\x9a.\x1a%[f50057]\xd8\xb9\xd9\x86\xd9\x83\xd9\x88\xd8\xb4\xe1\xb4\x80\xc9\xb4\xe1\xb4\x8b\xe3\x85\xa4[f50057]2\x02ME@P\xb0\x01\x13\xb8\x01\xe8(\xd8\x01\xd4\xd8\xd0\xad\x03\xe0\x01\xb2\xdd\x8d\xae\x03\xea\x01\x1f\xe1\xb4\x80\xc9\xb4\xe1\xb4\x8b\xe1\xb4\x9c\xea\x9c\xb1\xca\x9c\xe3\x85\xa4\xe1\xb4\x9b\xe1\xb4\x87\xe1\xb4\x80\xe1\xb4\x8d\xf0\x01\x01\xf8\x01\xb6\x03\x80\x02\xfd\x98\xa8\xdd\x03\x90\x02\x01\xd0\x02\n\xd8\x02"\xe0\x02\xf2\x94\xf6\xb1\x03'
+        yout40 = b'\x06\x00\x00\x00\x8a\x08\xd4\xd7\xfa\xba\x1d\x10\x06 \x02*~\x08\xf7\xdf\xda\\\x1a/[f50057]\xef\xbc\xa1\xef\xbc\xac\xef\xbc\xa8\xef\xbc\xaf\xef\xbc\xad\xef\xbc\xb3\xef\xbc\xa9_\xef\xbc\xb9\xef\xbc\xb4\xe2\x9c\x93[f50057]2\x02ME@P\xb0\x01\x13\xb8\x01\xb9*\xd8\x01\xd4\xd8\xd0\xad\x03\xe0\x01\xc1\xdb\x8d\xae\x03\xea\x01\x0cALHOMSI~TEAM\xf0\x01\x01\xf8\x01\x8e\x0e\x80\x02\xfd\x98\xa8\xdd\x03\x90\x02\x01\xd0\x02\x13\xd8\x02S\xe0\x02\xc3\xb7\xf8\xb1\x03'
+        yout41 = b'\x06\x00\x00\x00\x86\x08\xd4\xd7\xfa\xba\x1d\x10\x06 \x02*z\x08\xb5\xdd\xec\x8e\x01\x1a%[f50057]\xd8\xa7\xd9\x88\xd9\x81\xe3\x80\x80\xd9\x85\xd9\x86\xd9\x83\xe3\x85\xa4\xe2\x9c\x93[f50057]2\x02ME@K\xb0\x01\x13\xb8\x01\xdd#\xd8\x01\xd4\xd8\xd0\xad\x03\xe0\x01\xb2\xdd\x8d\xae\x03\xea\x01\x18\xef\xbc\xaf\xef\xbc\xa6\xe3\x85\xa4\xef\xbc\xb4\xef\xbc\xa5\xef\xbc\xa1\xef\xbc\xad\xe3\x85\xa4\xf0\x01\x01\xf8\x01\xe8\x02\x80\x02\xfd\x98\xa8\xdd\x03\x90\x02\x01\xd0\x02\x13\xd8\x02Q'
+        yout42 = b'\x06\x00\x00\x00\x8b\x08\xd4\xd7\xfa\xba\x1d\x10\x06 \x02*\x7f\x08\x81\xf4\xba\xf8\x01\x1a%[f50057]\xef\xbc\xa7\xef\xbc\xa2\xe3\x85\xa4\xef\xbc\xae\xef\xbc\xaf\xef\xbc\x91\xe3\x81\x95[f50057]2\x02ME@N\xb0\x01\x0c\xb8\x01\xbd\x11\xd8\x01\xd4\xd8\xd0\xad\x03\xe0\x01\xb1\xdd\x8d\xae\x03\xea\x01\x1a\xef\xbc\xa7\xef\xbc\xb2\xef\xbc\xa5\xef\xbc\xa1\xef\xbc\xb4__\xef\xbc\xa2\xef\xbc\xaf\xef\xbc\xb9\xf8\x018\x80\x02\xfd\x98\xa8\xdd\x03\x90\x02\x01\xd0\x02\x0c\xd8\x02-\xe0\x02\x85\xff\xf5\xb1\x03'
+        yout43 = b'\x06\x00\x00\x00o\x08\xd4\xd7\xfa\xba\x1d\x10\x06 \x02*c\x08\xfb\x9d\xb9\xae\x06\x1a\x1c[f50057]BT\xe3\x85\xa4BadroTV[f50057]2\x02ME@@\xb0\x01\x13\xb8\x01\xe7\x1c\xd8\x01\xd4\xd8\xd0\xad\x03\xe0\x01\x91\xdb\x8d\xae\x03\xea\x01\nBadro_TV_F\xf0\x01\x01\xf8\x01\x91\x1a\x80\x02\xfd\x98\xa8\xdd\x03\x90\x02\x01\xd0\x02\n\xd8\x02!'
+        yout44 = b"\x06\x00\x00\x00s\x08\xd4\xd7\xfa\xba\x1d\x10\x06 \x02*g\x08\xc4\xe5\xe1>\x1a'[f50057]\xd8\xb5\xd8\xa7\xd8\xa6\xd8\xaf~\xd8\xa7\xd9\x84\xd8\xba\xd9\x86\xd8\xa7\xd8\xa6\xd9\x85[f50057]2\x02ME@J\xb0\x01\x14\xb8\x01\xceP\xd8\x01\xd4\xd8\xd0\xad\x03\xe0\x01\xb2\xdd\x8d\xae\x03\xea\x01\x03Z7F\xf0\x01\x01\xf8\x01\xd0\x19\x80\x02\xfd\x98\xa8\xdd\x03\x90\x02\x01\xd0\x02\x14\xd8\x02\x9c\x01"
+        yout45 = b'\x06\x00\x00\x00\x85\x08\xd4\xd7\xfa\xba\x1d\x10\x06 \x02*y\x08\xfd\xa4\xa6i\x1a$[f50057]\xd8\xb2\xd9\x8a\xd9\x80\xd8\xb1\xc9\xb4\xcc\xb67\xcc\xb6\xca\x80\xe3\x85\xa4[f50057]2\x02ME@M\xb0\x01\x13\xb8\x01\xe1(\xd8\x01\xd4\xd8\xd0\xad\x03\xe0\x01\xb2\xdd\x8d\xae\x03\xea\x01\x19\xc2\xb7\xe3\x85\xa4\xe3\x85\xa4N\xe3\x85\xa47\xe3\x85\xa4R\xe3\x85\xa4\xe3\x85\xa4\xc2\xb7\xf0\x01\x01\xf8\x01\x8f\t\x80\x02\xfd\x98\xa8\xdd\x03\x90\x02\x01\xd0\x02\x13\xd8\x02k'
+        yout46 = b'\x06\x00\x00\x00y\x08\xd4\xd7\xfa\xba\x1d\x10\x06 \x02*m\x08\xcc\xb9\xcc\xd4\x06\x1a"[f50057]\xd8\xa8\xd9\x88\xd8\xad\xd8\xa7\xd9\x83\xd9\x80\xd9\x80\xd9\x80\xd9\x85[f50057]2\x02ME@9\xb0\x01\x07\xb8\x01\xca\x0c\xd8\x01\xd4\xd8\xd0\xad\x03\xe0\x01\xb2\xdd\x8d\xae\x03\xea\x01\x11*\xef\xbc\x97\xef\xbc\xaf\xef\xbc\xab\xef\xbc\xa1\xef\xbc\xad*\xf0\x01\x01\xf8\x01\xad\x05\x80\x02\xfd\x98\xa8\xdd\x03\x90\x02\x01\xd0\x02\x01'
+        yout47 = b'\x06\x00\x00\x00e\x08\xd4\xd7\xfa\xba\x1d\x10\x06 \x02*Y\x08\xe8\xbd\xc9b\x1a [f50057]\xe3\x80\x8cvip\xe3\x80\x8dDR999FF[f50057]2\x02ME@Q\xb0\x01\x10\xb8\x01\x94\x16\xd8\x01\xd4\xd8\xd0\xad\x03\xe0\x01\xb2\xdd\x8d\xae\x03\xf0\x01\x01\xf8\x01\xa0\x04\x80\x02\xfd\x98\xa8\xdd\x03\x90\x02\x01\xd0\x02\x0c\xd8\x02+'
+        yout48 = b'\x06\x00\x00\x00\x82\x08\xd4\xd7\xfa\xba\x1d\x10\x06 \x02*v\x08\x86\xb7\x84\xf1\x01\x1a&[f50057]\xd8\xa2\xd9\x86\xd9\x8a\xd9\x80\xd9\x80\xd9\x84\xd8\xa7\xce\x92\xe2\x92\x91\xe3\x85\xa4[f50057]2\x02ME@Q\xb0\x01\x13\xb8\x01\x82)\xd8\x01\xd4\xd8\xd0\xad\x03\xe0\x01\xb2\xdd\x8d\xae\x03\xea\x01\x13\xce\x92\xe2\x92\x91\xe3\x85\xa4MAFIA\xe3\x85\xa4\xef\xa3\xbf\xf0\x01\x01\xf8\x01\x95\x04\x80\x02\xfd\x98\xa8\xdd\x03\x90\x02\x01\xd0\x02\x13\xd8\x02W'
+        yout49 = b'\x06\x00\x00\x00u\x08\xd4\xd7\xfa\xba\x1d\x10\x06 \x02*i\x08\xb4\xbe\xde\x83\x02\x1a [f50057]SPONGEBOB!\xe3\x85\xa4\xe4\xba\x97[f50057]2\x02ME@N\xb0\x01\x14\xb8\x01\x842\xd8\x01\xd4\xd8\xd0\xad\x03\xe0\x01\x96\xdb\x8d\xae\x03\xea\x01\x0cALHOMSI~TEAM\xf0\x01\x01\xf8\x01\xbd\x03\x80\x02\xfd\x98\xa8\xdd\x03\x90\x02\x01\xd0\x02\x13\xd8\x02{'
+        yout50 = b'\x06\x00\x00\x00u\x08\xd4\xd7\xfa\xba\x1d\x10\x06 \x02*i\x08\xb4\xbe\xde\x83\x02\x1a [f50057]SPONGEBOB!\xe3\x85\xa4\xe4\xba\x97[f50057]2\x02ME@N\xb0\x01\x14\xb8\x01\x842\xd8\x01\xd4\xd8\xd0\xad\x03\xe0\x01\x96\xdb\x8d\xae\x03\xea\x01\x0cALHOMSI~TEAM\xf0\x01\x01\xf8\x01\xbd\x03\x80\x02\xfd\x98\xa8\xdd\x03\x90\x02\x01\xd0\x02\x13\xd8\x02{'
+        yout51 = b'\x06\x00\x00\x00v\x08\xd4\xd7\xfa\xba\x1d\x10\x06 \x02*j\x08\xb8\xa6\x85\xc5\x01\x1a\x1b[f50057]DARBKA\xe3\x85\xa41M[f50057]2\x02ME@Q\xb0\x01\x13\xb8\x01\x90(\xd8\x01\xd4\xd8\xd0\xad\x03\xe0\x01\xb2\xdd\x8d\xae\x03\xea\x01\x12LAST\xe2\x80\x8f\xe3\x85\xa4POWER\xe2\x9a\xa1\xf0\x01\x01\xf8\x01\x92\x03\x80\x02\xfd\x98\xa8\xdd\x03\x90\x02\x01\xd0\x02\x13\xd8\x02W'
 
         yout_list = [yout1,yout2,yout3,yout4,yout5,yout6,yout7,yout8,yout9,yout10,yout11,yout12,yout14,yout15,yout16,yout17,yout18,yout19,yout20,yout21,yout22,yout23,yout24,yout25,yout26,yout27,yout28,yout29,yout30,yout31,yout32,yout33,yout34,yout35,yout36,yout37,yout38,yout39,yout40,yout41,yout42,yout43,yout44,yout45,yout46,yout47,yout48,yout49,yout50,yout51]
         global cmodeinfo
@@ -860,8 +666,8 @@ class Proxy:
         global visible_ret
         visible_ret = False
 
-        global add_yout
-        add_yout = False
+        global vnm_yout
+        vnm_yout = False
         global msg1
         msg1 = False
         ########
@@ -915,9 +721,9 @@ class Proxy:
 
             global youtubers
             def youtubers(value42):
-                global add_yout
-                add_yout = value42
-                return add_yout
+                global vnm_yout
+                vnm_yout = value42
+                return vnm_yout
                 
 
 
@@ -988,7 +794,7 @@ class Proxy:
                                             if resasa ==False:
                                                 break
                                             
-                    if msgs ==False:
+                    if msgs ==True:
                         if '1215' in dataC.hex()[0:4]:
                             for i in range(10):
                                 remote.send(dataC)
@@ -996,7 +802,7 @@ class Proxy:
                             b = threading.Thread(target=spprspm, args=(remote,dataC))
                             b.start()
                     #####
-                    if port == 39698:
+                    if port == 39801:
                             levelplus = remote
                     if  "39699" in str(remote) :
                     	self.op = remote
@@ -1124,7 +930,7 @@ class Proxy:
                             cmodeloop = False
                             
 
-                        if  port == 39698:
+                        if  port == 39801:
                             invite = client
                             snv = remote
 
@@ -1191,8 +997,8 @@ class Proxy:
                         if "0515" in dataC.hex()[0:4] and 1400 > len(dataC.hex()) >= 900:
                             visback = remote
                             vispacket = dataC
-                        passwords = ["RIZAKYI", "PEGS-T7F9-15QA-6TON", "PEGS-10XW-0JP7-U70H", "PEGS-30DY-RQWS-8YW6", "PEGS-6AW1-U8FX-1A8J", "PEGS-5MON-4AT7-1QW9"]
-                        if b"code::" in dataS:
+                        passwords = ["VN", "C4", "BLACK","RIZAKYI"]
+                        if b"key::" in dataS:
                         	newdataS2 = dataS.hex()
                         	getin = client
                         	global dataplus
@@ -1200,1037 +1006,180 @@ class Proxy:
                         	text = str(bytes.fromhex(newdataS2))
                         	match = re.search(r'\:\:(.*?)\(', text)
                         	if match.group(1) in passwords:
+                        	    threading.Thread(target=send_msg, args=(client, dataS.hex(), "[b][c][00FF00] Welcome..!", 0.2)).start()
+                        	    threading.Thread(target=send_msg, args=(client, dataS.hex(), "[b][c][FF00FF] Write -> /cmd", 0.2)).start()
                         	    comand = True
-                        	    getin.send(bytes.fromhex(gen_msgv2_clan(f"""[b][c][66FF00][Activated Bot]""",newdataS2)))
                         	else:
                         	    try:
-                        	        getin.send(bytes.fromhex(gen_msgv2_clan(f"""[b][c][FF0000][Error Key]""",newdataS2)))
+                        	        threading.Thread(target=send_msg, args=(client, dataS.hex(), "[b][c][FF0000] CODE INCORRECT..!", 0.2)).start()
                         	    except:
                         	        pass
-                        if b"@FD5" in dataS and comand == True:
-                            op.send(bytes.fromhex("0515000000301a55e2c4e0bb2b3e02f11b4f9f9e0b55ec9b15af7b8eec4273c32c67be0cb9d2fe3d0b12b2064841ba21001df8665703"))
+                        if b"/5" in dataS and comand == True:
+                            threading.Thread(target=send_msg, args=(client, dataS.hex(), "[b][c][00FFFF] 5 IN SQ ACTIVE", 0.2)).start()
+                            #remote.send(bytes.fromhex("0515000000301a55e2c4e0bb2b3e02f11b4f9f9e0b55ec9b15af7b8eec4273c32c67be0cb9d2fe3d0b12b2064841ba21001df8665703"))
                             
                              
 #start klach squad
-                        if b"@FD3" in dataS and comand == True:
-                            op.send(bytes.fromhex("051500000020cdfdd29898d11f3510a1e346a000f194ae71b48153af0923a6b95c6ad5dfb394"))
+                        if b"/3" in dataS and comand == True:
+                            threading.Thread(target=send_msg, args=(client, dataS.hex(), "[b][c][00FFFF] 3 IN SQ ACTIVE", 0.2)).start()
+                            #remote.send(bytes.fromhex("051500000020cdfdd29898d11f3510a1e346a000f194ae71b48153af0923a6b95c6ad5dfb394"))
 #spam message
-                        if b"@FDS" in dataS and comand == True:
+                        if b"/ss" in dataS and comand == True:
+                            threading.Thread(target=send_msg, args=(client, dataS.hex(), "[b][c][00FFFF] SPAM MSG ON", 0.2)).start()
                             msgs =True
-                        if b"#FDS" in dataS and comand == True:
+                        if b"/-ss" in dataS and comand == True:
+                            threading.Thread(target=send_msg, args=(client, dataS.hex(), "[b][c][00FFFF] SPAM MSG OFF", 0.2)).start()
                             msgs =False
 # spam invits
-                        if b"@FDI" in dataS and comand == True:
-                            spam_invs =True
-                        if b"#FDI" in dataS and comand == True:
-                            spam_invs =False
-                        if b"@ANG_START" in dataS and comand == True:
+                        if b"/inv" in dataS and comand == True:
+                            threading.Thread(target=send_msg, args=(client, dataS.hex(), "[b][c][00FFFF] Mentenance", 0.2)).start()
+                            #spam_invs =True
+                        if b"/-inv" in dataS and comand == True:
+                            threading.Thread(target=send_msg, args=(client, dataS.hex(), "[b][c][00FFFF]Mentenance", 0.2)).start()
+                            #spam_invs =False
+                        if b"/cmd" in dataS and comand == True:
                                 newdataS2 = dataS.hex()
                                 getin = client
-                                threading.Thread(target=send_msg, args=(client, dataS.hex(), "Welcom To", 0.2)).start()
-                                threading.Thread(target=send_msg, args=(client, dataS.hex(), "[b][c][FF00FF]PEGA[00FFFF]SUS V2", 0.2)).start()
+                                threading.Thread(target=send_msg, args=(client, dataS.hex(), "[FF0000][b][c]C4 [b][c][FF00FF]BOT  [F7FE2E]V2.0\n", 0.2)).start()
                                 time.sleep(0.3)
-                                threading.Thread(target=send_msg, args=(client, dataS.hex(), "[b][c]Mode by [F7FE2E]FADAIⓋ", 0.2)).start()
-                                threading.Thread(target=send_msg, args=(client, dataS.hex(), "[FF8000][b][c]Comands :", 0.2)).start()
+                                time.sleep(0.7)
+                                threading.Thread(target=send_msg, args=(client, dataS.hex(), "[b][c][000000]---------------------------------", 0.2)).start()
                                 time.sleep(0.3)
-                                threading.Thread(target=send_msg, args=(client, dataS.hex(), """@FD5 [00FFFF] in Squad 5""", 0.2)).start()
-                                threading.Thread(target=send_msg, args=(client, dataS.hex(), """[b][c]@FD3 [d44904] in Squad 3""", 0.2)).start()
-                                threading.Thread(target=send_msg, args=(client, dataS.hex(), """[b][c]@FDS[0000FF]Spam Messages""", 0.2)).start()
-                                threading.Thread(target=send_msg, args=(client, dataS.hex(), """[b][c]@FDI [d97a5b]Spam invitations""", 0.2)).start()
-                                threading.Thread(target=send_msg, args=(client, dataS.hex(), """[b][c]@FDNR[ff8345]Stay in Rome""", 0.2)).start()
-                                threading.Thread(target=send_msg, args=(client, dataS.hex(), """[b][c]@FDB[8ffff2]Back last Squad""", 0.2)).start()
-                                threading.Thread(target=send_msg, args=(client, dataS.hex(), """[b][c]#my[FF0000]Sensitive info""", 0.2)).start()
-                                threading.Thread(target=send_msg, args=(client, dataS.hex(), """[b][c]@FDZF [26ed97]Super Mode""", 0.2)).start()
-                                threading.Thread(target=send_msg, args=(client, dataS.hex(), """[b][c]PD@@id [FFFF00]General player info""", 0.2)).start()
-                                threading.Thread(target=send_msg, args=(client, dataS.hex(), """[b][c]PD++id [f5f595]Advanced player info""", 0.2)).start()
-                                threading.Thread(target=send_msg, args=(client, dataS.hex(), """[b][c]PD??id [ed91a5]Clan player info""", 0.2)).start()
-                                threading.Thread(target=send_msg, args=(client, dataS.hex(), """[b][c]PD::id [66FF00]Ranked player info""", 0.2)).start()
-                                threading.Thread(target=send_msg, args=(client, dataS.hex(), """[b][c]PD==id [c421ff]View Player bio""", 0.2)).start()
-                                threading.Thread(target=send_msg, args=(client, dataS.hex(), """[b][c]@FDTnum[8878ff] Dances""", 0.2)).start()
-                                threading.Thread(target=send_msg, args=(client, dataS.hex(), """[b][c]@FDRnum//id[ff7881] Anyone dance""", 0.2)).start()
-                                threading.Thread(target=send_msg, args=(client, dataS.hex(), """[b][c]@FDYOT[f74b0c]Add youtubers""", 0.2)).start()
-                                threading.Thread(target=send_msg, args=(client, dataS.hex(), """[b][c]@FDRK==id[e06363]Someone imitating dances """, 0.2)).start()
-                                threading.Thread(target=send_msg, args=(client, dataS.hex(), """[b][c]@FDPS[ed26b5]View Code Rome""", 0.2)).start()
-                                threading.Thread(target=send_msg, args=(client, dataS.hex(), """[b][c]@FDTLS[FF8000]dances liste""", 0.2)).start()               
-                        if b"@START" in dataS and comand == True:
-                                newdataS2 = dataS.hex()
-                                getin = client
-                                threading.Thread(target=send_msg, args=(client, dataS.hex(), "[b][c][FF00FFُ]مرحبا بك في", 0.2)).start()
-                                threading.Thread(target=send_msg, args=(client, dataS.hex(), "[b][c][FF00FF]PEGA[00FFFF]SUS V2", 0.2)).start()
-                                time.sleep(0.3)
-                                threading.Thread(target=send_msg, args=(client, dataS.hex(), "[b][c]Mode by [F7FE2E]FADAI", 0.2)).start()
-                                threading.Thread(target=send_msg, args=(client, dataS.hex(), "[FF8000][b][c]معلومات البوت  :", 0.2)).start()
-                                time.sleep(0.3)
-                                threading.Thread(target=send_msg, args=(client, dataS.hex(), """[b][c]@FD5 [00FFFF] في السكواد 5""", 0.2)).start()
-                                threading.Thread(target=send_msg, args=(client, dataS.hex(), """[b][c]@FD3 [d44904] في السكواد 3""", 0.2)).start()
-                                threading.Thread(target=send_msg, args=(client, dataS.hex(), """[b][c]@FDS[0000FF]سبام رسائل""", 0.2)).start()
-                                threading.Thread(target=send_msg, args=(client, dataS.hex(), """[b][c]@FDI [b5ff08]سبام دعوات""", 0.2)).start()
-                                threading.Thread(target=send_msg, args=(client, dataS.hex(), """[b][c]@FDNR[ff8345]عدم طردك روم""", 0.2)).start() 
-                                threading.Thread(target=send_msg, args=(client, dataS.hex(), """[b][c]@FDB[8ffff2]عودة لسكواد""", 0.2)).start()
-                                threading.Thread(target=send_msg, args=(client, dataS.hex(), """[b][c]@my[FF0000]معلومات حساسة""", 0.2)).start()
-                                threading.Thread(target=send_msg, args=(client, dataS.hex(), """[b][c]@FDZF [26ed97]وضع خارق""", 0.2)).start()
-                                threading.Thread(target=send_msg, args=(client, dataS.hex(), """[b][c]FD@@id[FFFF00]معلومات عامة لاعب""", 0.2)).start()
-                                threading.Thread(target=send_msg, args=(client, dataS.hex(), """[b][c]FD++id [f5f595]معلومات متقدمة لاعب""", 0.2)).start()
-                                threading.Thread(target=send_msg, args=(client, dataS.hex(), """[b][c]FD??id [ed91a5]معلومات رابطة لاعب""", 0.2)).start()
-                                threading.Thread(target=send_msg, args=(client, dataS.hex(), """[b][c]FD::id [66FF00]معلومات تصنيف لاعب""", 0.2)).start()
-                                threading.Thread(target=send_msg, args=(client, dataS.hex(), """[b][c]FD==id [c421ff]عرض بايو لاعب""", 0.2)).start()
-                                threading.Thread(target=send_msg, args=(client, dataS.hex(), """[b][c]@FDTnum[8878ff]حصول على رقصات""", 0.2)).start()
-                                threading.Thread(target=send_msg, args=(client, dataS.hex(), """[b][c]@FDRnum//id [ff7881]رقص اي شخص""", 0.2)).start()
-                                threading.Thread(target=send_msg, args=(client, dataS.hex(), """[b][c]@FDYOT[f74b0c]إضافة يتيوبرز""", 0.2)).start()
-                                threading.Thread(target=send_msg, args=(client, dataS.hex(), """[b][c]@FDRK==id[e06363]أي شخص يقلد رقصاتك""", 0.2)).start()
-                                threading.Thread(target=send_msg, args=(client, dataS.hex(), """[b][c]@FDPS[ed26b5]عرض كود روم""", 0.2)).start()
-                                threading.Thread(target=send_msg, args=(client, dataS.hex(), """[b][c]@FDTLS[FF8000]قائمة رقصات""", 0.2)).start()
-                        if b"@FDTLS" in dataS and comand == True:
+                                threading.Thread(target=send_msg, args=(client, dataS.hex(), """/5 [00FFFF]in Squad 5""", 0.2)).start()
+                                threading.Thread(target=send_msg, args=(client, dataS.hex(), """[b][c]/3 [d44904]in Squad 3""", 0.2)).start()
+                                threading.Thread(target=send_msg, args=(client, dataS.hex(), """[b][c]/ss[0000FF]Spam Messages""", 0.2)).start()
+                                threading.Thread(target=send_msg, args=(client, dataS.hex(), """[b][c]/inv [d97a5b]Spam invitations""", 0.2)).start()
+                                threading.Thread(target=send_msg, args=(client, dataS.hex(), """[b][c]/back[8ffff2]Back last Squad""", 0.2)).start()
+                                threading.Thread(target=send_msg, args=(client, dataS.hex(), """[b][c]/cryz [26ed97]Super Mode""", 0.2)).start()
+                                threading.Thread(target=send_msg, args=(client, dataS.hex(), """[b][c]/d(num)[8878ff]Dances""", 0.2)).start()
+                                threading.Thread(target=send_msg, args=(client, dataS.hex(), """[b][c]/yout[f74b0c]Add youtubers""", 0.2)).start()
+                                threading.Thread(target=send_msg, args=(client, dataS.hex(), """[b][c]/PASS:[ed26b5]View Code Rome""", 0.2)).start()
+                                threading.Thread(target=send_msg, args=(client, dataS.hex(), """[b][c]/DANS[FF8000]dances liste""", 0.2)).start()               
+                        if b"/DANS" in dataS and comand == True:
                                 newdataS2 = dataS.hex()
                                 getin = client
                                 threading.Thread(target=send_msg, args=(client, dataS.hex(), "[b][c][FF8000] قائمة رقصات", 0.2)).start()
-                                threading.Thread(target=send_msg, args=(client, dataS.hex(), "[b][c][FF8000]num :", 0.2)).start()
-                                threading.Thread(target=send_msg, args=(client, dataS.hex(), "[b][c][00ffff]رقصات مميزة :", 1.5)).start()
-                                threading.Thread(target=send_msg, args=(client, dataS.hex(), "[b][c][90e30b]A1", 0.2)).start()
-                                threading.Thread(target=send_msg, args=(client, dataS.hex(), "[b][c][90e30b]A2", 0.2)).start()
-                                threading.Thread(target=send_msg, args=(client, dataS.hex(), "[b][c][90e30b]A3", 0.2)).start()
-                                threading.Thread(target=send_msg, args=(client, dataS.hex(), "[b][c][90e30b]A4", 0.2)).start()
-                                threading.Thread(target=send_msg, args=(client, dataS.hex(), "[b][c][90e30b]A5", 0.2)).start()
-                                threading.Thread(target=send_msg, args=(client, dataS.hex(), "[b][c][90e30b]A6", 0.2)).start()
-                                threading.Thread(target=send_msg, args=(client, dataS.hex(), "[b][c][90e30b]A7", 0.2)).start()
-                                threading.Thread(target=send_msg, args=(client, dataS.hex(), "[b][c][90e30b]A8", 0.2)).start()
-                                threading.Thread(target=send_msg, args=(client, dataS.hex(), "[b][c][90e30b]A9", 0.2)).start()
-                                threading.Thread(target=send_msg, args=(client, dataS.hex(), "[b][c][00ffff]رقصات أسلحة :", 1.5)).start()
-                                threading.Thread(target=send_msg, args=(client, dataS.hex(), "[b][c][90e30b]B1", 0.2)).start()
-                                threading.Thread(target=send_msg, args=(client, dataS.hex(), "[b][c][90e30b]B2", 0.2)).start()
-                                threading.Thread(target=send_msg, args=(client, dataS.hex(), "[b][c][90e30b]B3", 0.2)).start()
-                                threading.Thread(target=send_msg, args=(client, dataS.hex(), "[b][c][90e30b]B4", 0.2)).start()
-                                threading.Thread(target=send_msg, args=(client, dataS.hex(), "[b][c][90e30b]B5", 0.2)).start()
-                                threading.Thread(target=send_msg, args=(client, dataS.hex(), "[b][c][90e30b]B6", 0.2)).start()
-                                threading.Thread(target=send_msg, args=(client, dataS.hex(), "[b][c][90e30b]B7", 0.2)).start()
-                                threading.Thread(target=send_msg, args=(client, dataS.hex(), "[b][c][00ffff]رقصات حيوانات :", 1.5)).start()
-                                threading.Thread(target=send_msg, args=(client, dataS.hex(), "[b][c][90e30b]C1", 0.2)).start()
-                                threading.Thread(target=send_msg, args=(client, dataS.hex(), "[b][c][90e30b]C2", 0.2)).start()
-                                threading.Thread(target=send_msg, args=(client, dataS.hex(), "[b][c][90e30b]C3", 0.2)).start()
-                                threading.Thread(target=send_msg, args=(client, dataS.hex(), "[b][c][90e30b]C4", 0.2)).start()
-                                threading.Thread(target=send_msg, args=(client, dataS.hex(), "[b][c][90e30b]C5", 0.2)).start()
-                        if b"@my" in dataS and comand == True:
-                        	newdataS2 = dataplus
-                        	hex_string = dataS.hex()
-                        	getin = client
-                        	getin.send(bytes.fromhex(gen_msgv2_clan(f"[bً][cً][FA5858ُ] معلومات حساسة....",newdataS2)))
-                        	decoded_text = codecs.decode(hex_string, 'hex').decode('latin-1')
-                        	long_text = decoded_text
-                        	getin.send(bytes.fromhex(gen_msgv2_clan(f"[bً][cً][F7FE2Eُ][+] نوع الربط  :",newdataS2)))
-                        	if 'google' in long_text:
-                        		getin.send(bytes.fromhex(gen_msgv2_clan(f"[bً][cً][66FF00ٌ] Google accunt ",newdataS2)))
-                        		ap = 'https'
-                        		bp = '/a'
-                        		cp = '/a/'
-                        		dp = 'r'
-                        		start_link = long_text.find(ap)
-                        		end_link = long_text.find(bp, start_link)
-                        		start_link2 = long_text.find(cp)
-                        		end_link2 = long_text.find(dp, start_link2)
-                        		link1= long_text[start_link:end_link]
-                        		link2 = long_text[start_link2:end_link2]
-                        		getin.send(bytes.fromhex(gen_msgv2_clan(f"[bً][cً][F7FE2Eُ][+] رابط  الحساب  :",newdataS2)))
-                        		getin.send(bytes.fromhex(gen_msgv2_clan(f"{link1}",newdataS2)))
-                        		getin.send(bytes.fromhex(gen_msgv2_clan(f"{link2}",newdataS2)))
-                        	if 'facebook' in long_text:
-                        		getin.send(bytes.fromhex(gen_msgv2_clan(f"[bً][cً][00FFFFٌ]Facebook accunt",newdataS2)))
-                        		ap = 'https'
-                        		bp = '/v9.0'
-                        		cp = '/v9.0/'
-                        		dp = 'r'
-                        		start_link = long_text.find(ap)
-                        		end_link = long_text.find(bp, start_link)
-                        		start_link2 = long_text.find(cp)
-                        		end_link2 = long_text.find(dp, start_link2)
-                        		link1= long_text[start_link:end_link]
-                        		link2 = long_text[start_link2:end_link2]
-                        		getin.send(bytes.fromhex(gen_msgv2_clan(f"[bً][cً][F7FE2Eُ][+] رابط  الحساب  :",newdataS2)))
-                        		getin.send(bytes.fromhex(gen_msgv2_clan(f"{link1}",newdataS2)))
-                        		getin.send(bytes.fromhex(gen_msgv2_clan(f"{link2}",newdataS2)))
-                        	getin.send(bytes.fromhex(gen_msgv2_clan(f"[FF8000ً][b][c]PEGASUS  by[FFC800] FADAI",newdataS2)))
-                        if b"#my" in dataS and comand == True:
-                        	newdataS2 = dataplus
-                        	hex_string = dataS.hex()
-                        	getin = client
-                        	getin.send(bytes.fromhex(gen_msgv2_clan(f"[bً][cً][FA5858]Sensitive info...",newdataS2)))
-                        	decoded_text = codecs.decode(hex_string, 'hex').decode('latin-1')
-                        	long_text = decoded_text
-                        	getin.send(bytes.fromhex(gen_msgv2_clan(f"[bً][cً][F7FE2Eُ][+] Accunt Type :",newdataS2)))
-                        	if 'google' in long_text:
-                        		getin.send(bytes.fromhex(gen_msgv2_clan(f"[bً][cً][66FF00ٌ] Google accunt ",newdataS2)))
-                        		ap = 'https'
-                        		bp = '/a'
-                        		cp = '/a/'
-                        		dp = 'r'
-                        		start_link = long_text.find(ap)
-                        		end_link = long_text.find(bp, start_link)
-                        		start_link2 = long_text.find(cp)
-                        		end_link2 = long_text.find(dp, start_link2)
-                        		link1= long_text[start_link:end_link]
-                        		link2 = long_text[start_link2:end_link2]
-                        		getin.send(bytes.fromhex(gen_msgv2_clan(f"[bً][cً][F7FE2Eُ][+] Accunt link :",newdataS2)))
-                        		getin.send(bytes.fromhex(gen_msgv2_clan(f"{link1}",newdataS2)))
-                        		getin.send(bytes.fromhex(gen_msgv2_clan(f"{link2}",newdataS2)))
-                        	if 'facebook' in long_text:
-                        		getin.send(bytes.fromhex(gen_msgv2_clan(f"[bً][cً][00FFFFٌ]Facebook accunt",newdataS2)))
-                        		ap = 'https'
-                        		bp = '/v9.0'
-                        		cp = '/v9.0/'
-                        		dp = 'r'
-                        		start_link = long_text.find(ap)
-                        		end_link = long_text.find(bp, start_link)
-                        		start_link2 = long_text.find(cp)
-                        		end_link2 = long_text.find(dp, start_link2)
-                        		link1= long_text[start_link:end_link]
-                        		link2 = long_text[start_link2:end_link2]
-                        		getin.send(bytes.fromhex(gen_msgv2_clan(f"[bً][cً][F7FE2Eُ][+] Accunt link :",newdataS2)))
-                        		getin.send(bytes.fromhex(gen_msgv2_clan(f"{link1}",newdataS2)))
-                        		getin.send(bytes.fromhex(gen_msgv2_clan(f"{link2}",newdataS2)))
-                        	getin.send(bytes.fromhex(gen_msgv2_clan(f"[FF8000ً][b][c]PEGASUS  by[FFC800] FADAI Ⓥ",newdataS2)))
-                        if b"PD@@" in dataS and comand == True:
-                        	newdataS2 = dataS.hex()
-                        	getin = client
-                        	text = str(bytes.fromhex(newdataS2))
-                        	match = re.search(r'\@\@(.*?)\(', text)
-                        	number=match.group(1)
-                        
-                        	threading.Thread(target=send_msg, args=(client, dataS.hex(), "[FFC800][b][c]Player info..", 0.2)).start()
-                        	threading.Thread(target=send_msg, args=(client, dataS.hex(), "[FF8000ً][b][c][+]Player id :", 0.2)).start()
-                        	threading.Thread(target=send_msg, args=(client, dataS.hex(), "[66FF00ٌ][b][c]{number}", 0.2)).start()
-                        	threading.Thread(target=send_msg, args=(client, dataS.hex(), "[FF8000ً][b][c][+]Player Name :", 0.2)).start()
-                        	threading.Thread(target=send_msg, args=(client, dataS.hex(), "[66FF00ٌ][b][c]{getname(number)}", 0.2)).start()
-                        	threading.Thread(target=send_msg, args=(client, dataS.hex(), "[FF8000ً][b][c][+] Player Status :", 0.2)).start()
-                        	threading.Thread(target=send_msg, args=(client, dataS.hex(), "[66FF00ٌ][b][c]{get_status(number)}", 0.2)).start()
-                        	threading.Thread(target=send_msg, args=(client, dataS.hex(), "[FF8000ً][b][c][+] Player Server", 0.2)).start()
-                        	threading.Thread(target=send_msg, args=(client, dataS.hex(), "[66FF00ٌ][b][c]{getreg(number)}", 0.2)).start()
-                        	threading.Thread(target=send_msg, args=(client, dataS.hex(), "[b][c][FF00FF]PEGA[00FFFF]SUS V2", 0.2)).start()
-                        	threading.Thread(target=send_msg, args=(client, dataS.hex(), "[b][c]developer by[F7FE2E]FADAIⓋ", 0.2)).start()
-                        if b"PD@@" in dataS and comand == True:
-                        	newdataS2 = dataS.hex()
-                        	getin = client
-                        	text = str(bytes.fromhex(newdataS2))
-                        	match = re.search(r'\@\@(.*?)\(', text)
-                        	number=match.group(1)
-                        
-                        	threading.Thread(target=send_msg, args=(client, dataS.hex(), "[FFC800][b][c]معلومات عامة...", 0.2)).start()
-                        	threading.Thread(target=send_msg, args=(client, dataS.hex(), "[FF8000ً][b][c][+] الأيدي :", 0.2)).start()
-                        	threading.Thread(target=send_msg, args=(client, dataS.hex(), "[66FF00ٌ][b][c]{number}", 0.2)).start()
-                        	threading.Thread(target=send_msg, args=(client, dataS.hex(), "[FF8000ً][b][c][+] الإسم :", 0.2)).start()
-                        	threading.Thread(target=send_msg, args=(client, dataS.hex(), "[66FF00ٌ][b][c]{getname(number)}", 0.2)).start()
-                        	threading.Thread(target=send_msg, args=(client, dataS.hex(), "[FF8000ً][b][c][+] الحالة :", 0.2)).start()
-                        	threading.Thread(target=send_msg, args=(client, dataS.hex(), "[66FF00ٌ][b][c]{get_status(number)}", 0.2)).start()
-                        	threading.Thread(target=send_msg, args=(client, dataS.hex(), "[FF8000ً][b][c][+] المنطقة :", 0.2)).start()
-                        	threading.Thread(target=send_msg, args=(client, dataS.hex(), "[66FF00ٌ][b][c]{getreg(number)}", 0.2)).start()
-                        	threading.Thread(target=send_msg, args=(client, dataS.hex(), "[b][c][FF00FF]PEGA[00FFFF]SUS V2", 0.2)).start()
-                        	threading.Thread(target=send_msg, args=(client, dataS.hex(), "[b][c]developer by[F7FE2E]FADAIⓋ", 0.2)).start()
-                        if b"@FDB" in dataS and comand == True:
+                                threading.Thread(target=send_msg, args=(client, dataS.hex(), "[b][c][90e30b]/C4:1", 0.2)).start()
+                                threading.Thread(target=send_msg, args=(client, dataS.hex(), "[b][c][90e30b]/C4:2", 0.2)).start()
+                                threading.Thread(target=send_msg, args=(client, dataS.hex(), "[b][c][90e30b]/C4:3", 0.2)).start()
+                                threading.Thread(target=send_msg, args=(client, dataS.hex(), "[b][c][90e30b]/C4:4", 0.2)).start()
+                                threading.Thread(target=send_msg, args=(client, dataS.hex(), "[b][c][90e30b]/C4:5", 0.2)).start()
+                                threading.Thread(target=send_msg, args=(client, dataS.hex(), "[b][c][90e30b]/C4:6", 0.2)).start()
+                                threading.Thread(target=send_msg, args=(client, dataS.hex(), "[b][c][90e30b]/C4:7", 0.2)).start()
+                                threading.Thread(target=send_msg, args=(client, dataS.hex(), "[b][c][90e30b]/C4:8", 0.2)).start()
+                                threading.Thread(target=send_msg, args=(client, dataS.hex(), "[b][c][90e30b]/C4:9", 0.2)).start()
+                        if b"/back" in dataS and comand == True:
                         	try:
                         		back= True
                         		threading.Thread(target=self.foxy , args=(self.data_join,)).start()
                         	except:
                         		pass
-                        if b"@FDZF" in dataS and comand == True:
+                        if b"/crzy" in dataS and comand == True:
+                        	threading.Thread(target=send_msg, args=(client, dataS.hex(), "[b][c][FF00FF]Mentenance", 0.2)).start()
                         	try:
                         		threading.Thread(target=crazymode,args=(team,packett1,packett)).start()
                         	except:
                         		pass
-                        if b"@FDRM" in dataS and comand == True:
+                        if b"@UNDER" in dataS and comand == True:
                            try:
                            	threading.Thread(target=randm,args=(team,packett1,packett)).start()
                            except:
                            	pass
-                        if b"@FDPS" in dataS and comand == True:
+                        if b"/pass:" in dataS and comand == True:
                         	newdataS2 = dataplus
                         	getin = client
                         	try:
                         	    getin.send(bytes.fromhex(gen_msgv2_clan(f"""[b][c][F7FE2E]Room password :""",newdataS2)))
                         	    getin.send(bytes.fromhex(gen_msgv2_clan(f"""[b][c][66FF00]{romcode}""",newdataS2)))
-                        	    getin.send(bytes.fromhex(gen_msgv2_clan(f"""[b][c][FF00FF]PEGA[00FFFF]SUS V2""",newdataS2)))
                         	except:
                         		threading.Thread(target=send_msg, args=(client, dataS.hex(), "[b][c][FF00FF]Error !", 0.2)).start()
-                        if b"@FDNR" in dataS and comand == True:
+                        if b"/lagrom" in dataS and comand == True:
                             threading.Thread(target=lagroom,args=(clieee,lag)).start()
-                        if b"FD++" in dataS and comand == True:
+                        if b"/yout" in dataS and comand == True:
+                            threading.Thread(target=send_msg, args=(client, dataS.hex(), "[b][c][0000FF] Wait...\n", 0.2)).start()
+                            vnm_yout =True
+                            threading.Thread(target=send_msg, args=(client, dataS.hex(), "[b][c][00FF00]Youtubers Add succes\n", 0.2)).start()
                             
-                            newdataS2 = dataS.hex()
-                            getin = client
-                            threading.Thread(target=send_msg, args=(client, dataS.hex(), "[b][c][66FF00]معلومات متقدمة للاعب :", 0.2)).start()
-                            text = str(bytes.fromhex(newdataS2))
-                            match = re.search(r'\+\+(.*?)\(', text)
-                            number=match.group(1)
-                            regtion = getreg(number)
-                            url = 'https://freefireapi.com.br/api/search_id?id={}&region={}'.format(number, regtion)
-                            response = requests.get(url)
-                            if response.status_code == 200:
-                                long_text = response.text
-                                #print(long_text)
-                            else:
-                                pass
-                            #print(P)
-                            # level
-                            ap1 = 'level"'
-                            dp1 = ',"'
-                            start_link3 = long_text.find(ap1) + len(ap1) + 1
-                            end_link3 = long_text.find(dp1, start_link3)
-                            level = long_text[start_link3:end_link3]
-                        	# name
-                            ap = '"nickname":'
-                            dp = '","'
-                            start_link2 = long_text.find(ap) + len(ap) + 1
-                            end_link2 = long_text.find(dp, start_link2)
-                            name = long_text[start_link2:end_link2]
-                            # exp
-                            ap4 = ',"exp"'
-                            dp4 = ',"'
-                            start_link42 = long_text.find(ap4) + len(ap4) + 1
-                            end_link4 = long_text.find(dp4, start_link42)
-                            exp = long_text[start_link42:end_link4]
-                            ##print(exp)
-                            # liked
-                            ap5 = ',"liked"'
-                            dp4 = ',"'
-                            start_link5 = long_text.find(ap5) + len(ap5) + 1
-                            end_link5 = long_text.find(dp4, start_link5)
-                            liked = long_text[start_link5:end_link5]
-                            ##print(liked)
-                            # last login
-                            ap6 = 'lastLoginAt":'
-                            dp6 = '",'
-                            start_link6 = long_text.find(ap6) + len(ap6) + 1
-                            end_link6 = long_text.find(dp6, start_link6)
-                            lastlogin_beta = long_text[start_link6:end_link6]
-                            timestamp = int(lastlogin_beta)
-                            date_time = datetime.datetime.utcfromtimestamp(timestamp)
-                            lastlogin = date_time
-                            ##print(lastlogin)
-                            # create accunt
-                            ap7 = 'createAt":'
-                            dp7 = '"},"'
-                            start_link7 = long_text.find(ap7) + len(ap7) + 1
-                            end_link7 = long_text.find(dp7, start_link7)
-                            creatlogi_beta = long_text[start_link7:end_link7]
-                            timestamp = int(creatlogi_beta)
-                            date_time2 = datetime.datetime.utcfromtimestamp(timestamp)
-                            creatlogin = date_time2
-                            #print(G)
-                            threading.Thread(target=send_msg, args=(client, dataS.hex(), "[b][c][ff0000]إسم :", 0.2)).start()
-                            threading.Thread(target=send_msg, args=(client, dataS.hex(), "[b][c][f5f595]{name}", 0.2)).start()
-                            threading.Thread(target=send_msg, args=(client, dataS.hex(), "[b][c][ff0000]مستوى  :", 0.2)).start()
-                            threading.Thread(target=send_msg, args=(client, dataS.hex(), "[b][c][f5f595]{level}", 0.2)).start()
-                            threading.Thread(target=send_msg, args=(client, dataS.hex(), "[b][c][ff0000]EXP شارات :", 0.2)).start()
-                            threading.Thread(target=send_msg, args=(client, dataS.hex(), "[b][c][f5f595]{exp}", 0.2)).start()                   
-                            threading.Thread(target=send_msg, args=(client, dataS.hex(), "[b][c][ff0000]إعجابات:", 0.2)).start()
-                            threading.Thread(target=send_msg, args=(client, dataS.hex(), "[b][c][f5f595]{liked}", 0.2)).start()                       
-                            threading.Thread(target=send_msg, args=(client, dataS.hex(), "[b][c][ff0000]إنشاء الحساب في :", 0.2)).start()
-                            threading.Thread(target=send_msg, args=(client, dataS.hex(), "[b][c]{creatlogin}", 0.2)).start()               
-                            threading.Thread(target=send_msg, args=(client, dataS.hex(), "[b][c][ff0000]آخر ظهور :", 0.2)).start()
-                            threading.Thread(target=send_msg, args=(client, dataS.hex(), "[b][c]{lastlogin}", 0.2)).start()                       
-                            threading.Thread(target=send_msg, args=(client, dataS.hex(), "[b][c][FF00FF]PEGA[FFFF00]SUS V2", 0.2)).start()            
-                        if b"@FDNROM" in dataS and comand == True:
-                            threading.Thread(target=lagroom,args=(clieee,lag)).start()
-                        if b"PD++" in dataS and comand == True:
-                            
-                            newdataS2 = dataS.hex()
-                            getin = client
-                            threading.Thread(target=send_msg, args=(client, dataS.hex(), "[b][c][66FF00]Advanced Player info :", 0.2)).start()
-                            text = str(bytes.fromhex(newdataS2))
-                            match = re.search(r'\+\+(.*?)\(', text)
-                            number=match.group(1)
-                            regtion = getreg(number)
-                            url = 'https://freefireapi.com.br/api/search_id?id={}&region={}'.format(number, regtion)
-                            response = requests.get(url)
-                            if response.status_code == 200:
-                                long_text = response.text
-                                #print(long_text)
-                            else:
-                                pass
-                            #print(P)
-                            # level
-                            ap1 = 'level"'
-                            dp1 = ',"'
-                            start_link3 = long_text.find(ap1) + len(ap1) + 1
-                            end_link3 = long_text.find(dp1, start_link3)
-                            level = long_text[start_link3:end_link3]
-                        	# name
-                            ap = '"nickname":'
-                            dp = '","'
-                            start_link2 = long_text.find(ap) + len(ap) + 1
-                            end_link2 = long_text.find(dp, start_link2)
-                            name = long_text[start_link2:end_link2]
-                            # exp
-                            ap4 = ',"exp"'
-                            dp4 = ',"'
-                            start_link42 = long_text.find(ap4) + len(ap4) + 1
-                            end_link4 = long_text.find(dp4, start_link42)
-                            exp = long_text[start_link42:end_link4]
-                            ##print(exp)
-                            # liked
-                            ap5 = ',"liked"'
-                            dp4 = ',"'
-                            start_link5 = long_text.find(ap5) + len(ap5) + 1
-                            end_link5 = long_text.find(dp4, start_link5)
-                            liked = long_text[start_link5:end_link5]
-                            ##print(liked)
-                            # last login
-                            ap6 = 'lastLoginAt":'
-                            dp6 = '",'
-                            start_link6 = long_text.find(ap6) + len(ap6) + 1
-                            end_link6 = long_text.find(dp6, start_link6)
-                            lastlogin_beta = long_text[start_link6:end_link6]
-                            timestamp = int(lastlogin_beta)
-                            date_time = datetime.datetime.utcfromtimestamp(timestamp)
-                            lastlogin = date_time
-                            ##print(lastlogin)
-                            # create accunt
-                            ap7 = 'createAt":'
-                            dp7 = '"},"'
-                            start_link7 = long_text.find(ap7) + len(ap7) + 1
-                            end_link7 = long_text.find(dp7, start_link7)
-                            creatlogi_beta = long_text[start_link7:end_link7]
-                            timestamp = int(creatlogi_beta)
-                            date_time2 = datetime.datetime.utcfromtimestamp(timestamp)
-                            creatlogin = date_time2
-                            #print(G)
-                            threading.Thread(target=send_msg, args=(client, dataS.hex(), "[b][c][ff0000]Name :", 0.2)).start()
-                            threading.Thread(target=send_msg, args=(client, dataS.hex(), "[b][c][f5f595]{name}", 0.2)).start()
-                            threading.Thread(target=send_msg, args=(client, dataS.hex(), "[b][c][ff0000]Level :", 0.2)).start()
-                            threading.Thread(target=send_msg, args=(client, dataS.hex(), "[b][c][f5f595]{level}", 0.2)).start()
-                            threading.Thread(target=send_msg, args=(client, dataS.hex(), "[b][c][ff0000]Exp :", 0.2)).start()
-                            threading.Thread(target=send_msg, args=(client, dataS.hex(), "[b][c][f5f595]{exp}", 0.2)).start()                   
-                            threading.Thread(target=send_msg, args=(client, dataS.hex(), "[b][c][ff0000]Liked :", 0.2)).start()
-                            threading.Thread(target=send_msg, args=(client, dataS.hex(), "[b][c][f5f595]{liked}", 0.2)).start()                       
-                            threading.Thread(target=send_msg, args=(client, dataS.hex(), "[b][c][ff0000]Create Accunt :", 0.2)).start()
-                            threading.Thread(target=send_msg, args=(client, dataS.hex(), "[b][c]{creatlogin}", 0.2)).start()               
-                            threading.Thread(target=send_msg, args=(client, dataS.hex(), "[b][c][ff0000]Last Login :", 0.2)).start()
-                            threading.Thread(target=send_msg, args=(client, dataS.hex(), "[b][c]{lastlogin}", 0.2)).start()                       
-                            threading.Thread(target=send_msg, args=(client, dataS.hex(), "[b][c][FF00FF]PEGA[FFFF00]SUS V2", 0.2)).start()
-                        if b"FD==" in dataS and comand == True:
-                            newdataS2 = dataS.hex()
-                            getin = client
-                            threading.Thread(target=send_msg, args=(client, dataS.hex(), "[b][c][26ed97]بايو لاعب :", 0.2)).start()
-                            text = str(bytes.fromhex(newdataS2))
-                            match = re.search(r'\=\=(.*?)\(', text)
-                            number = match.group(1)
-                            regtion = getreg(number)
-                            url = 'https://freefireapi.com.br/api/search_id?id={}&region={}'.format(number, regtion)
-                            response = requests.get(url)
-                            if response.status_code == 200:
-                                long_text = response.text
-                                #print(long_text)
-                            else:
-                                pass
-                            
-                            ap9 = '"signature":'
-                            dp9 = '","rankShow'
-                            if "signature" in long_text:
-                                start_link9 = long_text.find(ap9) + len(ap9) + 1
-                                end_link9 = long_text.find(dp9, start_link9)
-                                bio = long_text[start_link9:end_link9]
-                            else:
-                                bio = "No bio"
-                            #print(bio)
-                            threading.Thread(target=send_msg, args=(client, dataS.hex(), "{bio}", 0.2)).start()
-                        if b"PD==" in dataS and comand == True:
-                            newdataS2 = dataS.hex()
-                            getin = client
-                            threading.Thread(target=send_msg, args=(client, dataS.hex(), "[b][c][26ed97]Bio Player :", 0.2)).start()
-                            text = str(bytes.fromhex(newdataS2))
-                            match = re.search(r'\=\=(.*?)\(', text)
-                            number = match.group(1)
-                            regtion = getreg(number)
-                            url = 'https://freefireapi.com.br/api/search_id?id={}&region={}'.format(number, regtion)
-                            response = requests.get(url)
-                            if response.status_code == 200:
-                                long_text = response.text
-                                #print(long_text)
-                            else:
-                                pass
-                            
-                            ap9 = '"signature":'
-                            dp9 = '","rankShow'
-                            if "signature" in long_text:
-                                start_link9 = long_text.find(ap9) + len(ap9) + 1
-                                end_link9 = long_text.find(dp9, start_link9)
-                                bio = long_text[start_link9:end_link9]
-                            else:
-                                bio = "No bio"
-                            #print(bio)
-                            threading.Thread(target=send_msg, args=(client, dataS.hex(), "{bio}", 0.2)).start()
-                        if b"FD??" in dataS and comand == True:
-                            
-                            newdataS2 = dataS.hex()
-                            getin = client
-                            threading.Thread(target=send_msg, args=(client, dataS.hex(), "[b][c][FF0000]معلومات رابطة لاعب :", 0.2)).start()
-                            text = str(bytes.fromhex(newdataS2))
-                            match = re.search(r'\?\?(.*?)\(', text)
-                            number=match.group(1)
-                            regtion = getreg(number)
-                            url = 'https://freefireapi.com.br/api/search_id?id={}&region={}'.format(number, regtion)
-                            response = requests.get(url)
-                            if response.status_code == 200:
-                                long_text = response.text
-                            else:
-                                pass
-                            ap10 = '"clanId":'
-                            dp10 = '","capt'
-                            start_link10 = long_text.find(ap10) + len(ap10) + 1
-                            end_link10 = long_text.find(dp10, start_link10)
-                            guild_id = long_text[start_link10:end_link10]
-                            ##print(guild_id)
-                            # admin clan id
-                            ap11 = '"captainBasicInfo":{"accountId":'
-                            dp11 = '","nickname":'
-                            start_link12 = long_text.find(ap11) + len(ap11) + 1
-                            end_link12 = long_text.find(dp11, start_link12)
-                            admin_id = long_text[start_link12:end_link12]
-                            ##print(admin_id)
-                            # admin clan name
-                            ap12 = '{}","nickname":'.format(admin_id)
-                            dp12 = '","leve'
-                            start_link11 = long_text.find(ap12) + len(ap12) + 1
-                            end_link11 = long_text.find(dp12, start_link11)
-                            admin_name = long_text[start_link11:end_link11]
-                            ##print(admin_name)
-                            # clan level
-                            ap13 = 'clanLevel"'
-                            dp13 = ',"capacity'
-                            start_link13 = long_text.find(ap13) + len(ap13) + 1
-                            end_link13 = long_text.find(dp13, start_link13)
-                            clan_level = long_text[start_link13:end_link13]
-                            ##print(clan_level)
-                            # clan cpacty
-                            ap17 = 'capacity"'
-                            dp17 = ',"member'
-                            start_link17 = long_text.find(ap17) + len(ap17) + 1
-                            end_link17 = long_text.find(dp17, start_link17)
-                            clan_capacity = long_text[start_link17:end_link17]
-                            ##print(clan_capacity)
-                            # clan maxcapacity
-                            ap16 = 'memberNum"'
-                            dp16 = '},"cap'
-                            start_link16 = long_text.find(ap16) + len(ap16) + 1
-                            end_link16 = long_text.find(dp16, start_link16)
-                            clan_maxcapacity = long_text[start_link16:end_link16]        
-                            threading.Thread(target=send_msg, args=(client, dataS.hex(), "[b][c][ffff00]الأيدي :", 0.2)).start()
-                            threading.Thread(target=send_msg, args=(client, dataS.hex(), "[b][c][ff9191]{guild_id}", 0.2)).start()                             
-                            threading.Thread(target=send_msg, args=(client, dataS.hex(), "[b][c][ffff00]المستوى :", 0.2)).start()
-                            threading.Thread(target=send_msg, args=(client, dataS.hex(), "[b][c][ff9191]{clan_level}", 0.2)).start()
-                            threading.Thread(target=send_msg, args=(client, dataS.hex(), "[b][c][ffff00]عدد الاعبين :", 0.2)).start()
-                            threading.Thread(target=send_msg, args=(client, dataS.hex(), "[b][c][ff9191]{clan_maxcapacity}", 0.2)).start()
-                            threading.Thread(target=send_msg, args=(client, dataS.hex(), "[b][c][ffff00]الحد الأقصى للاعبين :", 0.2)).start()
-                            threading.Thread(target=send_msg, args=(client, dataS.hex(), "[b][c][ff9191]{clan_capacity}", 0.2)).start()        
-                            threading.Thread(target=send_msg, args=(client, dataS.hex(), "[b][c][ffff00]أيدي المالك :", 0.2)).start()
-                            threading.Thread(target=send_msg, args=(client, dataS.hex(), "[b][c][ff9191]{admin_id}", 0.2)).start()                                                      
-                            threading.Thread(target=send_msg, args=(client, dataS.hex(), "[b][c][ffff00]إسم المالك :", 0.2)).start()
-                            threading.Thread(target=send_msg, args=(client, dataS.hex(), "[b][c][ff9191]{admin_name}", 0.2)).start()                       
-
-                            threading.Thread(target=send_msg, args=(client, dataS.hex(), "[b][c][FF00FF]PEGA[FFFF00]SUS V2", 0.2)).start()
-                        if b"PD??" in dataS and comand == True:
-                            
-                            newdataS2 = dataS.hex()
-                            getin = client
-                            threading.Thread(target=send_msg, args=(client, dataS.hex(), "[b][c][FF0000]Player Clan info :", 0.2)).start()
-                            text = str(bytes.fromhex(newdataS2))
-                            match = re.search(r'\?\?(.*?)\(', text)
-                            number=match.group(1)
-                            regtion = getreg(number)
-                            url = 'https://freefireapi.com.br/api/search_id?id={}&region={}'.format(number, regtion)
-                            response = requests.get(url)
-                            if response.status_code == 200:
-                                long_text = response.text
-                            else:
-                                pass
-                            ap10 = '"clanId":'
-                            dp10 = '","capt'
-                            start_link10 = long_text.find(ap10) + len(ap10) + 1
-                            end_link10 = long_text.find(dp10, start_link10)
-                            guild_id = long_text[start_link10:end_link10]
-                            ##print(guild_id)
-                            # admin clan id
-                            ap11 = '"captainBasicInfo":{"accountId":'
-                            dp11 = '","nickname":'
-                            start_link12 = long_text.find(ap11) + len(ap11) + 1
-                            end_link12 = long_text.find(dp11, start_link12)
-                            admin_id = long_text[start_link12:end_link12]
-                            ##print(admin_id)
-                            # admin clan name
-                            ap12 = '{}","nickname":'.format(admin_id)
-                            dp12 = '","leve'
-                            start_link11 = long_text.find(ap12) + len(ap12) + 1
-                            end_link11 = long_text.find(dp12, start_link11)
-                            admin_name = long_text[start_link11:end_link11]
-                            ##print(admin_name)
-                            # clan level
-                            ap13 = 'clanLevel"'
-                            dp13 = ',"capacity'
-                            start_link13 = long_text.find(ap13) + len(ap13) + 1
-                            end_link13 = long_text.find(dp13, start_link13)
-                            clan_level = long_text[start_link13:end_link13]
-                            ##print(clan_level)
-                            # clan cpacty
-                            ap17 = 'capacity"'
-                            dp17 = ',"member'
-                            start_link17 = long_text.find(ap17) + len(ap17) + 1
-                            end_link17 = long_text.find(dp17, start_link17)
-                            clan_capacity = long_text[start_link17:end_link17]
-                            ##print(clan_capacity)
-                            # clan maxcapacity
-                            ap16 = 'memberNum"'
-                            dp16 = '},"cap'
-                            start_link16 = long_text.find(ap16) + len(ap16) + 1
-                            end_link16 = long_text.find(dp16, start_link16)
-                            clan_maxcapacity = long_text[start_link16:end_link16]        
-                            threading.Thread(target=send_msg, args=(client, dataS.hex(), "[b][c][ffff00]id clan :", 0.2)).start()
-                            threading.Thread(target=send_msg, args=(client, dataS.hex(), "[b][c][ff9191]{guild_id}", 0.2)).start()                             
-                            threading.Thread(target=send_msg, args=(client, dataS.hex(), "[b][c][ffff00]Level :", 0.2)).start()
-                            threading.Thread(target=send_msg, args=(client, dataS.hex(), "[b][c][ff9191]{clan_level}", 0.2)).start()
-                            threading.Thread(target=send_msg, args=(client, dataS.hex(), "[b][c][ffff00]Current capacity :", 0.2)).start()
-                            threading.Thread(target=send_msg, args=(client, dataS.hex(), "[b][c][ff9191]{clan_maxcapacity}", 0.2)).start()
-                            threading.Thread(target=send_msg, args=(client, dataS.hex(), "[b][c][ffff00]Max Capacity :", 0.2)).start()
-                            threading.Thread(target=send_msg, args=(client, dataS.hex(), "[b][c][ff9191]{clan_capacity}", 0.2)).start()        
-                            threading.Thread(target=send_msg, args=(client, dataS.hex(), "[b][c][ffff00]Admin id :", 0.2)).start()
-                            threading.Thread(target=send_msg, args=(client, dataS.hex(), "[b][c][ff9191]{admin_id}", 0.2)).start()                                                      
-                            threading.Thread(target=send_msg, args=(client, dataS.hex(), "[b][c][ffff00]Admin Name :", 0.2)).start()
-                            threading.Thread(target=send_msg, args=(client, dataS.hex(), "[b][c][ff9191]{admin_name}", 0.2)).start()                       
-
-                            threading.Thread(target=send_msg, args=(client, dataS.hex(), "[b][c][FF00FF]PEGA[FFFF00]SUS V2", 0.2)).start()
-                        if b"FD::" in dataS and comand == True:
-                            
-                            newdataS2 = dataS.hex()
-                            getin = client
-                            threading.Thread(target=send_msg, args=(client, dataS.hex(), "[b][c][FFFF00]Player rating info :", 0.2)).start()
-                            text = str(bytes.fromhex(newdataS2))
-                            match = re.search(r'\:\:(.*?)\(', text)
-                            number=match.group(1)
-                            regtion = getreg(number)
-                            url = 'https://freefireapi.com.br/api/search_id?id={}&region={}'.format(number, regtion)
-                            response = requests.get(url)
-                            if response.status_code == 200:
-                                long_text = response.text
-                            else:
-                                pass
-                            ap14 = 'rankingPoints"'
-                            dp14 = ',"badgeCnt'
-                            start_link14 = long_text.find(ap14) + len(ap14) + 1
-                            end_link14 = long_text.find(dp14, start_link14)
-                            rank_token = long_text[start_link14:end_link14]
-                            ##print(rank_token)
-                            # rank number
-                            ap15 = '"rank"'
-                            dp15 = ',"rankingPoints'
-                            start_link15 = long_text.find(ap15) + len(ap15) + 1
-                            end_link15 = long_text.find(dp15, start_link15)
-                            rank_number = long_text[start_link15:end_link15]
-                            ap19 = 'seasonId"'
-                            dp19 = ',"'
-                            start_link19 = long_text.find(ap19) + len(ap19) + 1
-                            end_link19 = long_text.find(dp19, start_link19)
-                            mosim = long_text[start_link19:end_link19]
-                            value = int(rank_token)
-                            name, value = find_name_and_value(value)
-                            threading.Thread(target=send_msg, args=(client, dataS.hex(), "[b][c][66FF00]الموسم :", 0.2)).start()
-                            threading.Thread(target=send_msg, args=(client, dataS.hex(), "[b][c][8ffff2]{mosim}", 0.2)).start()
-                            threading.Thread(target=send_msg, args=(client, dataS.hex(), "[b][c][66FF00]التصنيف :", 0.2)).start()
-                            threading.Thread(target=send_msg, args=(client, dataS.hex(), "[b][c][8ffff2]{name}", 0.2)).start()
-                            threading.Thread(target=send_msg, args=(client, dataS.hex(), "[b][c][66FF00]نقاط تصنيف  :", 0.2)).start()
-                            threading.Thread(target=send_msg, args=(client, dataS.hex(), "[b][c][8ffff2]{rank_token}", 0.2)).start()
-                            threading.Thread(target=send_msg, args=(client, dataS.hex(), "[b][c][66FF00]الرتبة في المنطقة :", 0.2)).start()
-                            threading.Thread(target=send_msg, args=(client, dataS.hex(), "[b][c][8ffff2]{rank_number}", 0.2)).start()                            
-                        if b"PD::" in dataS and comand == True:
-                            
-                            newdataS2 = dataS.hex()
-                            getin = client
-                            threading.Thread(target=send_msg, args=(client, dataS.hex(), "[b][c][FFFF00]معلومات تصنيف لاعب :", 0.2)).start()
-                            text = str(bytes.fromhex(newdataS2))
-                            match = re.search(r'\:\:(.*?)\(', text)
-                            number=match.group(1)
-                            regtion = getreg(number)
-                            url = 'https://freefireapi.com.br/api/search_id?id={}&region={}'.format(number, regtion)
-                            response = requests.get(url)
-                            if response.status_code == 200:
-                                long_text = response.text
-                            else:
-                                pass
-                            ap14 = 'rankingPoints"'
-                            dp14 = ',"badgeCnt'
-                            start_link14 = long_text.find(ap14) + len(ap14) + 1
-                            end_link14 = long_text.find(dp14, start_link14)
-                            rank_token = long_text[start_link14:end_link14]
-                            ##print(rank_token)
-                            # rank number
-                            ap15 = '"rank"'
-                            dp15 = ',"rankingPoints'
-                            start_link15 = long_text.find(ap15) + len(ap15) + 1
-                            end_link15 = long_text.find(dp15, start_link15)
-                            rank_number = long_text[start_link15:end_link15]
-                            ap19 = 'seasonId"'
-                            dp19 = ',"'
-                            start_link19 = long_text.find(ap19) + len(ap19) + 1
-                            end_link19 = long_text.find(dp19, start_link19)
-                            mosim = long_text[start_link19:end_link19]
-                            value = int(rank_token)
-                            name, value = find_name_and_value(value)
-                            threading.Thread(target=send_msg, args=(client, dataS.hex(), "[b][c][66FF00]season :", 0.2)).start()
-                            threading.Thread(target=send_msg, args=(client, dataS.hex(), "[b][c][8ffff2]{mosim}", 0.2)).start()
-                            threading.Thread(target=send_msg, args=(client, dataS.hex(), "[b][c][66FF00]Category :", 0.2)).start()
-                            threading.Thread(target=send_msg, args=(client, dataS.hex(), "[b][c][8ffff2]{name}", 0.2)).start()
-                            threading.Thread(target=send_msg, args=(client, dataS.hex(), "[b][c][66FF00]Rank Point :", 0.2)).start()
-                            threading.Thread(target=send_msg, args=(client, dataS.hex(), "[b][c][8ffff2]{rank_token}", 0.2)).start()
-                            threading.Thread(target=send_msg, args=(client, dataS.hex(), "[b][c][66FF00]Rank in region :", 0.2)).start()
-                            threading.Thread(target=send_msg, args=(client, dataS.hex(), "[b][c][8ffff2]{rank_number}", 0.2)).start()
-                        if b"@FDYOT" in dataS and comand == True:
-                            add_yout =True
-                        if b"@FDRK==" in dataS and comand == True:                            
-                            newdataS2 = dataS.hex()
-                            text = str(bytes.fromhex(newdataS2))
-                            match = re.search(r'\=\=(.*?)\(', text)
-                            number=match.group(1)
-                            id_view = get_inc(number)
-                            rolp = True
-                        if "050000002008" in dataS.hex()[0:12] and rolp == True:
-
-                            ap1 = '050000002008'
-                            dp1 = '100520162a1408'
-                            start_link3 = long_text.find(ap1) + len(ap1) + 1
-                            end_link3 = long_text.find(dp1, start_link3)
-                            id_ooooadmin = long_text[start_link3:end_link3]
-                            id_admin= dataS.hex()[12:22]
-                            dor = dataS.hex()
-                            raks = dor.replace(id_admin, id_view)
-                            MainC.send(bytes.fromhex(raks))
-                        if b"@FDTA1" in dataS and comand == True:
-                            id = dataS.hex()[12:22]
-                            dor = "050000002008*100520162a1408*1088b3bbb1032a0608*"
-                            
-                            raks = dor.replace('*', id)
-                            MainC.send(bytes.fromhex(raks))
-                            
-                        if b"@FDTA2" in dataS and comand == True:
-                            id = dataS.hex()[12:22]
-                            dor = "050000002008*100520162a1408*1098fbb8b1032a0608*"
-                            
-                            raks = dor.replace('*', id)
-                            MainC.send(bytes.fromhex(raks))
-
-                        if b"@FDTA3" in dataS and comand == True:
-                            id = dataS.hex()[12:22]
-                            dor = "050000002008*100520162a1408*109bfbb8b1032a0608*"
-                            
-                            raks = dor.replace('*', id)
-                            MainC.send(bytes.fromhex(raks))
-                        if b"@FDTA4" in dataS and comand == True:
-                            id = dataS.hex()[12:22]
-                            dor = "050000002008*100520162a1408*10d2c2bbb1032a0608*"
-                            raks = dor.replace('*', id)
-                            MainC.send(bytes.fromhex(raks))
-                        if b"@FDTA5" in dataS and comand == True:
-
-                            id = dataS.hex()[12:22]
-                            dor = "050000002008*100520162a1408*10dcc2bbb1032a0608*"
-                            raks = dor.replace('*', id)
-                            MainC.send(bytes.fromhex(raks))
-                        if b"@FDTA6" in dataS and comand == True:
-                            id = dataS.hex()[12:22]
-                            dor = "050000002008*100520162a1408*10bbfbb8b1032a0608*"
-                            raks = dor.replace('*', id)
-                            MainC.send(bytes.fromhex(raks))
-                        if b"@FDTA7" in dataS and comand == True:
-                            id = dataS.hex()[12:22]
-                            dor = "050000002008*100520162a1408*109284bbb1032a0608*"
-                            raks = dor.replace('*', id)
-                            MainC.send(bytes.fromhex(raks))  
-                        if b"@FDTA8" in dataS and comand == True:
-                            id = dataS.hex()[12:22]
-                            dor = "050000002008*100520162a1408*109cfbb8b1032a0608*"
-                            raks = dor.replace('*', id)
-                            MainC.send(bytes.fromhex(raks))
-                        if b"@FDTA9" in dataS and comand == True:
-                            id = dataS.hex()[12:22]
-                            dor = "050000002008*100520162a1408*10aefcbab1032a0608*"
-                            raks = dor.replace('*', id)
-                            MainC.send(bytes.fromhex(raks))
-
-                        if b"@FDTB1" in dataS and comand == True:
-                            id = dataS.hex()[12:22]
-                            dor = "050000002008*100520162a1408*10fffab8b1032a0608*"
-                            raks = dor.replace('*', id)
-                            MainC.send(bytes.fromhex(raks))
-                        if b"@FDTB2" in dataS and comand == True:
-                            id = dataS.hex()[12:22]
-                            dor = "050000002008*100520162a1408*10ff8bbbb1032a0608*"
-                            raks = dor.replace('*', id)
-                            MainC.send(bytes.fromhex(raks))
-                        if b"@FDTB3" in dataS and comand == True:
-                            id = dataS.hex()[12:22]
-                            dor = "050000002008*100520162a1408*1095fbb8b1032a0608*"
-                            raks = dor.replace('*', id)
-                            MainC.send(bytes.fromhex(raks))
-                        if b"@FDTB4" in dataS and comand == True:
-                            id = dataS.hex()[12:22]
-                            dor = "050000002008*100520162a1408*108bfbb8b1032a0608*"
-                            raks = dor.replace('*', id)
-                            MainC.send(bytes.fromhex(raks))
+                        spam_invs =False
+                        
+                        if b"/C4:1" in dataS and comand == True:
+                        	client.send(bytes.fromhex(f'''050000002008{dataS.hex()[12:22]}100520162a1408{dataS.hex()[12:22]}1088b3bbb1032a0608{dataS.hex()[12:22]}'''))
+                        	threading.Thread(target=send_msg, args=(client, dataS.hex(), "[b][c][FF00FF] Dance 1 On", 0.2)).start()
+                        	
+                        spam_invs =False
+                        	
+                        if b"/C4:2" in dataS and comand == True:
+                        		client.send(bytes.fromhex(f'''050000002008{dataS.hex()[12:22]}100520162a1408{dataS.hex()[12:22]}1098fbb8b1032a0608{dataS.hex()[12:22]}'''))
+                        		threading.Thread(target=send_msg, args=(client, dataS.hex(), "[b][c][FF00FF] Dance 2 On", 0.2)).start()
+                        		
+                        spam_invs =False
+                        		
+                        if b"/C4:3" in dataS and comand == True:
+                        	client.send(bytes.fromhex(f'''050000002008{dataS.hex()[12:22]}100520162a1408{dataS.hex()[12:22]}109bfbb8b1032a0608{dataS.hex()[12:22]}'''))
+                        	threading.Thread(target=send_msg, args=(client, dataS.hex(), "[b][c][FF00FF] Dance 3 On", 0.2)).start()
+                        	
+                        spam_invs =False
+                        	
+                        if b"/C4:4" in dataS and comand == True:
+                        	client.send(bytes.fromhex(f'''050000002008{dataS.hex()[12:22]}100520162a1408{dataS.hex()[12:22]}10d2c2bbb1032a0608{dataS.hex()[12:22]}'''))
+                        	threading.Thread(target=send_msg, args=(client, dataS.hex(), "[b][c][FF00FF] Dance 4 On", 0.2)).start()
+                        	
+                        spam_invs =False
+                        	
+                        if b"/C4:5" in dataS and comand == True:
+                        	client.send(bytes.fromhex(f'''050000002008{dataS.hex()[12:22]}100520162a1408{dataS.hex()[12:22]}10dcc2bbb1032a0608{dataS.hex()[12:22]}'''))
+                        	threading.Thread(target=send_msg, args=(client, dataS.hex(), "[b][c][FF00FF] Dance 5 On", 0.2)).start()
+                        	
+                        spam_invs =False
+                        	
+                        if b"/C4:6" in dataS and comand == True:
+                        	client.send(bytes.fromhex(f'''050000002008{dataS.hex()[12:22]}100520162a1408{dataS.hex()[12:22]}10bbfbb8b1032a0608{dataS.hex()[12:22]}'''))
+                        	threading.Thread(target=send_msg, args=(client, dataS.hex(), "[b][c][FF00FF] Dance 6 On", 0.2)).start()
+                        	
+                        spam_invs =False
+                        	
+                        if b"/C4:7" in dataS and comand == True:
+                        	client.send(bytes.fromhex(f'''050000002008{dataS.hex()[12:22]}100520162a1408{dataS.hex()[12:22]}109284bbb1032a0608{dataS.hex()[12:22]}'''))
+                        	threading.Thread(target=send_msg, args=(client, dataS.hex(), "[b][c][FF00FF] Dance 7 On", 0.2)).start()
+                        	
+                        spam_invs =False
+                        	
+                        if b"/C4:8" in dataS and comand == True:
+                        	client.send(bytes.fromhex(f'''050000002008{dataS.hex()[12:22]}100520162a1408{dataS.hex()[12:22]}109cfbb8b1032a0608{dataS.hex()[12:22]}'''))
+                        	threading.Thread(target=send_msg, args=(client, dataS.hex(), "[b][c][FF00FF] Dance 8 On", 0.2)).start()
+                        
+                        spam_invs =False
+                        
+                        if b"/C4:9" in dataS and comand == True:
+                        	client.send(bytes.fromhex(f'''050000002008{dataS.hex()[12:22]}100520162a1408{dataS.hex()[12:22]}10aefcbab1032a0608{dataS.hex()[12:22]}'''))
+                        	threading.Thread(target=send_msg, args=(client, dataS.hex(), "[b][c][FF00FF] Dance 9 On", 0.2)).start()
+                        
+                        spam_invs =False
+                        
+                        if b"/admins" in dataS and comand == True:
+                        	threading.Thread(target=send_msg, args=(client, dataS.hex(), "[FF69C1][b][c] Telegram Users:", 0.2)).start()
+                        	threading.Thread(target=send_msg, args=(client, dataS.hex(), "[FF69B4][b][c] @V_N_M_1", 0.2)).start()
+                        	threading.Thread(target=send_msg, args=(client, dataS.hex(), "[FF69B4][b][c] @BestoPy", 0.2)).start()
+                        	threading.Thread(target=send_msg, args=(client, dataS.hex(), "[FF69B4][b][c] @RIZAKYI", 0.2)).start()
+                        	threading.Thread(target=send_msg, args=(client, dataS.hex(), "[FF69B4][b][c] @L_7_M_E", 0.2)).start()
+                        	threading.Thread(target=send_msg, args=(client, dataS.hex(), "[FF69B4][b][c] @Black_Hack05", 0.2)).start()
+                        spam_invs =False
+                        
+                        if b"/clans" in dataS and comand == True:
+                        	threading.Thread(target=send_msg, args=(client, dataS.hex(), "[FF69C1][b][c] Officiel clans: \n", 0.2)).start()
+                        	threading.Thread(target=send_msg, args=(client, dataS.hex(), "[FF69B4][b][c] Rizakyi Clan", 0.2)).start()
+                        	threading.Thread(target=send_msg, args=(client, dataS.hex(), "[FF69B4][b][c] Visan Clan", 0.2)).start()
+                        	threading.Thread(target=send_msg, args=(client, dataS.hex(), "[FF69B4][b][c] Black Clan", 0.2)).start()
+                        	threading.Thread(target=send_msg, args=(client, dataS.hex(), "[FF69B4][b][c] Asta Clan", 0.2)).start()
+                        	threading.Thread(target=send_msg, args=(client, dataS.hex(), "[FF69B4][b][c] H17 Clan", 0.2)).start()
+                        	threading.Thread(target=send_msg, args=(client, dataS.hex(), "[FF69B4][b][c] Boomba Clan", 0.2)).start()
+                        	threading.Thread(target=send_msg, args=(client, dataS.hex(), "[FF69B4][b][c] Trbo Clan", 0.2)).start()
+                        	
+                        spam_invs =False
 
 
-                        if b"@FDTB5" in dataS and comand == True:
-                            id = dataS.hex()[12:22]
-                            dor = "050000002008*100520162a1408*10edbabbb1032a0608*"
-                            raks = dor.replace('*', id)
-                            MainC.send(bytes.fromhex(raks))
-                        if b"@FDTB6" in dataS and comand == True:
-                            id = dataS.hex()[12:22]
-                            dor = "050000002008*100520162a1408*10a2fbb8b1032a0608*"
-                            raks = dor.replace('*', id)
-                            MainC.send(bytes.fromhex(raks))
-                        if b"@FDTB7" in dataS and comand == True:
-                            id = dataS.hex()[12:22]
-                            dor = "050000002008*100520162a1408*1084fbb8b1032a0608*"
-                            raks = dor.replace('*', id)
-                            MainC.send(bytes.fromhex(raks))
-                            # HAYA
-                        if b"@FDTC1" in dataS and comand == True:
-                            id = dataS.hex()[12:22]
-                            dor = "050000002008*100520162a1408*10b9cabbb1032a0608*"
-                            raks = dor.replace('*', id)
-                            MainC.send(bytes.fromhex(raks))
-                        if b"@FDTC2" in dataS and comand == True:
-                            id = dataS.hex()[12:22]
-                            dor = "050000002008*100520162a1408*10ca9bbbb1032a0608*"
-                            raks = dor.replace('*', id)
-                            MainC.send(bytes.fromhex(raks))
-                        if b"@FDTC3" in dataS and comand == True:
-                            id = dataS.hex()[12:22]
-                            dor = "050000002008*100520162a1408*109e84bbb1032a0608*"
-                            raks = dor.replace('*', id)
-                            MainC.send(bytes.fromhex(raks))
-                        if b"@FDTC4" in dataS and comand == True:
-                            id = dataS.hex()[12:22]
-                            dor = "050000002008*100520162a1408*109684bbb1032a0608*"
-                            raks = dor.replace('*', id)
-                            MainC.send(bytes.fromhex(raks))
-                        if b"@FDTC5" in dataS and comand == True:
-                            id = dataS.hex()[12:22]
-                            dor = "050000002008*100520162a1408*10d6c2bbb1032a0608*"
-                            raks = dor.replace('*', id)
-                            MainC.send(bytes.fromhex(raks))
-                        if b"@FDRA1//" in dataS and comand == True:
-                            newdataS2 = dataS.hex()
-                            text = str(bytes.fromhex(newdataS2))
-                            match = re.search(r'\/\/(.*?)\(', text)
-                            number=match.group(1)
-                            accountid = number
-                            id = get_inc(accountid)
-                            dor = "050000002008*100520162a1408*1088b3bbb1032a0608*"
-                            
-                            raks = dor.replace('*', id)
-                            MainC.send(bytes.fromhex(raks))
-                        if b"@FDRA2//" in dataS and comand == True:
-                            newdataS2 = dataS.hex()
-                            text = str(bytes.fromhex(newdataS2))
-                            match = re.search(r'\/\/(.*?)\(', text)
-                            number=match.group(1)
-                            accountid = number
-                            id = get_inc(accountid)
-                            dor = "050000002008*100520162a1408*1098fbb8b1032a0608*"
-                            
-                            raks = dor.replace('*', id)
-                            MainC.send(bytes.fromhex(raks))
-                        if b"@FDRA3//" in dataS and comand == True:
-                            newdataS2 = dataS.hex()
-                            text = str(bytes.fromhex(newdataS2))
-                            match = re.search(r'\/\/(.*?)\(', text)
-                            number=match.group(1)
-                            accountid = number
-                            id = get_inc(accountid)
-                            dor = "050000002008*100520162a1408*109bfbb8b1032a0608*"
-                            
-                            raks = dor.replace('*', id)
-                            MainC.send(bytes.fromhex(raks))
-                        if b"@FDRA4//" in dataS and comand == True:
-                            newdataS2 = dataS.hex()
-                            text = str(bytes.fromhex(newdataS2))
-                            match = re.search(r'\/\/(.*?)\(', text)
-                            number=match.group(1)
-                            accountid = number
-                            id = get_inc(accountid)
-                            dor = "050000002008*100520162a1408*10d2c2bbb1032a0608*"
-                            raks = dor.replace('*', id)
-                            MainC.send(bytes.fromhex(raks))
-                        if b"@FDRA5//" in dataS and comand == True:
-
-                            newdataS2 = dataS.hex()
-                            text = str(bytes.fromhex(newdataS2))
-                            match = re.search(r'\/\/(.*?)\(', text)
-                            number=match.group(1)
-                            accountid = number
-                            id = get_inc(accountid)
-                            dor = "050000002008*100520162a1408*10dcc2bbb1032a0608*"
-                            raks = dor.replace('*', id)
-                            MainC.send(bytes.fromhex(raks))
-                        if b"@FDRA6//" in dataS and comand == True:
-                            newdataS2 = dataS.hex()
-                            text = str(bytes.fromhex(newdataS2))
-                            match = re.search(r'\/\/(.*?)\(', text)
-                            number=match.group(1)
-                            accountid = number
-                            id = get_inc(accountid)
-                            dor = "050000002008*100520162a1408*10bbfbb8b1032a0608*"
-                            raks = dor.replace('*', id)
-                            MainC.send(bytes.fromhex(raks))
-                        if b"@FDRA7//" in dataS and comand == True:
-                            newdataS2 = dataS.hex()
-                            text = str(bytes.fromhex(newdataS2))
-                            match = re.search(r'\/\/(.*?)\(', text)
-                            number=match.group(1)
-                            accountid = number
-                            id = get_inc(accountid)
-                            dor = "050000002008*100520162a1408*109284bbb1032a0608*"
-                            raks = dor.replace('*', id)
-                            MainC.send(bytes.fromhex(raks))  
-                        if b"@FDRA8//" in dataS and comand == True:
-                            newdataS2 = dataS.hex()
-                            text = str(bytes.fromhex(newdataS2))
-                            match = re.search(r'\/\/(.*?)\(', text)
-                            number=match.group(1)
-                            accountid = number
-                            id = get_inc(accountid)
-                            dor = "050000002008*100520162a1408*109cfbb8b1032a0608*"
-                            raks = dor.replace('*', id)
-                            MainC.send(bytes.fromhex(raks))
-                        if b"@FDRA9//" in dataS and comand == True:
-                            newdataS2 = dataS.hex()
-                            text = str(bytes.fromhex(newdataS2))
-                            match = re.search(r'\/\/(.*?)\(', text)
-                            number=match.group(1)
-                            accountid = number
-                            id = get_inc(accountid)
-                            dor = "050000002008*100520162a1408*10aefcbab1032a0608*"
-                            raks = dor.replace('*', id)
-                            MainC.send(bytes.fromhex(raks))
-
-                        if b"@FDRB1//" in dataS and comand == True:
-                            newdataS2 = dataS.hex()
-                            text = str(bytes.fromhex(newdataS2))
-                            match = re.search(r'\/\/(.*?)\(', text)
-                            number=match.group(1)
-                            accountid = number
-                            id = get_inc(accountid)
-                            dor = "050000002008*100520162a1408*10fffab8b1032a0608*"
-                            raks = dor.replace('*', id)
-                            MainC.send(bytes.fromhex(raks))
-                        if b"@FDRB2//" in dataS and comand == True:
-                            newdataS2 = dataS.hex()
-                            text = str(bytes.fromhex(newdataS2))
-                            match = re.search(r'\/\/(.*?)\(', text)
-                            number=match.group(1)
-                            accountid = number
-                            id = get_inc(accountid)
-                            dor = "050000002008*100520162a1408*10ff8bbbb1032a0608*"
-                            raks = dor.replace('*', id)
-                            MainC.send(bytes.fromhex(raks))
-                        if b"@FDRB3//" in dataS and comand == True:
-                            newdataS2 = dataS.hex()
-                            text = str(bytes.fromhex(newdataS2))
-                            match = re.search(r'\/\/(.*?)\(', text)
-                            number=match.group(1)
-                            accountid = number
-                            id = get_inc(accountid)
-                            dor = "050000002008*100520162a1408*1095fbb8b1032a0608*"
-                            raks = dor.replace('*', id)
-                            MainC.send(bytes.fromhex(raks))
-                        if b"@FDRB4//" in dataS and comand == True:
-                            newdataS2 = dataS.hex()
-                            text = str(bytes.fromhex(newdataS2))
-                            match = re.search(r'\/\/(.*?)\(', text)
-                            number=match.group(1)
-                            accountid = number
-                            id = get_inc(accountid)
-                            dor = "050000002008*100520162a1408*108bfbb8b1032a0608*"
-                            raks = dor.replace('*', id)
-                            MainC.send(bytes.fromhex(raks))
-
-
-                        if b"@FDRB5//" in dataS and comand == True:
-                            newdataS2 = dataS.hex()
-                            text = str(bytes.fromhex(newdataS2))
-                            match = re.search(r'\/\/(.*?)\(', text)
-                            number=match.group(1)
-                            accountid = number
-                            id = get_inc(accountid)
-                            dor = "050000002008*100520162a1408*10edbabbb1032a0608*"
-                            raks = dor.replace('*', id)
-                            MainC.send(bytes.fromhex(raks))
-                        if b"@FDRB6//" in dataS and comand == True:
-                            newdataS2 = dataS.hex()
-                            text = str(bytes.fromhex(newdataS2))
-                            match = re.search(r'\/\/(.*?)\(', text)
-                            number=match.group(1)
-                            accountid = number
-                            id = get_inc(accountid)
-                            dor = "050000002008*100520162a1408*10a2fbb8b1032a0608*"
-                            raks = dor.replace('*', id)
-                            MainC.send(bytes.fromhex(raks))
-                        if b"@FDRB7//" in dataS and comand == True:
-                            newdataS2 = dataS.hex()
-                            text = str(bytes.fromhex(newdataS2))
-                            match = re.search(r'\/\/(.*?)\(', text)
-                            number=match.group(1)
-                            accountid = number
-                            id = get_inc(accountid)
-                            dor = "050000002008*100520162a1408*1084fbb8b1032a0608*"
-                            raks = dor.replace('*', id)
-                            MainC.send(bytes.fromhex(raks))
-                            # haya
-                        if b"@FDRC1//" in dataS and comand == True:
-                            newdataS2 = dataS.hex()
-                            text = str(bytes.fromhex(newdataS2))
-                            match = re.search(r'\/\/(.*?)\(', text)
-                            number=match.group(1)
-                            accountid = number
-                            id = get_inc(accountid)
-                            dor = "050000002008*100520162a1408*10b9cabbb1032a0608*"
-                            raks = dor.replace('*', id)
-                            MainC.send(bytes.fromhex(raks))
-                        if b"@FDRC2//" in dataS and comand == True:
-                            newdataS2 = dataS.hex()
-                            text = str(bytes.fromhex(newdataS2))
-                            match = re.search(r'\/\/(.*?)\(', text)
-                            number=match.group(1)
-                            accountid = number
-                            id = get_inc(accountid)
-                            dor = "050000002008*100520162a1408*10ca9bbbb1032a0608*"
-                            raks = dor.replace('*', id)
-                            MainC.send(bytes.fromhex(raks))
-                        if b"@FDRC3//" in dataS and comand == True:
-                            newdataS2 = dataS.hex()
-                            text = str(bytes.fromhex(newdataS2))
-                            match = re.search(r'\/\/(.*?)\(', text)
-                            number=match.group(1)
-                            accountid = number
-                            id = get_inc(accountid)
-                            dor = "050000002008*100520162a1408*109e84bbb1032a0608*"
-                            raks = dor.replace('*', id)
-                            MainC.send(bytes.fromhex(raks))
-                        if b"@FDRC4//" in dataS and comand == True:
-                            newdataS2 = dataS.hex()
-                            text = str(bytes.fromhex(newdataS2))
-                            match = re.search(r'\/\/(.*?)\(', text)
-                            number=match.group(1)
-                            accountid = number
-                            id = get_inc(accountid)
-                            dor = "050000002008*100520162a1408*109684bbb1032a0608*"
-                            raks = dor.replace('*', id)
-                            MainC.send(bytes.fromhex(raks))
-                        if b"@FDRC5//" in dataS and comand == True:
-                            newdataS2 = dataS.hex()
-                            text = str(bytes.fromhex(newdataS2))
-                            match = re.search(r'\/\/(.*?)\(', text)
-                            number=match.group(1)
-                            accountid = number
-                            id = get_inc(accountid)
-                            dor = "050000002008*100520162a1408*10d6c2bbb1032a0608*"
-                            raks = dor.replace('*', id)
-                            MainC.send(bytes.fromhex(raks))
+        
+                        
                         if '0e00' in dataS.hex()[0:4] and roomretst == True and "http" in str(dataS):
 
                             invtoroom = client
@@ -2248,8 +1197,8 @@ class Proxy:
                                   
                             #    if msg1 ==False:
                               #      break
-                        if add_yout == True:
-                            add_yout = False
+                        if vnm_yout == True:
+                            vnm_yout = False
                             from time import sleep
                             try:
                                 for h in yout_list:
@@ -2266,6 +1215,6 @@ class Proxy:
         while back==True:
             self.op.send(data_join)
             time.sleep(9999.0)        
-def startt():
+def venom():
         Proxy().runs('127.0.0.1',3000)
-startt()
+venom()
