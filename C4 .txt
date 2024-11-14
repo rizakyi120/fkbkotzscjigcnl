@@ -1449,7 +1449,7 @@ class Port:
 """, dataS.hex(), client)
                             fadai_msg(f"""[cُ][bَ][00ff00ً]شحن 55000 دهب[FFFFFF]/gold
 [cُ][bَ][00ff00ً]5 فريق:[FFFFFF]/5
-[cُ][bَ][00ff00ً]زيادة لايكات:[FFFFFF]/like{id}
+[cُ][bَ][00ff00ً]زيادة لايكات:[FFFFFF]/like[id]
  """, dataS.hex(), client)
                             fadai_msg(f"""[cُ][bَ][00ff00ً]محكمة PRO[FFFFFF]:/infoo
 [cُ][bَ][00ff00ً]سبام دعوات[FFFFFF]:/spm
