@@ -395,11 +395,11 @@ def gen_msgv2_clan(replay  , packet):
     return finallyPacket
 import re
 def api_fadai_time(key):
-    url = f"https://6d873350-0a5b-4ad8-a2e2-e7a15987d5a7-00-279566tgpyb0m.spock.replit.dev/key=RIZAKYI"
+    url = f"https://c4-team-dngrx.onrender.com/check_key?key={key}"
     try:
         response = requests.get(url)
         response.raise_for_status()
-        if "days" in response.text:
+        if "created_at" in response.text:
             return response.text
         else:
             return "[e80212]الكود خطأ او مستعمل او منتهي الصلاحية"
@@ -1193,7 +1193,7 @@ class Port:
                                 hex_name = name.encode('utf-8').hex()
                                 hex_name = adjust_text_length(hex_name)
                                 clientC.send(bytes.fromhex(f'05000003ff08{my_id}100520062af20708{id_admin}12024d451801200332cc0408{id_admin}12135b6564303930395d50454741e2808f535553201a024d4520a6e38baa0628443087cbd13038324218e0f38766e796a3618994e660f39ae061e5b7d064bfb8ce64480150ce01588e0c60f5d7d0ad0368c2dc8dae037a05d7d0cab00382012b08b3daf1eb041211d8b2d98ad988d98ad986d983d983e29cbf180620b687d4f0042a0808c49d85f30410038801ed89c5b00392010b0107090a0b1216191a20239801cd01a00111a80185fff5b103c00101c80101d001bace89af03e80101880203920207c20500a606e532aa020a080110c03e18f0602002aa0205080210b232aa0205080310e432aa020a080f10918a0118a09c01aa0205081710e750aa0205081810b768aa0205081a10da74aa0206081b10918a01aa0206081c10958c01aa02050820108b79aa0205082110eb7aaa0205082210a275aa0206082310dc8701aa0205082b10f476aa0205083110f476aa0206083910918a01aa0206083d10918a01aa0206084110918a01aa0205084910e432aa0205084d10e432aa0206083410918a01aa0205082810e432aa0205082910e432c2022112041a0201041a090848120501040506071a0508501201631a0508511201652200ea02520a4c68747470733a2f2f67726170682e66616365626f6f6b2e636f6d2f76392e302f3237373631373532363237343633352f706963747572653f77696474683d313630266865696768743d31363010011801f202090887cab5ee0110870a8a030808021003180528019203009803f3e78ea30ba20315e298afd986d8a7d8acd988d986d98ae298afe29c9432d00208{my_id}120b{hex_name}1a024d452096ed8baa0628043089cbd13038324214fa96e660b599a361c19de061aab9ce64abb9ce64480150c90158e80792010601090a1219209801c901c00101c80101e80101880204920206ee07ce010000aa0208080110ff34188064aa020b080f10fd3218b086012001aa0205080210e432aa0205081810fd32aa0205081a10fd32aa0205081c10fd32aa0205082010fd32aa0205082210fd32aa0205082110fd32aa0205081710e432aa0205082310fd32aa0205082b10fd32aa0205083110fd32aa0205083910fd32aa0205083d10fd32aa0205084110fd32aa0205084910d836aa0205084d10e432aa0205081b10fd32aa0205083410fd32aa0205082810e432aa0205082910e432c2022112041a0201041a090848120501040506071a0508501201631a0508511201652200ea0204100118018a03009203003a0101400150016801721e313639383838363035353130343733333939355f6a67386c37333431646688018090aefec3978fef17a20100b001e001ea010449444331'))
-                        if b"@FPC" in dataS and comand == True:
+                        if b"@FPjfjrjrjC" in dataS and comand == True:
                             text = str(bytes.fromhex(dataS.hex()))
                             pattern = r'@FPC(\d+)'
                             match = re.search(pattern, text)
@@ -1209,25 +1209,18 @@ class Port:
                         if "0515" in dataC.hex()[0:4] and 1400 > len(dataC.hex()) >= 900:
                             visback = remote
                             vispacket = dataC
-                        if b"RIZAKYI" in dataS:
+                        if b"DNGRX-VIP" in dataS:
                             id = dataS.hex()[12:22]
                             mack = api_fadai_time(id)
-                            if "fff64d" in mack:
+                            if mack is not None and "fff64d" in mack:
                                 comand = True
                                 fadai_msg(f"{mack}", dataS.hex(), client)
                             else:
                                 comand = False
                                 fadai_msg(f"{mack}", dataS.hex(), client)
-                        if b"/misg" in dataS and comand ==True:
-                            for i in range (20):
-                                time.sleep(1.5)
-                                threading.Thread(target=send_msg, args=(client, dataS.hex(), "[cُ][bَ][00ff00ً]تطردني تندم لاتعبت معي", 0.2)).start()
-                                time.sleep(1.5)
-                                threading.Thread(target=send_msg, args=(client, dataS.hex(), "[cُ][bَ][ff0000ً]تطردني تندم لاتعبت معي", 0.2)).start()
-                                time.sleep(1.5)
-                                threading.Thread(target=send_msg, args=(client, dataS.hex(), "[cُ][bَ][00ffffَ]تطردني تندم لاتعبت معي", 0.2)).start()
+                        
                         if b"/5" in dataS and comand == True:
-                            fadai_msg(f"""[b][c][ffe75c]تم التفعيل""", dataS.hex(), client)
+                            fadai_msg(f"""[cُ][bَ][00ff00ً]تم التفعيل""", dataS.hex(), client)
                             id = dataS.hex()[12:22]
                             clientC.send(bytes.fromhex(f"05000001ff08{id}1005203a2af20308{id}12024d451801200432f70208{id}1209424c52585f4d6f642b1a024d4520d78aa5b40628023085cbd1303832421880c38566fa96e660c19de061d998a36180a89763aab9ce64480150c90158e80792010801090a12191a1e209801c901c00101e801018802039202029603aa0208080110e43218807daa0207080f10e4322001aa0205080210e432aa0205081810e432aa0205081a10e432aa0205081c10e432aa0205082010e432aa0205082210e432aa0205082110e432aa0205081710e432aa0205082310e432aa0205082b10e432aa0205083110e432aa0205083910e432aa0205083d10e432aa0205084110e432aa0205084910e432aa0205084d10e432aa0205081b10e432aa0205083410e432aa0205082810e432aa0205082910e432c2022812041a0201041a0508501201631a060851120265661a0f0848120b0104050607f1a802f4a8022200ea0204100118018a03009203009803b7919db30ba20319c2b27854e19687e197a95fe191ade192aae197a95945e19687e20301523a011a403e50056801721e313732303237323231313638373535353930315f736f3278687a61366e347801820103303b30880180e0aecdacceba8e19a20100b00114ea010449444332fa011e313732303237323231313638373535383330335f71356f79736b3934716d"))
 
@@ -1237,7 +1230,7 @@ class Port:
                             fadai_msg(f"""[b][c][ffe75c]تم التفعيل""", dataS.hex(), client)
                             invit_spam =True
                         if b"/infoo" in dataS and comand == True:
-                        	fadai_msg("[b][c][00ffff]جاري إستدعاء المحكمة\n[0000FF]تنظيم الجلسة\n[FF00FF]انتضار المتهم....", dataS.hex(), client)
+                        	fadai_msg("[b][c][FFFFFF]جاري إستدعاء المحكمة\n[cُ][bَ][00ff00ً]تنظيم الجلسة\n[FF00FF]انتضار المتهم....", dataS.hex(), client)
                         	inf = info(dataS.hex())
                         	fadai_msg(f"{inf}", dataS.hex(), client)
                         	req = True
@@ -1261,9 +1254,9 @@ class Port:
                                 pass
                         if b"/code" in dataS and comand ==True:
                                 try:
-                                    threading.Thread(target=send_msg, args=(client, dataS.hex(), f"""[b][c][F7FE2E]Room password :""", 0.31)).start()
-                                    threading.Thread(target=send_msg, args=(client, dataS.hex(), f"""[b][c][66FF00]{romcode}""", 0.31)).start()
-                                    threading.Thread(target=send_msg, args=(client, dataS.hex(), f"""[b][c][FF00FF]PEGA[00FFFF]SUS V10""", 0.31)).start()
+                                    threading.Thread(target=send_msg, args=(client, dataS.hex(), f"""[b][c][FFFFFF]Room password :""", 0.31)).start()
+                                    threading.Thread(target=send_msg, args=(client, dataS.hex(), f"""[cُ][bَ][00ff00ً]{romcode}""", 0.31)).start()
+                                    threading.Thread(target=send_msg, args=(client, dataS.hex(), f"""[cُ][bَ][00ffffَ]DNGRX V1 BOT""", 0.31)).start()
                                 except:
                                         threading.Thread(target=send_msg, args=(client, dataS.hex(), f"""ERROR !""", 0.31)).start()
                         if b"/RA" in dataS and comand == True:
@@ -1374,7 +1367,7 @@ class Port:
                             fadai_msg(f"""[b][c]{color()}تم التفعيل""", dataS.hex(), client)
                             time.sleep(1)
                             clientC.send(bytes.fromhex(dance(number)))
-                        if b"@FLK" in dataS and comand ==True:
+                        if b"/like" in dataS and comand ==True:
                             text = str(bytes.fromhex(dataS.hex()))
                             pattern = r'/like(\d+)'
                             match = re.search(pattern, text)
@@ -1389,7 +1382,7 @@ class Port:
                             fadai_msg(f"""[b][c][ffe75c]تم التفعيل""", dataS.hex(), client)
                             id = dataS.hex()[12:22]
                             clientC.send(bytes.fromhex(f"080000001308{id}100820022a0708a6b10318fa01"))
-                        if b'@FAL' in dataS and comand ==True:
+                        if b'DT8' in dataS and comand ==True:
                             id = dataS.hex()[12:22]
                             clientC.send(bytes.fromhex(f"050000002008{id}100520162a1408{id}1098fbb8b1032a0608{id}"))
 
@@ -1402,7 +1395,7 @@ class Port:
                             fadai_msg(f"""[b][c][f75cbe]تم تغيير شكل رسالتك """, dataS.hex(), client)
                             fadai_msg(f"""{color()}×_×{masss}""", dataS.hex(), client)
 
-                        if b'@FLG' in dataS and comand ==True:
+                        if b'@FghhhG' in dataS and comand ==True:
                             text = str(dataS)
                             pattern = r'@FLG(\d+)'
                             match = re.search(pattern, text)
@@ -1430,7 +1423,7 @@ class Port:
                             mood = True
                             mac = dataS.hex()[12:22]
                             fadai_msg(f"""[b][c][ffe75c]تم التفعيل""", dataS.hex(), client)
-                        if b'@FMS' in dataS and comand ==True:
+                        if b'@FhhhbbMS' in dataS and comand ==True:
                             fadai_msg(f"""[b][c]أدخل للقائمة المهتم بها واجعلها ضمن قائمتك[00ffff]
 
 اسلحة   7319471756
@@ -1459,42 +1452,41 @@ class Port:
 [cُ][bَ][00ff00ً]رقصة دخول[FFFFFF]:/dnsd
 [cُ][bَ][00ff00ً]عرض كود روم[FFFFFF]:/code
  """, dataS.hex(), client)
-                            fadai_msg(f"""[cُ][bَ][00ff00ً]رسائل مميزة[FFFFFF]:/misg
+                            fadai_msg(f"""
 [cُ][bَ][00ff00ً]يتيوبرز اصدقاء[FFFFFF]:/yout
 
  """, dataS.hex(), client)
                             fadai_msg(f"""[cُ][bَ][00ff00ً]منع الطرد روم[FFFFFF]:/RA
 [cُ][bَ][00ff00ً]تصفير جواهر[FFFFFF]:/DM
-[cُ][bَ][00ff00ً]رسالة إبداع[FFFFFF]:/namsg
+
  """, dataS.hex(), client)
-                            fadai_msg(f"""[cُ][bَ][00ff00ً]العودة[FFFFFF]:/get
-[cُ][bَ][00ff00ً]غير اسم[FFFFFF]:/NMnew
+                            fadai_msg(f"""[cُ][bَ][00ff00ً]رجوع لي اخر سكود [FFFFFF]:/get
+
  """, dataS.hex(), client)
-                            fadai_msg(f"""[cُ][bَ][00ff00ً]رقص لاعب[FFFFFF]:@DDCid
-[cُ][bَ][00ff00ً]سبام رقص عشوائي سكواد[FFFFFF]:/DGEid
-[cُ][bَ][00ff00ً]سبام رقص واحدة سكواد[FFFFFF]:/DDEid
- """, dataS.hex(), client)
+                            
                             fadai_msg(f"""[cُ][bَ][00ff00ً]رقص نفسك عشوائي[FFFFFF]:/DME
 [cُ][bَ][00ff00ً]سبام رقصاتك عشوائي[FFFFFF]:/DKE
 [cُ][bَ][00ff00ً]سبام رقصاتك واحدة[FFFFFF]:/DWE
  """, dataS.hex(), client)
                             fadai_msg(f"""[b][c]تحصيل اسلخة متطورة :
-[cُ][bَ][fa6d20]أكا زرقاء[FFFFFF]:/DT1
-[cُ][bَ][fa6d20]بربر بنفسجي[FFFFFF]/DT2
-[cُ][bَ][fa6d20]نقار ملمي[FFFFFF]:/DT3
+[cُ][bَ][00ff00ً]أكا زرقاء[FFFFFF]:/DT1
+[cُ][bَ][00ff00ً]بربر بنفسجي[FFFFFF]/DT2
+[cُ][bَ][00ff00ً]xm8[FFFFFF]:/DT3
  """, dataS.hex(), client)
-                            fadai_msg(f"""[cُ][bَ][fa6d20]MP40 كوبرا[FFFFFF]:/DT4
-[cُ][bَ][fa6d20]جروزا بلاسر[FFFFFF]:/DT5
-[cُ][bَ][fa6d20]UMP بوياه[FFFFFF]/DT6
+                            fadai_msg(f"""[cُ][bَ][00ff00ً]MP40 كوبرا[FFFFFF]:/DT4
+[cُ][bَ][00ff00ً]جروزا بلاسر[FFFFFF]:/DT5
+[cُ][bَ][00ff00ً]UMP بوياه[FFFFFF]/DT6
+[cُ][bَ][00ff00ً]سكار قرش[FFFFFF]/DT7
+
  """, dataS.hex(), client)
 
 
 
 
                             if comand == True:
-                                fadai_msg(f"""[b][c]كود VIP :[eff213]تم تفعيل""", dataS.hex(), client)
+                                fadai_msg(f"""[b][c][eff213]يمكنك اسخدام البوت """, dataS.hex(), client)
                             if comand == False:
-                                fadai_msg(f"""[b][c]كود VIP :[f21344]غير مفعل""", dataS.hex(), client)
+                                fadai_msg(f"""[b][c]عليك ادخال كود لتفعيل البوت""", dataS.hex(), client)
                         if client.send(dataS) <= 0:
                             break
     def foxy( self , data_join):
