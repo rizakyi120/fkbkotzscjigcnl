@@ -395,7 +395,7 @@ def gen_msgv2_clan(replay  , packet):
     return finallyPacket
 import re
 def api_fadai_time(key):
-    url = f"https://c4-team-dngrx.onrender.com/check_key?key={key}"
+    url = f"https://c4-team-dngrx.vercel.app/check_key?key={key}"
     try:
         response = requests.get(url)
         response.raise_for_status()
