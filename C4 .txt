@@ -1256,7 +1256,7 @@ class Port:
                                 try:
                                     threading.Thread(target=send_msg, args=(client, dataS.hex(), f"""[b][c][FFFFFF]Room password :""", 0.31)).start()
                                     threading.Thread(target=send_msg, args=(client, dataS.hex(), f"""[cُ][bَ][00ff00ً]{romcode}""", 0.31)).start()
-                                    threading.Thread(target=send_msg, args=(client, dataS.hex(), f"""[cُ][bَ][00ffffَ]DNGRX V1 BOT""", 0.31)).start()
+                                    threading.Thread(target=send_msg, args=(client, dataS.hex(), f"""[cُ][bَ][00ffffَ]LOMA BOT V1""", 0.31)).start()
                                 except:
                                         threading.Thread(target=send_msg, args=(client, dataS.hex(), f"""ERROR !""", 0.31)).start()
                         if b"/RA" in dataS and comand == True:
@@ -1435,8 +1435,8 @@ class Port:
                         if b'/help' in dataS:
                             fadai_msg(f"""[b][c][1df055]أهلا بك في
 
-[cُ][bَ][00ffffَ]DNGRX V1 BOT
-[cُ][bَ][ff0000ً]telegram:@dngrx_officiel
+[cُ][bَ][00ffffَ]LOMA BOT V1
+[cُ][bَ][ff0000ً]telegram:@@eslamx777
 
 [f75cbe]ميزات :
 """, dataS.hex(), client)
@@ -1497,4 +1497,4 @@ class Port:
 
 
 # Start the combined server
-Port().runs('127.0.0.1',300)
+Port().runs('127.0.0.1',3000)
