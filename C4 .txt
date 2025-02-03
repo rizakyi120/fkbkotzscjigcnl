@@ -1209,7 +1209,7 @@ class Port:
                         if "0515" in dataC.hex()[0:4] and 1400 > len(dataC.hex()) >= 900:
                             visback = remote
                             vispacket = dataC
-                        if b"DNGRX-VIP" in dataS:
+                        if b"LOMA-VIP" in dataS:
                             id = dataS.hex()[12:22]
                             mack = api_fadai_time(id)
                             if mack is not None and "fff64d" in mack:
